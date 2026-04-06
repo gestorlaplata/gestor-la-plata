@@ -283,15 +283,15 @@ function CookieBanner({ onPrivacy }) {
   if (!visible) return null;
   const accept = () => { window.__cookieConsent = true; setVisible(false); };
   const reject = () => { window.__cookieConsent = false; setVisible(false); };
-  return <div style={{ position: "fixed", bottom: 0, left: 0, right: 0, zIndex: 1100, background: "rgba(244,162,97,0.95)", backdropFilter: "blur(12px)", borderTop: "1px solid rgba(255,255,255,0.2)", padding: "18px 24px", animation: "cookieSlide 0.4s ease-out" }}>
+  return <div style={{ position: "fixed", bottom: 0, left: 0, right: 0, zIndex: 1100, background: "rgba(45,55,72,0.97)", backdropFilter: "blur(12px)", borderTop: "1px solid rgba(255,255,255,0.1)", padding: "18px 24px", animation: "cookieSlide 0.4s ease-out" }}>
     <div style={{ maxWidth: 1200, margin: "0 auto", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 20, flexWrap: "wrap" }}>
-      <p style={{ fontFamily: "'Inter',sans-serif", fontSize: 14, color: "#3D1E00", margin: 0, flex: 1, minWidth: 280, lineHeight: 1.6 }}>
+      <p style={{ fontFamily: "'Inter',sans-serif", fontSize: 14, color: "rgba(241,243,245,0.85)", margin: 0, flex: 1, minWidth: 280, lineHeight: 1.6 }}>
         Usamos cookies para asegurar que te damos la mejor experiencia en nuestra web. Si continuás usando este sitio, asumiremos que estás de acuerdo con ello.
       </p>
       <div style={{ display: "flex", alignItems: "center", gap: 10, flexShrink: 0, flexWrap: "wrap" }}>
-        <button onClick={accept} style={{ background: "#3D1E00", color: "#F1F3F5", border: "none", borderRadius: 6, padding: "10px 22px", fontFamily: "'Poppins',sans-serif", fontWeight: 600, fontSize: 13, letterSpacing: "1px", textTransform: "uppercase", cursor: "pointer", transition: "background 0.2s" }} onMouseEnter={e => e.currentTarget.style.background = "#5A2E00"} onMouseLeave={e => e.currentTarget.style.background = "#3D1E00"}>Aceptar</button>
-        <button onClick={reject} style={{ background: "transparent", color: "#3D1E00", border: "1px solid rgba(61,30,0,0.35)", borderRadius: 6, padding: "10px 22px", fontFamily: "'Poppins',sans-serif", fontWeight: 600, fontSize: 13, letterSpacing: "1px", textTransform: "uppercase", cursor: "pointer", transition: "all 0.2s" }} onMouseEnter={e => { e.currentTarget.style.borderColor = "rgba(61,30,0,0.6)"; e.currentTarget.style.color = "#3D1E00"; }} onMouseLeave={e => { e.currentTarget.style.borderColor = "rgba(61,30,0,0.35)"; e.currentTarget.style.color = "#3D1E00"; }}>Rechazar</button>
-        <button onClick={onPrivacy} style={{ background: "none", border: "none", color: "#3D1E00", fontFamily: "'Inter',sans-serif", fontSize: 13, cursor: "pointer", textDecoration: "underline", padding: "10px 4px" }}>Política de privacidad</button>
+        <button onClick={accept} style={{ background: "#F4A261", color: "#fff", border: "none", borderRadius: 6, padding: "10px 22px", fontFamily: "'Poppins',sans-serif", fontWeight: 600, fontSize: 13, letterSpacing: "1px", textTransform: "uppercase", cursor: "pointer", transition: "background 0.2s" }} onMouseEnter={e => e.currentTarget.style.background = "#E08A48"} onMouseLeave={e => e.currentTarget.style.background = "#F4A261"}>Aceptar</button>
+        <button onClick={reject} style={{ background: "transparent", color: "rgba(241,243,245,0.6)", border: "1px solid rgba(255,255,255,0.15)", borderRadius: 6, padding: "10px 22px", fontFamily: "'Poppins',sans-serif", fontWeight: 600, fontSize: 13, letterSpacing: "1px", textTransform: "uppercase", cursor: "pointer", transition: "all 0.2s" }} onMouseEnter={e => { e.currentTarget.style.borderColor = "rgba(255,255,255,0.3)"; e.currentTarget.style.color = "#F1F3F5"; }} onMouseLeave={e => { e.currentTarget.style.borderColor = "rgba(255,255,255,0.15)"; e.currentTarget.style.color = "rgba(241,243,245,0.6)"; }}>Rechazar</button>
+        <button onClick={onPrivacy} style={{ background: "none", border: "none", color: "#F4A261", fontFamily: "'Inter',sans-serif", fontSize: 13, cursor: "pointer", textDecoration: "underline", padding: "10px 4px" }}>Política de privacidad</button>
       </div>
     </div>
   </div>;
