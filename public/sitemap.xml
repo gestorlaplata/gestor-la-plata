@@ -65,21 +65,21 @@
 
   <!-- Landings: Registrales - Copias -->
   <url>
-    <loc>https://gestorlaplata.com/copias-registrales</loc>
+    <loc>https://gestorlaplata.com/copia-de-asiento</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <!-- Landings: Registrales - Investigación -->
   <url>
-    <loc>https://gestorlaplata.com/estudio-de-titulos</loc>
+    <loc>https://gestorlaplata.com/estudio-de-titulo</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <!-- Landings: ARBA y Catastro -->
   <url>
-    <loc>https://gestorlaplata.com/plancheta-catastral</loc>
+    <loc>https://gestorlaplata.com/antecedentes-catastrales</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -94,19 +94,19 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://gestorlaplata.com/gestoria-para-agrimensores</loc>
+    <loc>https://gestorlaplata.com/servicio-agrimensores</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <!-- Landings: Actas e Inscripciones -->
   <url>
-    <loc>https://gestorlaplata.com/busqueda-de-actas</loc>
+    <loc>https://gestorlaplata.com/actas-registro-civil</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://gestorlaplata.com/inscripcion-de-divorcio</loc>
+    <loc>https://gestorlaplata.com/inscripcion-divorcio</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -118,34 +118,34 @@
 
   <!-- Landings: Habilitaciones Comerciales -->
   <url>
-    <loc>https://gestorlaplata.com/habilitacion-comercial-la-plata</loc>
+    <loc>https://gestorlaplata.com/alta-comercial</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://gestorlaplata.com/transferencia-de-habilitacion</loc>
+    <loc>https://gestorlaplata.com/transferencia-comercial</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://gestorlaplata.com/baja-de-habilitacion</loc>
+    <loc>https://gestorlaplata.com/baja-comercial</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <!-- Landings: Permisos y Publicidad -->
   <url>
-    <loc>https://gestorlaplata.com/permiso-para-eventos</loc>
+    <loc>https://gestorlaplata.com/eventos-la-plata</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://gestorlaplata.com/publicidad-y-mesas-y-sillas</loc>
+    <loc>https://gestorlaplata.com/publicidad-la-plata</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://gestorlaplata.com/licencia-reba</loc>
+    <loc>https://gestorlaplata.com/reba-la-plata</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
