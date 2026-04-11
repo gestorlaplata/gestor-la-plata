@@ -13,11 +13,34 @@
     }
   ],
   "redirects": [
-    {
-      "source": "/review",
-      "destination": "https://g.page/r/CQNyqKDgQJIhEBM/review",
-      "permanent": false
-    }
+    { "source": "/review", "destination": "https://g.page/r/CQNyqKDgQJIhEBM/review", "permanent": false },
+    { "source": "/investigacion",                   "destination": "/estudio-de-titulo",        "permanent": true },
+    { "source": "/copias",                          "destination": "/copia-de-asiento",         "permanent": true },
+    { "source": "/plancheta",                       "destination": "/antecedentes-catastrales", "permanent": true },
+    { "source": "/plano",                           "destination": "/copia-de-plano",           "permanent": true },
+    { "source": "/valuacion",                       "destination": "/valuacion-fiscal",         "permanent": true },
+    { "source": "/agrimensores",                    "destination": "/servicio-agrimensores",    "permanent": true },
+    { "source": "/actas-sub",                       "destination": "/actas-registro-civil",     "permanent": true },
+    { "source": "/divorcio",                        "destination": "/inscripcion-divorcio",     "permanent": true },
+    { "source": "/apostilla",                       "destination": "/apostilla-de-la-haya",     "permanent": true },
+    { "source": "/alta",                            "destination": "/alta-comercial",           "permanent": true },
+    { "source": "/transferencia",                   "destination": "/transferencia-comercial",  "permanent": true },
+    { "source": "/baja",                            "destination": "/baja-comercial",           "permanent": true },
+    { "source": "/eventos",                         "destination": "/eventos-la-plata",         "permanent": true },
+    { "source": "/publicidad",                      "destination": "/publicidad-la-plata",      "permanent": true },
+    { "source": "/reba",                            "destination": "/reba-la-plata",            "permanent": true },
+    { "source": "/estudio-de-titulos",              "destination": "/estudio-de-titulo",        "permanent": true },
+    { "source": "/copias-registrales",              "destination": "/copia-de-asiento",         "permanent": true },
+    { "source": "/plancheta-catastral",             "destination": "/antecedentes-catastrales", "permanent": true },
+    { "source": "/gestoria-para-agrimensores",      "destination": "/servicio-agrimensores",    "permanent": true },
+    { "source": "/busqueda-de-actas",               "destination": "/actas-registro-civil",     "permanent": true },
+    { "source": "/inscripcion-de-divorcio",         "destination": "/inscripcion-divorcio",     "permanent": true },
+    { "source": "/habilitacion-comercial-la-plata", "destination": "/alta-comercial",           "permanent": true },
+    { "source": "/transferencia-de-habilitacion",   "destination": "/transferencia-comercial",  "permanent": true },
+    { "source": "/baja-de-habilitacion",            "destination": "/baja-comercial",           "permanent": true },
+    { "source": "/permiso-para-eventos",            "destination": "/eventos-la-plata",         "permanent": true },
+    { "source": "/publicidad-y-mesas-y-sillas",     "destination": "/publicidad-la-plata",      "permanent": true },
+    { "source": "/licencia-reba",                   "destination": "/reba-la-plata",            "permanent": true }
   ],
   "rewrites": [
     {
