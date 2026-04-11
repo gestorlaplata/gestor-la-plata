@@ -355,7 +355,7 @@ function EnhancedLanding({ service, sub, landing: L, nav }) {
     </section>}
 
     <section style={{ padding: "64px 24px", background: "#F1F3F5" }}>
-      <div style={{ maxWidth: 1200, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 380px", gap: 32, alignItems: "start" }}>
+      <div style={{ maxWidth: 1200, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 380px", gap: 32, alignItems: "start", width: "100%" }}>
         <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
           {(hasDatosGroups || (L.datos && L.datos.length > 0)) && <Card hover={false} style={{ padding: 0, overflow: "hidden" }}>
             <div style={{ padding: "28px 28px 4px" }}><h3 style={{ fontFamily: "'Poppins',sans-serif", fontWeight: 700, fontSize: 22, color: "#1D3557", margin: "0 0 6px", display: "flex", alignItems: "center", gap: 10 }}><div style={{ width: 36, height: 36, borderRadius: 8, background: "#3B6B8A14", display: "flex", alignItems: "center", justifyContent: "center" }}><FileText size={18} color="#3B6B8A" /></div>¿Qué datos necesitás?</h3><p style={{ fontFamily: "'Inter',sans-serif", fontSize: 14, color: "#3B6B8A", margin: "0 0 16px" }}>Si tenés dudas, envianos lo que tengas y nosotros nos ocupamos.</p></div>
@@ -385,7 +385,7 @@ function HomePage({ nav }) {
     <section style={{ background: "#1D3557", minHeight: "92vh", display: "flex", alignItems: "center", position: "relative", overflow: "hidden" }}>
       <div style={{ position: "absolute", inset: 0, backgroundImage: "radial-gradient(circle at 90% 10%, rgba(255,255,255,0.05) 10%, transparent 10.5%), radial-gradient(circle at 90% 10%, rgba(255,255,255,0.03) 20%, transparent 20.5%), radial-gradient(circle at 10% 90%, rgba(255,255,255,0.02) 30%, transparent 30.5%), radial-gradient(circle at 5% 85%, rgba(255,255,255,0.04) 15%, transparent 15.5%), radial-gradient(circle at 95% 15%, rgba(255,255,255,0.02) 25%, transparent 25.5%)" }} />
       
-      <div style={{ maxWidth: 1200, margin: "0 auto", padding: "120px 24px 100px", position: "relative", zIndex: 1, display: "grid", gridTemplateColumns: "1fr 1fr", gap: 60, alignItems: "center" }}>
+      <div style={{ maxWidth: 1200, margin: "0 auto", padding: "120px 24px 100px", position: "relative", zIndex: 1, display: "grid", gridTemplateColumns: "1fr 1fr", gap: 60, alignItems: "center", width: "100%" }}>
         <div>
           <div style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "rgba(244,162,97,0.12)", borderRadius: 30, padding: "6px 16px", marginBottom: 28 }}><div style={{ width: 8, height: 8, borderRadius: "50%", background: "#25D366", animation: "pulse 2s infinite" }} /><span style={{ fontFamily: "'Inter',sans-serif", fontSize: 13, color: "#F4A261", fontWeight: 500 }}>Consultas abiertas · Respondemos en minutos</span></div>
           <h1 style={{ fontFamily: "'Poppins',sans-serif", fontWeight: 700, fontSize: "clamp(34px,4.5vw,52px)", color: "#F1F3F5", margin: "0 0 20px", lineHeight: 1.1 }}>La burocracia<br /><span style={{ color: "#F4A261" }}>no tiene por qué</span><br />frenarte.</h1>
@@ -791,7 +791,7 @@ export default function App() {
     }
   }, [r, cs, csub, cl]);
 
-  return <div style={{ fontFamily: "'Inter',sans-serif", background: "#F1F3F5", minHeight: "100vh", color: "#212529" }}>
+  return <div style={{ fontFamily: "'Inter',sans-serif", background: "#F1F3F5", minHeight: "100vh", color: "#212529", overflowX: "hidden", width: "100%" }}>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
     <nav style={{ position: "fixed", top: 0, left: 0, right: 0, zIndex: 999, background: "rgba(29,53,87,0.97)", backdropFilter: "blur(12px)", borderBottom: "1px solid rgba(255,255,255,0.06)" }}>
       <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 24px", height: 64, display: "flex", alignItems: "center", justifyContent: "space-between" }}>
@@ -814,7 +814,33 @@ export default function App() {
 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg> @gestorlaplata</a><a href="https://gestorlaplata.com" target="_blank" rel="noopener noreferrer" style={{ display: "flex", alignItems: "center", gap: 8, fontFamily: "'Inter',sans-serif", fontSize: 14, color: "rgba(241,243,245,0.5)", textDecoration: "none" }}><Globe size={14} /> gestorlaplata.com</a><div style={{ marginTop: 8, borderRadius: 10, overflow: "hidden", border: "1px solid rgba(255,255,255,0.08)" }}><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3271.4058116853685!2d-57.96294992351826!3d-34.921358074344006!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95a2e7942055fd0b%3A0x219240e0a0a87203!2sGestor%20La%20Plata!5e0!3m2!1sen!2sar!4v1775383870483!5m2!1sen!2sar" width="100%" height="180" style={{ border: 0, display: "block" }} allowFullScreen="" loading="lazy" referrerPolicy="no-referrer-when-downgrade" title="Ubicación Gestor La Plata" /></div></div></div></div><div style={{ borderTop: "1px solid rgba(255,255,255,0.06)", paddingTop: 24, textAlign: "center" }}><p style={{ fontFamily: "'Inter',sans-serif", fontSize: 12, color: "rgba(241,243,245,0.3)", margin: "0 0 8px" }}>© 2026 Gestor La Plata. Todos los derechos reservados.</p><button onClick={() => nav("privacy")} style={{ background: "none", border: "none", fontFamily: "'Inter',sans-serif", fontSize: 12, color: "rgba(241,243,245,0.4)", cursor: "pointer", textDecoration: "underline", padding: 0 }}>Política de privacidad</button><span style={{ color: "rgba(241,243,245,0.2)", margin: "0 8px", fontSize: 12 }}>·</span><button onClick={() => nav("cookies")} style={{ background: "none", border: "none", fontFamily: "'Inter',sans-serif", fontSize: 12, color: "rgba(241,243,245,0.4)", cursor: "pointer", textDecoration: "underline", padding: 0 }}>Política de cookies</button></div></div></footer>
     <WAFloat />
     <CookieBanner onPrivacy={() => nav("cookies")} />
-    <style>{`.dn{display:flex!important}.mb{display:none!important}@media(max-width:1023px){.dn{display:none!important}.mb{display:flex!important}}@media(min-width:1024px){.mm{display:none!important}}*{box-sizing:border-box}@media(max-width:900px){section>div[style*="grid-template-columns: 1fr 380px"]{grid-template-columns:1fr!important}section>div[style*="grid-template-columns: 1fr 1fr"]{grid-template-columns:1fr!important}}@keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}@keyframes cookieSlide{from{transform:translateY(100%)}to{transform:translateY(0)}}`}</style>
+    <style>{`
+  .dn{display:flex!important}
+  .mb{display:none!important}
+  @media(max-width:1023px){.dn{display:none!important}.mb{display:flex!important}}
+  @media(min-width:1024px){.mm{display:none!important}}
+  *{box-sizing:border-box}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}
+  @keyframes cookieSlide{from{transform:translateY(100%)}to{transform:translateY(0)}}
+  @media(max-width:767px){
+    section>div[style*="grid-template-columns: 1fr 1fr"]{grid-template-columns:1fr!important}
+    section>div[style*="grid-template-columns: 1fr 380px"]{grid-template-columns:1fr!important}
+    section>div[style*="grid-template-columns: repeat(auto-fit, minmax(350"]{grid-template-columns:1fr!important}
+    section>div[style*="grid-template-columns: repeat(auto-fit, minmax(340"]{grid-template-columns:1fr!important}
+    section>div[style*="grid-template-columns: repeat(auto-fit, minmax(300"]{grid-template-columns:1fr!important}
+    section>div[style*="grid-template-columns: repeat(auto-fit, minmax(280"]{grid-template-columns:1fr!important}
+    section>div[style*="grid-template-columns: repeat(auto-fit, minmax(260"]{grid-template-columns:1fr!important}
+    section>div[style*="grid-template-columns: repeat(auto-fit, minmax(220"]{grid-template-columns:1fr!important}
+    section>div[style*="grid-template-columns: repeat(auto-fit, minmax(200"]{grid-template-columns:1fr!important}
+    section>div[style*="grid-template-columns: repeat(3, 1fr)"]{grid-template-columns:1fr!important}
+    section>div[style*="gridTemplateColumns"]{grid-template-columns:1fr!important}
+    div[style*="padding: \"120px 24px"]{padding-top:90px!important;padding-bottom:70px!important}
+  }
+  @media(max-width:900px){
+    section>div[style*="grid-template-columns: 1fr 380px"]{grid-template-columns:1fr!important}
+    section>div[style*="grid-template-columns: 1fr 1fr"]{grid-template-columns:1fr!important}
+  }
+`}</style>
   </div>;
 }
 
