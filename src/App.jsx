@@ -320,6 +320,12 @@ function EnhancedLanding({ service, sub, landing: L, nav }) {
   const hasDatosGroups = L.datosGroups && L.datosGroups.length > 0;
   const plazosArr = L.plazos || [];
   const firstPlazo = plazosArr[0];
+  const [isMobile, setIsMobile] = useState(() => window.innerWidth < 900);
+  useEffect(() => {
+    const handler = () => setIsMobile(window.innerWidth < 900);
+    window.addEventListener('resize', handler);
+    return () => window.removeEventListener('resize', handler);
+  }, []);
 
   useEffect(() => { document.title = L.seoTitle || `${L.title} | Gestor La Plata`; }, [L]);
 
@@ -355,7 +361,7 @@ function EnhancedLanding({ service, sub, landing: L, nav }) {
     </section>}
 
     <section style={{ padding: "64px 24px", background: "#F1F3F5" }}>
-      <div style={{ maxWidth: 1200, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 380px", gap: 32, alignItems: "start", width: "100%" }}>
+      <div style={{ maxWidth: 1200, margin: "0 auto", display: "grid", gridTemplateColumns: isMobile ? "1fr" : "1fr 380px", gap: 32, alignItems: "start" }}>
         <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
           {(hasDatosGroups || (L.datos && L.datos.length > 0)) && <Card hover={false} style={{ padding: 0, overflow: "hidden" }}>
             <div style={{ padding: "28px 28px 4px" }}><h3 style={{ fontFamily: "'Poppins',sans-serif", fontWeight: 700, fontSize: 22, color: "#1D3557", margin: "0 0 6px", display: "flex", alignItems: "center", gap: 10 }}><div style={{ width: 36, height: 36, borderRadius: 8, background: "#3B6B8A14", display: "flex", alignItems: "center", justifyContent: "center" }}><FileText size={18} color="#3B6B8A" /></div>¿Qué datos necesitás?</h3><p style={{ fontFamily: "'Inter',sans-serif", fontSize: 14, color: "#3B6B8A", margin: "0 0 16px" }}>Si tenés dudas, envianos lo que tengas y nosotros nos ocupamos.</p></div>
@@ -363,11 +369,11 @@ function EnhancedLanding({ service, sub, landing: L, nav }) {
             : <div style={{ padding: "0 28px 16px" }}>{L.datos.map((d, i) => <div key={i} style={{ display: "flex", alignItems: "flex-start", gap: 10, marginBottom: 8 }}><CheckCircle2 size={15} color="#3B6B8A" style={{ marginTop: 2, flexShrink: 0 }} /><span style={{ fontFamily: "'Inter',sans-serif", fontSize: 14, color: "#212529" }}>{d}</span></div>)}</div>}
             <div style={{ padding: "16px 28px 24px", background: "#F8F9FA", borderTop: "1px solid #E9ECEF" }}><div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 14 }}><Upload size={16} color="#F4A261" /><span style={{ fontFamily: "'Poppins',sans-serif", fontWeight: 600, fontSize: 14, color: "#1D3557" }}>¿No tenés todos los datos? No importa.</span></div><p style={{ fontFamily: "'Inter',sans-serif", fontSize: 14, color: "#3B6B8A", margin: "0 0 14px" }}>Envianos la documentación que tengas y nosotros nos encargamos.</p><Btn sm full href={wl(L.waDatos)} v="green"><MessageCircle size={14} /> Enviar datos por WhatsApp</Btn></div>
           </Card>}
-          <Card hover={false}><h3 style={{ fontFamily: "'Poppins',sans-serif", fontWeight: 700, fontSize: 22, color: "#1D3557", margin: "0 0 20px", display: "flex", alignItems: "center", gap: 10 }}><div style={{ width: 36, height: 36, borderRadius: 8, background: "#3B6B8A14", display: "flex", alignItems: "center", justifyContent: "center" }}><Clock size={18} color="#3B6B8A" /></div>Plazos de gestión</h3><div style={{ display: "grid", gridTemplateColumns: plazosArr.length > 2 ? "repeat(3, 1fr)" : `repeat(${plazosArr.length}, 1fr)`, gap: 12 }}>{plazosArr.map((p, i) => { const Ic = p.icon; const isU = p.tipo.toLowerCase().includes("urgente") || p.tipo.toLowerCase().includes("express") || p.tipo.toLowerCase().includes("exprés"); return <div key={i} style={{ padding: 20, borderRadius: 10, background: isU ? "#FFF8F0" : "#F8F9FA", border: `1px solid ${isU ? "#F4A26130" : "#E9ECEF"}` }}><div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 8 }}><Ic size={18} color={isU ? "#F4A261" : "#3B6B8A"} /><span style={{ fontFamily: "'Poppins',sans-serif", fontWeight: 600, fontSize: 14, color: "#1D3557" }}>{p.tipo}</span></div><span style={{ fontFamily: "'Inter',sans-serif", fontSize: 18, fontWeight: 700, color: isU ? "#F4A261" : "#3B6B8A" }}>{p.tiempo}</span></div>; })}</div></Card>
+          <Card hover={false}><h3 style={{ fontFamily: "'Poppins',sans-serif", fontWeight: 700, fontSize: 22, color: "#1D3557", margin: "0 0 20px", display: "flex", alignItems: "center", gap: 10 }}><div style={{ width: 36, height: 36, borderRadius: 8, background: "#3B6B8A14", display: "flex", alignItems: "center", justifyContent: "center" }}><Clock size={18} color="#3B6B8A" /></div>Plazos de gestión</h3><div style={{ display: "grid", gridTemplateColumns: isMobile ? (plazosArr.length > 1 ? "repeat(2, 1fr)" : "1fr") : (plazosArr.length > 2 ? "repeat(3, 1fr)" : `repeat(${plazosArr.length}, 1fr)`), gap: 12 }}>{plazosArr.map((p, i) => { const Ic = p.icon; const isU = p.tipo.toLowerCase().includes("urgente") || p.tipo.toLowerCase().includes("express") || p.tipo.toLowerCase().includes("exprés"); return <div key={i} style={{ padding: 20, borderRadius: 10, background: isU ? "#FFF8F0" : "#F8F9FA", border: `1px solid ${isU ? "#F4A26130" : "#E9ECEF"}` }}><div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 8 }}><Ic size={18} color={isU ? "#F4A261" : "#3B6B8A"} /><span style={{ fontFamily: "'Poppins',sans-serif", fontWeight: 600, fontSize: 14, color: "#1D3557" }}>{p.tipo}</span></div><span style={{ fontFamily: "'Inter',sans-serif", fontSize: 18, fontWeight: 700, color: isU ? "#F4A261" : "#3B6B8A" }}>{p.tiempo}</span></div>; })}</div></Card>
           {L.entrega && L.entrega.length > 0 && <Card hover={false}><h3 style={{ fontFamily: "'Poppins',sans-serif", fontWeight: 700, fontSize: 22, color: "#1D3557", margin: "0 0 20px", display: "flex", alignItems: "center", gap: 10 }}><div style={{ width: 36, height: 36, borderRadius: 8, background: "#25D36614", display: "flex", alignItems: "center", justifyContent: "center" }}><BadgeCheck size={18} color="#25D366" /></div>¿Qué recibís al finalizar?</h3>{L.entrega.map((e, i) => <div key={i} style={{ display: "flex", alignItems: "flex-start", gap: 10, marginBottom: 10 }}><CheckCircle2 size={16} color="#25D366" style={{ marginTop: 2, flexShrink: 0 }} /><span style={{ fontFamily: "'Inter',sans-serif", fontSize: 15, color: "#212529", lineHeight: 1.5 }}>{e}</span></div>)}</Card>}
           <div style={{ background: "#1D3557", borderRadius: 14, padding: 36, textAlign: "center" }}><h3 style={{ fontFamily: "'Poppins',sans-serif", fontWeight: 700, fontSize: 22, color: "#F1F3F5", margin: "0 0 10px" }}>¿Listo para avanzar?</h3><p style={{ fontFamily: "'Inter',sans-serif", fontSize: 15, color: "rgba(241,243,245,0.65)", margin: "0 0 24px" }}>Presupuesto sin cargo. Respondemos en minutos.</p><div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}><Btn href={wl(L.wa)}><MessageCircle size={18} /> Pedí tu presupuesto</Btn><Btn sm href={wl(L.waAsesor)} v="outlineW"><MessageCircle size={14} /> Duda técnica</Btn></div></div>
         </div>
-        <div style={{ display: "flex", flexDirection: "column", gap: 20, position: "sticky", top: 88 }}>
+        <div style={{ display: "flex", flexDirection: "column", gap: 20, position: isMobile ? "static" : "sticky", top: 88 }}>
           <div style={{ background: "#fff", borderRadius: 14, padding: 28, boxShadow: "0 4px 20px rgba(29,53,87,0.08)", border: "2px solid #F4A261" }}><div style={{ textAlign: "center", marginBottom: 20 }}><div style={{ fontFamily: "'Poppins',sans-serif", fontWeight: 700, fontSize: 18, color: "#1D3557" }}>Solicitá tu trámite</div><p style={{ fontFamily: "'Inter',sans-serif", fontSize: 13, color: "#3B6B8A", margin: "4px 0 0" }}>Presupuesto sin cargo · Respuesta inmediata</p></div><Btn full href={wl(L.wa)} style={{ marginBottom: 10 }}><MessageCircle size={18} /> Pedir presupuesto</Btn><Btn full sm href={wl(L.waDatos)} v="outline"><Upload size={14} /> Enviar datos / foto</Btn><div style={{ marginTop: 16, display: "flex", flexDirection: "column", gap: 8 }}>{plazosArr.slice(0, 3).map((p, i) => <div key={i} style={{ display: "flex", alignItems: "center", gap: 8, padding: "6px 0" }}><Timer size={14} color="#3B6B8A" /><span style={{ fontFamily: "'Inter',sans-serif", fontSize: 13, color: "#3B6B8A" }}>{p.tipo}: {p.tiempo}</span></div>)}<div style={{ display: "flex", alignItems: "center", gap: 8, padding: "6px 0" }}><BadgeCheck size={14} color="#3B6B8A" /><span style={{ fontFamily: "'Inter',sans-serif", fontSize: 13, color: "#3B6B8A" }}>Documentación oficial</span></div><div style={{ display: "flex", alignItems: "center", gap: 8, padding: "6px 0" }}><Shield size={14} color="#3B6B8A" /><span style={{ fontFamily: "'Inter',sans-serif", fontSize: 13, color: "#3B6B8A" }}>Asesoramiento incluido</span></div></div></div>
           {L.review && <div style={{ background: "#fff", borderRadius: 14, padding: 24, boxShadow: "0 2px 12px rgba(0,0,0,0.04)" }}><div style={{ display: "flex", gap: 2, marginBottom: 10 }}>{[...Array(5)].map((_, j) => <Star key={j} size={14} fill="#F4A261" color="#F4A261" />)}</div><p style={{ fontFamily: "'Inter',sans-serif", fontSize: 14, color: "#212529", lineHeight: 1.6, margin: "0 0 12px", fontStyle: "italic" }}>"{L.review.text}"</p><span style={{ fontFamily: "'Poppins',sans-serif", fontWeight: 600, fontSize: 13, color: "#1D3557" }}>{L.review.author} · {L.review.rubro}</span></div>}
           <div style={{ background: "#F8F9FA", borderRadius: 14, padding: 24, border: "1px solid #E9ECEF", textAlign: "center" }}><p style={{ fontFamily: "'Inter',sans-serif", fontSize: 14, color: "#3B6B8A", margin: "0 0 12px" }}>¿Precisás asesoramiento antes de pedirlo?</p><Btn sm full href={wl(L.waAsesor)} v="ghost"><MessageCircle size={14} /> Consultá con un Asesor</Btn></div>
@@ -385,7 +391,7 @@ function HomePage({ nav }) {
     <section style={{ background: "#1D3557", minHeight: "92vh", display: "flex", alignItems: "center", position: "relative", overflow: "hidden" }}>
       <div style={{ position: "absolute", inset: 0, backgroundImage: "radial-gradient(circle at 90% 10%, rgba(255,255,255,0.05) 10%, transparent 10.5%), radial-gradient(circle at 90% 10%, rgba(255,255,255,0.03) 20%, transparent 20.5%), radial-gradient(circle at 10% 90%, rgba(255,255,255,0.02) 30%, transparent 30.5%), radial-gradient(circle at 5% 85%, rgba(255,255,255,0.04) 15%, transparent 15.5%), radial-gradient(circle at 95% 15%, rgba(255,255,255,0.02) 25%, transparent 25.5%)" }} />
       
-      <div style={{ maxWidth: 1200, margin: "0 auto", padding: "120px 24px 100px", position: "relative", zIndex: 1, display: "grid", gridTemplateColumns: "1fr 1fr", gap: 60, alignItems: "center", width: "100%" }}>
+      <div style={{ maxWidth: 1200, margin: "0 auto", padding: "120px 24px 100px", position: "relative", zIndex: 1, display: "grid", gridTemplateColumns: "1fr 1fr", gap: 60, alignItems: "center" }}>
         <div>
           <div style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "rgba(244,162,97,0.12)", borderRadius: 30, padding: "6px 16px", marginBottom: 28 }}><div style={{ width: 8, height: 8, borderRadius: "50%", background: "#25D366", animation: "pulse 2s infinite" }} /><span style={{ fontFamily: "'Inter',sans-serif", fontSize: 13, color: "#F4A261", fontWeight: 500 }}>Consultas abiertas · Respondemos en minutos</span></div>
           <h1 style={{ fontFamily: "'Poppins',sans-serif", fontWeight: 700, fontSize: "clamp(34px,4.5vw,52px)", color: "#F1F3F5", margin: "0 0 20px", lineHeight: 1.1 }}>La burocracia<br /><span style={{ color: "#F4A261" }}>no tiene por qué</span><br />frenarte.</h1>
@@ -791,7 +797,7 @@ export default function App() {
     }
   }, [r, cs, csub, cl]);
 
-  return <div style={{ fontFamily: "'Inter',sans-serif", background: "#F1F3F5", minHeight: "100vh", color: "#212529", overflowX: "hidden", width: "100%" }}>
+  return <div style={{ fontFamily: "'Inter',sans-serif", background: "#F1F3F5", minHeight: "100vh", color: "#212529", overflowX: "hidden", maxWidth: "100vw" }}>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
     <nav style={{ position: "fixed", top: 0, left: 0, right: 0, zIndex: 999, background: "rgba(29,53,87,0.97)", backdropFilter: "blur(12px)", borderBottom: "1px solid rgba(255,255,255,0.06)" }}>
       <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 24px", height: 64, display: "flex", alignItems: "center", justifyContent: "space-between" }}>
@@ -822,23 +828,16 @@ export default function App() {
   *{box-sizing:border-box}
   @keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}
   @keyframes cookieSlide{from{transform:translateY(100%)}to{transform:translateY(0)}}
-  @media(max-width:767px){
-    section>div[style*="grid-template-columns: 1fr 1fr"]{grid-template-columns:1fr!important}
-    section>div[style*="grid-template-columns: 1fr 380px"]{grid-template-columns:1fr!important}
-    section>div[style*="grid-template-columns: repeat(auto-fit, minmax(350"]{grid-template-columns:1fr!important}
-    section>div[style*="grid-template-columns: repeat(auto-fit, minmax(340"]{grid-template-columns:1fr!important}
-    section>div[style*="grid-template-columns: repeat(auto-fit, minmax(300"]{grid-template-columns:1fr!important}
-    section>div[style*="grid-template-columns: repeat(auto-fit, minmax(280"]{grid-template-columns:1fr!important}
-    section>div[style*="grid-template-columns: repeat(auto-fit, minmax(260"]{grid-template-columns:1fr!important}
-    section>div[style*="grid-template-columns: repeat(auto-fit, minmax(220"]{grid-template-columns:1fr!important}
-    section>div[style*="grid-template-columns: repeat(auto-fit, minmax(200"]{grid-template-columns:1fr!important}
-    section>div[style*="grid-template-columns: repeat(3, 1fr)"]{grid-template-columns:1fr!important}
-    section>div[style*="gridTemplateColumns"]{grid-template-columns:1fr!important}
-    div[style*="padding: \"120px 24px"]{padding-top:90px!important;padding-bottom:70px!important}
-  }
   @media(max-width:900px){
-    section>div[style*="grid-template-columns: 1fr 380px"]{grid-template-columns:1fr!important}
     section>div[style*="grid-template-columns: 1fr 1fr"]{grid-template-columns:1fr!important}
+    section>div[style*="grid-template-columns: 1fr 380px"]{grid-template-columns:1fr!important}
+    section>div[style*="minmax(350"]{grid-template-columns:1fr!important}
+    section>div[style*="minmax(340"]{grid-template-columns:1fr!important}
+    section>div[style*="minmax(300"]{grid-template-columns:1fr!important}
+    section>div[style*="minmax(280"]{grid-template-columns:1fr!important}
+    section>div[style*="minmax(260"]{grid-template-columns:1fr!important}
+    section>div[style*="minmax(220"]{grid-template-columns:1fr!important}
+    section>div[style*="minmax(200"]{grid-template-columns:1fr!important}
   }
 `}</style>
   </div>;
