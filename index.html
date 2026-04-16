@@ -1,13 +1,171 @@
 <!doctype html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>gestor-la-plata</title>
+
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+
+    <title>Gestor La Plata | Gestoría Profesional en La Plata y PBA</title>
+    <meta name="description" content="Gestoría profesional en La Plata y Provincia de Buenos Aires. Habilitaciones comerciales, informes registrales, ARBA, actas civiles y más. Respuesta inmediata por WhatsApp." />
+
+    <!-- PRELOAD de las fuentes críticas del LCP -->
+    <link rel="preload" href="/fonts/Inter-400.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/Poppins-700.woff2" as="font" type="font/woff2" crossorigin />
+
+    <!-- Fuentes self-hosted -->
+    <link rel="stylesheet" href="/fonts.css" />
+
+    <!-- Fallback: system fonts mientras cargan Inter/Poppins (no FOIT) -->
+    <style>
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        margin: 0;
+      }
+    </style>
+
+    <!-- Schema.org LocalBusiness -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ProfessionalService",
+      "name": "Gestor La Plata",
+      "url": "https://gestorlaplata.com",
+      "logo": "https://gestorlaplata.com/android-chrome-512x512.png",
+      "image": "https://gestorlaplata.com/android-chrome-512x512.png",
+      "description": "Gestoría profesional en La Plata y Provincia de Buenos Aires. Habilitaciones comerciales, informes registrales, trámites ARBA y Catastro, actas civiles, apostilla de La Haya y permisos municipales.",
+      "telephone": "+54-221-488-6197",
+      "email": "info@gestorlaplata.com",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Calle 49 N° 1296",
+        "addressLocality": "La Plata",
+        "addressRegion": "Buenos Aires",
+        "postalCode": "B1900",
+        "addressCountry": "AR"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": -34.9213625,
+        "longitude": -57.960375
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+          "opens": "08:00",
+          "closes": "18:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "Saturday",
+          "opens": "09:00",
+          "closes": "12:00"
+        }
+      ],
+      "areaServed": [
+        {
+          "@type": "City",
+          "name": "La Plata"
+        },
+        {
+          "@type": "State",
+          "name": "Provincia de Buenos Aires"
+        }
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Servicios de Gestoría",
+        "itemListElement": [
+          {
+            "@type": "OfferCatalog",
+            "name": "Habilitaciones Comerciales",
+            "description": "Altas, bajas, transferencias, cambios de rubro y regularización en La Plata"
+          },
+          {
+            "@type": "OfferCatalog",
+            "name": "Servicios Registrales",
+            "description": "Informes de dominio, índice de titularidad, anotaciones personales, estudio de títulos ante el RPBA"
+          },
+          {
+            "@type": "OfferCatalog",
+            "name": "ARBA y Catastro",
+            "description": "Planchetas catastrales, valuaciones fiscales, copias de plano en Provincia de Buenos Aires"
+          },
+          {
+            "@type": "OfferCatalog",
+            "name": "Actas e Inscripciones",
+            "description": "Partidas de nacimiento, matrimonio y defunción. Apostilla de La Haya. Inscripción de divorcios"
+          },
+          {
+            "@type": "OfferCatalog",
+            "name": "Permisos y Publicidad",
+            "description": "Licencia ReBA, permisos para eventos, declaración de cartelería y mesas en vía pública en La Plata"
+          }
+        ]
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "5.0",
+        "reviewCount": "310",
+        "bestRating": "5"
+      },
+      "sameAs": [
+        "https://www.instagram.com/gestorlaplata",
+        "https://www.facebook.com/gestorlaplata"
+      ],
+      "priceRange": "$$",
+      "paymentAccepted": "Efectivo, Transferencia bancaria, Mercado Pago",
+      "currenciesAccepted": "ARS"
+    }
+    </script>
   </head>
   <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MF7LGZ8X"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
+
+    <!-- Google Tag Manager DIFERIDO — carga cuando la página está interactiva -->
+    <script>
+      (function () {
+        function loadGTM() {
+          (function (w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+            var f = d.getElementsByTagName(s)[0],
+              j = d.createElement(s),
+              dl = l != 'dataLayer' ? '&l=' + l : '';
+            j.async = true;
+            j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+            f.parentNode.insertBefore(j, f);
+          })(window, document, 'script', 'dataLayer', 'GTM-MF7LGZ8X');
+        }
+        // Esperar a que la página termine de cargar + 2s para no competir con el LCP
+        if (document.readyState === 'complete') {
+          setTimeout(loadGTM, 2000);
+        } else {
+          window.addEventListener('load', function () {
+            setTimeout(loadGTM, 2000);
+          });
+        }
+        // Fallback: si el usuario interactúa antes (scroll, click, touch), cargar YA
+        var loaded = false;
+        function fastLoad() {
+          if (loaded) return;
+          loaded = true;
+          loadGTM();
+        }
+        ['scroll', 'click', 'touchstart', 'keydown'].forEach(function (evt) {
+          window.addEventListener(evt, fastLoad, { passive: true, once: true });
+        });
+      })();
+    </script>
+    <!-- End GTM diferido -->
   </body>
 </html>
