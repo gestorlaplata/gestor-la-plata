@@ -552,7 +552,7 @@ function EnhancedLanding({ service, sub, landing: L, nav }) {
 
   return <div>
     <section style={{ background: "#1D3557", position: "relative", overflow: "hidden" }}>
-      <div style={{ maxWidth: 1200, margin: "0 auto", padding: "100px 24px 80px", position: "relative", zIndex: 1 }}>
+      <div style={{ maxWidth: 1200, margin: "0 auto", padding: "130px 24px 80px", position: "relative", zIndex: 1 }}>
         <button onClick={() => sub.landings.length > 1 ? nav("sub", service.id, sub.id) : nav("block", service.id)} style={{ background: "none", border: "none", color: "rgba(255,255,255,0.5)", fontFamily: "'Inter',sans-serif", fontSize: 14, cursor: "pointer", display: "flex", alignItems: "center", gap: 4, marginBottom: 20, padding: 0 }}><ChevronLeft size={16} /> {sub.landings.length > 1 ? sub.title : service.title}</button>
         <Bdg c={scopeColor(service.scope)} lg>{scopeLabel(service.scope)}</Bdg>
         {/* H1: Pregunta humana */}
@@ -1107,6 +1107,7 @@ export default function App() {
   .mb{display:none!important}
   .topbar{display:block}
   .footer-link:hover{color:#F4A261!important}
+  .navbtn:hover{color:#F4A261!important}
   @media(max-width:1023px){.dn{display:none!important}.mb{display:flex!important}.topbar{display:none!important}.mainnav{top:0!important}}
   @media(min-width:1024px){.mm{display:none!important}}
   *{box-sizing:border-box}
@@ -1127,4 +1128,4 @@ export default function App() {
   </div>;
 }
 
-function NB({ children, o, a, m }) { return <button onClick={o} style={{ background: a ? "rgba(69,123,157,0.15)" : "none", border: "none", color: a ? "#F1F3F5" : "rgba(241,243,245,0.6)", fontFamily: "'Poppins',sans-serif", fontWeight: 500, fontSize: m ? 15 : 13, padding: m ? "10px 0" : "6px 12px", borderRadius: 4, cursor: "pointer", display: m ? "block" : "inline-flex", width: m ? "100%" : "auto", textAlign: m ? "left" : "center", whiteSpace: "nowrap", transition: "all 0.2s" }}>{children}</button>; }
+function NB({ children, o, a, m }) { return <button onClick={o} className="navbtn" style={{ background: a ? "rgba(69,123,157,0.15)" : "none", border: "none", color: a ? "#F1F3F5" : "rgba(241,243,245,0.6)", fontFamily: "'Poppins',sans-serif", fontWeight: 500, fontSize: m ? 15 : 13, padding: m ? "10px 0" : "6px 12px", borderRadius: 4, cursor: "pointer", display: m ? "block" : "inline-flex", width: m ? "100%" : "auto", textAlign: m ? "left" : "center", whiteSpace: "nowrap", transition: "color 0.2s" }}>{children}</button>; }
