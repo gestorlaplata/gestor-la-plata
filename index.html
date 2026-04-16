@@ -4,6 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+    <!-- Preconnect a Google Fonts (antes de todo) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
@@ -12,14 +16,23 @@
     <title>Gestor La Plata | Gestoría Profesional en La Plata y PBA</title>
     <meta name="description" content="Gestoría profesional en La Plata y Provincia de Buenos Aires. Habilitaciones comerciales, informes registrales, ARBA, actas civiles y más. Respuesta inmediata por WhatsApp." />
 
-    <!-- PRELOAD de las fuentes críticas del LCP -->
-    <link rel="preload" href="/fonts/Inter-400.woff2" as="font" type="font/woff2" crossorigin />
-    <link rel="preload" href="/fonts/Poppins-700.woff2" as="font" type="font/woff2" crossorigin />
+    <!-- Google Fonts con display=swap (carga async con media trick) -->
+    <link
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Inter:wght@400;500;600&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Inter:wght@400;500;600&display=swap"
+      media="print"
+      onload="this.media='all'"
+    />
+    <noscript>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" />
+    </noscript>
 
-    <!-- Fuentes self-hosted -->
-    <link rel="stylesheet" href="/fonts.css" />
-
-    <!-- Fallback: system fonts mientras cargan Inter/Poppins (no FOIT) -->
+    <!-- Fallback: system fonts se aplican mientras cargan Inter/Poppins. Evita FOIT. -->
     <style>
       body {
         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
@@ -160,6 +173,9 @@
           if (loaded) return;
           loaded = true;
           loadGTM();
+          ['scroll', 'click', 'touchstart', 'keydown'].forEach(function (evt) {
+            window.removeEventListener(evt, fastLoad, { passive: true });
+          });
         }
         ['scroll', 'click', 'touchstart', 'keydown'].forEach(function (evt) {
           window.addEventListener(evt, fastLoad, { passive: true, once: true });
