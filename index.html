@@ -8,14 +8,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-    <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-MF7LGZ8X');</script>
-    <!-- End Google Tag Manager -->
-
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
@@ -24,8 +16,29 @@
     <title>Gestor La Plata | Gestoría Profesional en La Plata y PBA</title>
     <meta name="description" content="Gestoría profesional en La Plata y Provincia de Buenos Aires. Habilitaciones comerciales, informes registrales, ARBA, actas civiles y más. Respuesta inmediata por WhatsApp." />
 
-    <!-- Google Fonts con display=swap -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+    <!-- Google Fonts con display=swap (carga async con media trick) -->
+    <link
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Inter:wght@400;500;600&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Inter:wght@400;500;600&display=swap"
+      media="print"
+      onload="this.media='all'"
+    />
+    <noscript>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" />
+    </noscript>
+
+    <!-- Fallback: system fonts se aplican mientras cargan Inter/Poppins. Evita FOIT. -->
+    <style>
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        margin: 0;
+      }
+    </style>
 
     <!-- Schema.org LocalBusiness -->
     <script type="application/ld+json">
@@ -130,5 +143,45 @@
     <!-- End Google Tag Manager (noscript) -->
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
+
+    <!-- Google Tag Manager DIFERIDO — carga cuando la página está interactiva -->
+    <script>
+      (function () {
+        function loadGTM() {
+          (function (w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+            var f = d.getElementsByTagName(s)[0],
+              j = d.createElement(s),
+              dl = l != 'dataLayer' ? '&l=' + l : '';
+            j.async = true;
+            j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+            f.parentNode.insertBefore(j, f);
+          })(window, document, 'script', 'dataLayer', 'GTM-MF7LGZ8X');
+        }
+        // Esperar a que la página termine de cargar + 2s para no competir con el LCP
+        if (document.readyState === 'complete') {
+          setTimeout(loadGTM, 2000);
+        } else {
+          window.addEventListener('load', function () {
+            setTimeout(loadGTM, 2000);
+          });
+        }
+        // Fallback: si el usuario interactúa antes (scroll, click, touch), cargar YA
+        var loaded = false;
+        function fastLoad() {
+          if (loaded) return;
+          loaded = true;
+          loadGTM();
+          ['scroll', 'click', 'touchstart', 'keydown'].forEach(function (evt) {
+            window.removeEventListener(evt, fastLoad, { passive: true });
+          });
+        }
+        ['scroll', 'click', 'touchstart', 'keydown'].forEach(function (evt) {
+          window.addEventListener(evt, fastLoad, { passive: true, once: true });
+        });
+      })();
+    </script>
+    <!-- End GTM diferido -->
   </body>
 </html>
