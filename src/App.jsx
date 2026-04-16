@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { ChevronRight, ChevronDown, Menu, X, Mail, MapPin, Clock, Shield, Zap, MessageCircle, FileText, Building2, Landmark, ScrollText, Store, Megaphone, ArrowRight, CheckCircle2, AlertTriangle, ChevronLeft, Star, Users, Globe, Smartphone, ArrowDown, Send, Search, Upload, CircleDollarSign, BadgeCheck, ShieldAlert, Timer, Truck, Lock, XCircle, Ban, Scale, Gavel, FileWarning, CalendarX, Receipt, Siren, Package, Eye } from "lucide-react";
 
 const WA = "https://wa.me/5492214886197";
@@ -22,6 +22,18 @@ const SERVICES = [
             entrega: ["Titular/es actuales y porcentaje de titularidad", "Embargos, medidas cautelares e hipotecas vigentes", "Datos completos de inscripción", "Informe detallado de la situación del inmueble", "Documentación oficial"],
             riesgos: [{ text: "Comprar un inmueble con un embargo activo.", icon: Lock }, { text: "Asumir una hipoteca o deuda desconocida.", icon: CircleDollarSign }, { text: "Vendedor sin el 100% de la titularidad.", icon: ShieldAlert }, { text: "Fracasar en la escritura, perdiendo señas en dólares.", icon: XCircle }],
             review: { text: "El trabajo de Santiago es impecable. Consiguió un acta que buscaba hace más de 6 meses en 2 días. 100% recomendable.", author: "Dolores Zapatel", rubro: "Particular" },
+            faq: [
+              { q: "¿Qué es un Informe de Dominio y para qué sirve?", a: "El Informe de Dominio es un documento oficial emitido por el Registro de la Propiedad Inmueble de la Provincia de Buenos Aires (RPBA) que acredita quién es el titular registral de un inmueble, si tiene inscripta alguna hipoteca, embargo, medida cautelar u otra restricción. Es la herramienta fundamental para verificar la situación jurídica real de una propiedad antes de comprar, vender, iniciar una sucesión, aceptarla como garantía o realizar cualquier operación inmobiliaria." },
+              { q: "¿En qué se diferencia del Informe de Anotaciones Personales?", a: "El Informe de Dominio recae sobre el inmueble: muestra todo lo inscripto sobre esa propiedad (titulares, hipotecas, embargos). El Informe de Anotaciones Personales recae sobre la persona: muestra si esa persona tiene inhibiciones o cesiones de herencia inscriptas. En operaciones inmobiliarias se suelen pedir los dos, porque incluso si el inmueble está impecable, si el titular está inhibido no puede vender." },
+              { q: "¿Cuál es la vigencia del Informe de Dominio?", a: "El Informe de Dominio tiene una vigencia de 90 días corridos desde la fecha de emisión. Pasado ese plazo, la información deja de considerarse actualizada y para la mayoría de las operaciones (escrituración, presentación judicial, aceptación de garantías) hay que solicitar un informe nuevo. Si tu operación se va a concretar cerca del vencimiento, lo ideal es pedir el informe unos días antes de la firma." },
+              { q: "¿Puedo pedir un Informe de Dominio aunque no sea el titular?", a: "Sí. El Informe de Dominio es información pública de acceso libre. Cualquier persona puede solicitarlo sin necesidad de acreditar interés legítimo ni vínculo con la propiedad. Solo necesitás los datos del inmueble (matrícula o partido, circunscripción, sección, manzana, parcela, o designación del bien)." },
+              { q: "¿Qué pasa si el inmueble no está matriculado?", a: "Los inmuebles antiguos (anteriores a 1979 en la mayoría de los casos) se rigen por el sistema de Folio Cronológico (Folio antiguo), no por Folio Real. Para estos casos necesitamos otros datos: folio, año, partido, titular, designación del bien, medidas y linderos. Lo gestionamos igual, solo cambia el procedimiento de búsqueda." },
+              { q: "¿Qué diferencia hay entre Informe de Dominio Simple y Urgente?", a: "La diferencia es solo el tiempo de entrega. El trámite Simple demora entre 7 y 10 días hábiles. El Urgente entre 2 y 5 días hábiles. El contenido del informe es idéntico: ambos son emitidos por el RPBA con la misma validez oficial. La diferencia de costo se justifica por la prioridad de procesamiento que le asigna el Registro." },
+              { q: "¿El Informe de Dominio sirve para escriturar?", a: "Sí, es uno de los documentos obligatorios en toda escritura traslativa de dominio. El escribano actuante necesita el informe vigente para verificar la situación del inmueble al momento de la firma. Generalmente el escribano solicita también el Certificado de Dominio (que tiene reserva de prioridad por 15 días), pero el Informe previo se usa para la negociación y el boleto." },
+              { q: "¿El informe incluye los planos del inmueble?", a: "No. El Informe de Dominio es un documento registral que muestra información jurídica (titularidad, gravámenes, inscripciones). Los planos son catastrales y se tramitan ante ARBA (plancheta catastral, cédula parcelaria, copia de plano). Si necesitás ambos tipos de documentación, podemos gestionarlos en paralelo." },
+              { q: "¿Qué hago si el Informe muestra embargos o hipotecas?", a: "Depende del tipo de operación y de la situación. Una hipoteca puede cancelarse al momento de la escritura con parte del precio de venta. Un embargo suele requerir gestión judicial para su levantamiento. Nuestra recomendación siempre es no firmar boleto ni entregar señas sin antes haber visto el informe y consultado con un escribano o abogado sobre cómo resolver las inscripciones activas." },
+              { q: "¿El trámite es 100% online?", a: "Sí. No necesitás ir a ninguna oficina ni mandar documentación física. Nos pasás los datos del inmueble por WhatsApp, coordinamos el pago, gestionamos el informe ante el RPBA y te lo enviamos en PDF oficial. Cubrimos toda la Provincia de Buenos Aires desde La Plata." },
+            ],
           },
           { id: "titularidad", title: "Índice de Titularidad",
             seoTitle: "Índice de Titularidad en La Plata y PBA | Gestor La Plata",
@@ -380,6 +392,25 @@ function EnhancedLanding({ service, sub, landing: L, nav }) {
         </div>
       </div>
     </section>
+
+    {L.faq && L.faq.length > 0 && <section style={{ background: "#fff", padding: "64px 24px" }}>
+      <div style={{ maxWidth: 860, margin: "0 auto" }}>
+        <div style={{ textAlign: "center", marginBottom: 32 }}>
+          <h2 style={{ fontFamily: "'Poppins',sans-serif", fontWeight: 700, fontSize: "clamp(24px,3.5vw,34px)", color: "#1D3557", margin: "0 0 10px" }}>Preguntas frecuentes</h2>
+          <p style={{ fontFamily: "'Inter',sans-serif", fontSize: 16, color: "#3B6B8A", margin: 0 }}>Todo lo que necesitás saber sobre {L.tagline}.</p>
+        </div>
+        <div>{L.faq.map((f, i) => <FI key={i} q={f.q} a={f.a} />)}</div>
+        <div style={{ marginTop: 36, padding: "28px 24px", background: "#F8F9FA", borderRadius: 12, border: "1px solid #E9ECEF", textAlign: "center" }}>
+          <p style={{ fontFamily: "'Inter',sans-serif", fontSize: 15, color: "#3B6B8A", margin: "0 0 14px" }}>¿Tu pregunta no está acá? Consultanos sin compromiso.</p>
+          <Btn sm href={wl(L.waAsesor)} v="green"><MessageCircle size={14} /> Hacé tu consulta por WhatsApp</Btn>
+        </div>
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "mainEntity": L.faq.map(f => ({ "@type": "Question", "name": f.q, "acceptedAnswer": { "@type": "Answer", "text": f.a } }))
+        }) }} />
+      </div>
+    </section>}
   </div>;
 }
 
@@ -703,6 +734,24 @@ function getCanonical(path) {
   return "https://gestorlaplata.com" + (path === "/" ? "" : path);
 }
 
+// ─── LAZY MAP (IntersectionObserver) ─────────────────────────────────────────
+
+function LazyMap() {
+  const [show, setShow] = useState(false);
+  const ref = useRef(null);
+  useEffect(() => {
+    if (!ref.current || show) return;
+    const io = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting) { setShow(true); io.disconnect(); }
+    }, { rootMargin: "200px" });
+    io.observe(ref.current);
+    return () => io.disconnect();
+  }, [show]);
+  return <div ref={ref} style={{ marginTop: 8, borderRadius: 10, overflow: "hidden", border: "1px solid rgba(255,255,255,0.08)", minHeight: 180, background: "rgba(0,0,0,0.2)" }}>
+    {show && <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3271.4058116853685!2d-57.96294992351826!3d-34.921358074344006!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95a2e7942055fd0b%3A0x219240e0a0a87203!2sGestor%20La%20Plata!5e0!3m2!1sen!2sar!4v1775383870483!5m2!1sen!2sar" width="100%" height="180" style={{ border: 0, display: "block" }} allowFullScreen="" loading="lazy" referrerPolicy="no-referrer-when-downgrade" title="Ubicación Gestor La Plata" />}
+  </div>;
+}
+
 // ─── APP ─────────────────────────────────────────────────────────────────────
 
 export default function App() {
@@ -818,7 +867,7 @@ export default function App() {
       {r.p === "cookies" && <CookiesPolicyPage nav={nav} />}
     </main>
     <footer style={{ background: "#1D3557", padding: "56px 24px 32px" }}><div style={{ maxWidth: 1200, margin: "0 auto" }}><div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: 32, marginBottom: 40 }}><div><h3 style={{ fontFamily: "'Poppins',sans-serif", fontWeight: 700, fontSize: 18, color: "#F1F3F5", margin: "0 0 12px" }}>GESTOR <span style={{ color: "#3B6B8A" }}>LA PLATA</span></h3><p style={{ fontFamily: "'Inter',sans-serif", fontSize: 14, color: "rgba(241,243,245,0.5)", lineHeight: 1.6 }}>Tu tiempo vale. Dejá la burocracia en nuestras manos.</p></div><div><h4 style={{ fontFamily: "'Poppins',sans-serif", fontWeight: 600, fontSize: 12, color: "#F4A261", margin: "0 0 12px", textTransform: "uppercase", letterSpacing: "1px" }}>Servicios</h4>{SERVICES.map(s => <div key={s.id} onClick={() => nav("block", s.id)} style={{ fontFamily: "'Inter',sans-serif", fontSize: 14, color: "rgba(241,243,245,0.5)", marginBottom: 8, cursor: "pointer" }}>{s.title}</div>)}</div><div><h4 style={{ fontFamily: "'Poppins',sans-serif", fontWeight: 600, fontSize: 12, color: "#F4A261", margin: "0 0 12px", textTransform: "uppercase", letterSpacing: "1px" }}>Contacto</h4><div style={{ display: "flex", flexDirection: "column", gap: 10 }}><div style={{ display: "flex", alignItems: "center", gap: 8, fontFamily: "'Inter',sans-serif", fontSize: 14, color: "rgba(241,243,245,0.5)" }}><MapPin size={14} /> Calle 49 N° 1295, La Plata, Buenos Aires</div><a href="https://wa.me/5492214886197" target="_blank" rel="noopener noreferrer" style={{ display: "flex", alignItems: "center", gap: 8, fontFamily: "'Inter',sans-serif", fontSize: 14, color: "rgba(241,243,245,0.5)", textDecoration: "none" }}><MessageCircle size={14} /> 221-488-6197</a><a href="mailto:contacto@gestorlaplata.com" style={{ display: "flex", alignItems: "center", gap: 8, fontFamily: "'Inter',sans-serif", fontSize: 14, color: "rgba(241,243,245,0.5)", textDecoration: "none" }}><Mail size={14} /> contacto@gestorlaplata.com</a><a href="https://instagram.com/gestorlaplata" target="_blank" rel="noopener noreferrer" style={{ display: "flex", alignItems: "center", gap: 8, fontFamily: "'Inter',sans-serif", fontSize: 14, color: "rgba(241,243,245,0.5)", textDecoration: "none" }}>
-<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg> @gestorlaplata</a><a href="https://gestorlaplata.com" target="_blank" rel="noopener noreferrer" style={{ display: "flex", alignItems: "center", gap: 8, fontFamily: "'Inter',sans-serif", fontSize: 14, color: "rgba(241,243,245,0.5)", textDecoration: "none" }}><Globe size={14} /> gestorlaplata.com</a><div style={{ marginTop: 8, borderRadius: 10, overflow: "hidden", border: "1px solid rgba(255,255,255,0.08)" }}><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3271.4058116853685!2d-57.96294992351826!3d-34.921358074344006!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95a2e7942055fd0b%3A0x219240e0a0a87203!2sGestor%20La%20Plata!5e0!3m2!1sen!2sar!4v1775383870483!5m2!1sen!2sar" width="100%" height="180" style={{ border: 0, display: "block" }} allowFullScreen="" loading="lazy" referrerPolicy="no-referrer-when-downgrade" title="Ubicación Gestor La Plata" /></div></div></div></div><div style={{ borderTop: "1px solid rgba(255,255,255,0.06)", paddingTop: 24, textAlign: "center" }}><p style={{ fontFamily: "'Inter',sans-serif", fontSize: 12, color: "rgba(241,243,245,0.3)", margin: "0 0 8px" }}>© 2026 Gestor La Plata. Todos los derechos reservados.</p><button onClick={() => nav("privacy")} style={{ background: "none", border: "none", fontFamily: "'Inter',sans-serif", fontSize: 12, color: "rgba(241,243,245,0.4)", cursor: "pointer", textDecoration: "underline", padding: 0 }}>Política de privacidad</button><span style={{ color: "rgba(241,243,245,0.2)", margin: "0 8px", fontSize: 12 }}>·</span><button onClick={() => nav("cookies")} style={{ background: "none", border: "none", fontFamily: "'Inter',sans-serif", fontSize: 12, color: "rgba(241,243,245,0.4)", cursor: "pointer", textDecoration: "underline", padding: 0 }}>Política de cookies</button></div></div></footer>
+<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg> @gestorlaplata</a><a href="https://gestorlaplata.com" target="_blank" rel="noopener noreferrer" style={{ display: "flex", alignItems: "center", gap: 8, fontFamily: "'Inter',sans-serif", fontSize: 14, color: "rgba(241,243,245,0.5)", textDecoration: "none" }}><Globe size={14} /> gestorlaplata.com</a><LazyMap /></div></div></div><div style={{ borderTop: "1px solid rgba(255,255,255,0.06)", paddingTop: 24, textAlign: "center" }}><p style={{ fontFamily: "'Inter',sans-serif", fontSize: 12, color: "rgba(241,243,245,0.3)", margin: "0 0 8px" }}>© 2026 Gestor La Plata. Todos los derechos reservados.</p><button onClick={() => nav("privacy")} style={{ background: "none", border: "none", fontFamily: "'Inter',sans-serif", fontSize: 12, color: "rgba(241,243,245,0.4)", cursor: "pointer", textDecoration: "underline", padding: 0 }}>Política de privacidad</button><span style={{ color: "rgba(241,243,245,0.2)", margin: "0 8px", fontSize: 12 }}>·</span><button onClick={() => nav("cookies")} style={{ background: "none", border: "none", fontFamily: "'Inter',sans-serif", fontSize: 12, color: "rgba(241,243,245,0.4)", cursor: "pointer", textDecoration: "underline", padding: 0 }}>Política de cookies</button></div></div></footer>
     <WAFloat />
     <CookieBanner onPrivacy={() => nav("cookies")} />
     <style>{`
