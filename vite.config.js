@@ -43,11 +43,13 @@ const ROUTES = [
 export default defineConfig(async () => {
   let rendererOptions = { renderAfterTime: 1500 }
 
-  if (process.env.VERCEL) {
+  if (process.platform === 'linux') {
     const chromium = (await import('@sparticuz/chromium')).default
+    const execPath = await chromium.executablePath()
+    console.log('[prerender] Linux detectado — chromium path:', execPath)
     rendererOptions = {
       ...rendererOptions,
-      executablePath: await chromium.executablePath(),
+      executablePath: execPath,
       args: chromium.args,
     }
   }
