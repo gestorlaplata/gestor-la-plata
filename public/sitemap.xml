@@ -2,167 +2,157 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <!-- Home -->
   <url>
-    <loc>https://gestorlaplata.com</loc>
+    <loc>https://www.gestorlaplata.com/</loc>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
-
   <!-- Bloques de servicio -->
   <url>
-    <loc>https://gestorlaplata.com/servicios-registrales</loc>
+    <loc>https://www.gestorlaplata.com/servicios-registrales</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://gestorlaplata.com/arba-y-catastro</loc>
+    <loc>https://www.gestorlaplata.com/arba-y-catastro</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://gestorlaplata.com/actas-e-inscripciones</loc>
+    <loc>https://www.gestorlaplata.com/actas-e-inscripciones</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://gestorlaplata.com/habilitaciones-comerciales</loc>
+    <loc>https://www.gestorlaplata.com/habilitaciones-comerciales</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://gestorlaplata.com/permisos-y-publicidad</loc>
+    <loc>https://www.gestorlaplata.com/permisos-y-publicidad</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
-
   <!-- Sub: Informes Registrales -->
   <url>
-    <loc>https://gestorlaplata.com/informes-registrales</loc>
+    <loc>https://www.gestorlaplata.com/informes-registrales</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-
   <!-- Landings: Registrales - Informes -->
   <url>
-    <loc>https://gestorlaplata.com/informe-de-dominio</loc>
+    <loc>https://www.gestorlaplata.com/informe-de-dominio</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://gestorlaplata.com/indice-de-titularidad</loc>
+    <loc>https://www.gestorlaplata.com/indice-de-titularidad</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://gestorlaplata.com/anotaciones-personales</loc>
+    <loc>https://www.gestorlaplata.com/anotaciones-personales</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://gestorlaplata.com/informe-de-frecuencia</loc>
+    <loc>https://www.gestorlaplata.com/informe-de-frecuencia</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-
   <!-- Landings: Registrales - Copias -->
   <url>
-    <loc>https://gestorlaplata.com/copia-de-asiento</loc>
+    <loc>https://www.gestorlaplata.com/copia-de-asiento</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-
   <!-- Landings: Registrales - Investigación -->
   <url>
-    <loc>https://gestorlaplata.com/estudio-de-titulo</loc>
+    <loc>https://www.gestorlaplata.com/estudio-de-titulo</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-
   <!-- Landings: ARBA y Catastro -->
   <url>
-    <loc>https://gestorlaplata.com/antecedentes-catastrales</loc>
+    <loc>https://www.gestorlaplata.com/antecedentes-catastrales</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://gestorlaplata.com/copia-de-plano</loc>
+    <loc>https://www.gestorlaplata.com/copia-de-plano</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://gestorlaplata.com/valuacion-fiscal</loc>
+    <loc>https://www.gestorlaplata.com/valuacion-fiscal</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://gestorlaplata.com/servicio-agrimensores</loc>
+    <loc>https://www.gestorlaplata.com/servicio-agrimensores</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-
   <!-- Landings: Actas e Inscripciones -->
   <url>
-    <loc>https://gestorlaplata.com/actas-registro-civil</loc>
+    <loc>https://www.gestorlaplata.com/actas-registro-civil</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://gestorlaplata.com/inscripcion-divorcio</loc>
+    <loc>https://www.gestorlaplata.com/inscripcion-divorcio</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://gestorlaplata.com/apostilla-de-la-haya</loc>
+    <loc>https://www.gestorlaplata.com/apostilla-de-la-haya</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-
   <!-- Landings: Habilitaciones Comerciales -->
   <url>
-    <loc>https://gestorlaplata.com/alta-comercial</loc>
+    <loc>https://www.gestorlaplata.com/alta-comercial</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://gestorlaplata.com/transferencia-comercial</loc>
+    <loc>https://www.gestorlaplata.com/transferencia-comercial</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://gestorlaplata.com/baja-comercial</loc>
+    <loc>https://www.gestorlaplata.com/baja-comercial</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-
   <!-- Landings: Permisos y Publicidad -->
   <url>
-    <loc>https://gestorlaplata.com/eventos-la-plata</loc>
+    <loc>https://www.gestorlaplata.com/eventos-la-plata</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://gestorlaplata.com/publicidad-la-plata</loc>
+    <loc>https://www.gestorlaplata.com/publicidad-la-plata</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://gestorlaplata.com/reba-la-plata</loc>
+    <loc>https://www.gestorlaplata.com/reba-la-plata</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-
   <!-- Páginas estáticas -->
   <url>
-    <loc>https://gestorlaplata.com/quienes-somos</loc>
+    <loc>https://www.gestorlaplata.com/quienes-somos</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://gestorlaplata.com/politica-de-privacidad</loc>
+    <loc>https://www.gestorlaplata.com/politica-de-privacidad</loc>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://gestorlaplata.com/politica-de-cookies</loc>
+    <loc>https://www.gestorlaplata.com/politica-de-cookies</loc>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
