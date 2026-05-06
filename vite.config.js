@@ -6,6 +6,7 @@ import { createRequire } from 'module'
 
 const require = createRequire(import.meta.url)
 const prerender = require('vite-plugin-prerender')
+const PuppeteerRenderer = prerender.PuppeteerRenderer
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
@@ -41,17 +42,14 @@ const ROUTES = [
 ]
 
 export default defineConfig(async () => {
-  let rendererOptions = { renderAfterTime: 1500 }
+  const puppeteerOptions = { headless: true, renderAfterTime: 1500 }
 
   if (process.platform === 'linux') {
     const chromium = (await import('@sparticuz/chromium')).default
     const execPath = await chromium.executablePath()
     console.log('[prerender] Linux detectado — chromium path:', execPath)
-    rendererOptions = {
-      ...rendererOptions,
-      executablePath: execPath,
-      args: chromium.args,
-    }
+    puppeteerOptions.executablePath = execPath
+    puppeteerOptions.args = chromium.args
   }
 
   return {
@@ -60,7 +58,7 @@ export default defineConfig(async () => {
       prerender({
         staticDir: path.join(__dirname, 'dist'),
         routes: ROUTES,
-        rendererOptions,
+        renderer: new PuppeteerRenderer(puppeteerOptions),
       }),
     ],
   }
