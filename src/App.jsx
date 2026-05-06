@@ -933,7 +933,7 @@ function getMetaDescription(r, cs, csub, cl) {
 }
 
 function getCanonical(path) {
-  return "https://gestorlaplata.com" + (path === "/" ? "" : path);
+  return "https://www.gestorlaplata.com" + (path === "/" ? "/" : path);
 }
 
 // ─── LAZY MAP (IntersectionObserver) ─────────────────────────────────────────
@@ -1010,32 +1010,6 @@ export default function App() {
     let metaOgSite = document.querySelector('meta[property="og:site_name"]');
     if (!metaOgSite) { metaOgSite = document.createElement("meta"); metaOgSite.setAttribute("property", "og:site_name"); document.head.appendChild(metaOgSite); }
     metaOgSite.content = "Gestor La Plata";
-
-    // Schema.org JSON-LD LocalBusiness
-    let schemaScript = document.querySelector('script[data-schema="local-business"]');
-    if (!schemaScript) {
-      schemaScript = document.createElement("script");
-      schemaScript.type = "application/ld+json";
-      schemaScript.setAttribute("data-schema", "local-business");
-      schemaScript.textContent = JSON.stringify({
-        "@context": "https://schema.org",
-        "@type": "ProfessionalService",
-        "name": "Gestor La Plata",
-        "description": "Gestoría profesional en La Plata y Provincia de Buenos Aires. Trámites registrales, habilitaciones comerciales, ARBA, actas y más.",
-        "url": "https://gestorlaplata.com",
-        "telephone": "+5492214886197",
-        "email": "contacto@gestorlaplata.com",
-        "address": { "@type": "PostalAddress", "streetAddress": "Calle 49 N° 1295", "addressLocality": "La Plata", "addressRegion": "Buenos Aires", "addressCountry": "AR" },
-        "geo": { "@type": "GeoCoordinates", "latitude": -34.921358, "longitude": -57.962950 },
-        "image": "https://gestorlaplata.com/logo.png",
-        "priceRange": "$$",
-        "aggregateRating": { "@type": "AggregateRating", "ratingValue": "5.0", "reviewCount": "299", "bestRating": "5" },
-        "sameAs": ["https://instagram.com/gestorlaplata"],
-        "areaServed": { "@type": "State", "name": "Buenos Aires" },
-        "serviceType": ["Gestoría", "Habilitaciones Comerciales", "Informes Registrales", "Trámites ARBA", "Actas de Registro Civil"]
-      });
-      document.head.appendChild(schemaScript);
-    }
 
     // Preconnect for Google Fonts
     if (!document.querySelector('link[href="https://fonts.googleapis.com"][rel="preconnect"]')) {
