@@ -40,13 +40,26 @@ const ROUTES = [
   '/politica-de-cookies',
 ]
 
-export default defineConfig({
-  plugins: [
-    react(),
-    prerender({
-      staticDir: path.join(__dirname, 'dist'),
-      routes: ROUTES,
-      rendererOptions: { renderAfterTime: 1500 },
-    }),
-  ],
+export default defineConfig(async () => {
+  let rendererOptions = { renderAfterTime: 1500 }
+
+  if (process.env.VERCEL) {
+    const chromium = (await import('@sparticuz/chromium')).default
+    rendererOptions = {
+      ...rendererOptions,
+      executablePath: await chromium.executablePath(),
+      args: chromium.args,
+    }
+  }
+
+  return {
+    plugins: [
+      react(),
+      prerender({
+        staticDir: path.join(__dirname, 'dist'),
+        routes: ROUTES,
+        rendererOptions,
+      }),
+    ],
+  }
 })
