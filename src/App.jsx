@@ -546,7 +546,7 @@ function DerivadorHAB({ landing: L, nav }) {
           Te llevamos al lugar correcto para resolver tu trámite más rápido.
         </p>
         <div style={{ display: "flex", gap: 14, justifyContent: "center", flexWrap: "wrap" }}>
-          <a href={L.derivaA} style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "#F4A261", color: "#1D3557", fontFamily: "'Poppins',sans-serif", fontWeight: 700, fontSize: 15, padding: "15px 28px", borderRadius: 8, textDecoration: "none", boxShadow: "0 4px 16px rgba(244,162,97,0.35)" }}>
+          <a href={L.derivaA} target="_blank" rel="noopener noreferrer" style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "#F4A261", color: "#1D3557", fontFamily: "'Poppins',sans-serif", fontWeight: 700, fontSize: 15, padding: "15px 28px", borderRadius: 8, textDecoration: "none", boxShadow: "0 4px 16px rgba(244,162,97,0.35)" }}>
             Ir a Habilitaciones La Plata <ChevronRight size={18} />
           </a>
           <Btn v="outlineW" href={wl(L.wa || "Hola, necesito asesoramiento sobre una habilitación comercial en La Plata.")}><MessageCircle size={16} /> Consultar por WhatsApp</Btn>
