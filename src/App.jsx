@@ -318,10 +318,11 @@ const SERVICES = [
         }] },
     ]
   },
-  { id: "habilitaciones", icon: Store, title: "Habilitaciones Comerciales", scope: "LP", desc: "Altas, bajas, transferencias, cambios de rubro y regularización", color: "#F4A261",
+  { id: "habilitaciones", icon: Store, title: "Habilitaciones Comerciales", scope: "LP", desc: "Altas, bajas, transferencias, cambios de rubro y regularización", color: "#F4A261", derivaA: "https://habilitacioneslaplata.com/",
     subs: [
       { id: "alta", title: "Alta de Habilitación y Factibilidad", desc: "Gestión completa para nuevos comercios", landings: [{ id: "alta-l", title: "Alta de Habilitación",
         seoTitle: "Habilitación Comercial en La Plata | Gestor La Plata",
+        derivaA: "https://habilitacioneslaplata.com/",
         pregunta: "¿Vas a abrir un local? No firmes sin consultarnos.",
         tagline: "Alta de Habilitación y Factibilidad",
         intro: "Asegurá tu inversión desde el primer día. Gestionamos la habilitación comercial integral en La Plata: análisis de zonificación, factibilidad en 24 hs, armado de legajo y seguimiento hasta el cartón final.",
@@ -346,6 +347,7 @@ const SERVICES = [
       }] },
       { id: "transferencia", title: "Transferencias y Modificaciones", desc: "Traspaso de titularidad o cambios", landings: [{ id: "transferencia-l", title: "Transferencias",
         seoTitle: "Transferencia de Habilitación Comercial La Plata | Gestor La Plata",
+        derivaA: "https://habilitacioneslaplata.com/transferencia-comercial",
         pregunta: "¿Cambiás de dueño, rubro o superficie?",
         tagline: "Transferencias y Modificaciones – La Plata",
         intro: "Actualizá la situación legal de tu comercio en La Plata. Gestionamos transferencias por venta de fondo de comercio, anexos de rubros, cambios de superficie y denominación social.",
@@ -370,6 +372,7 @@ const SERVICES = [
       }] },
       { id: "baja", title: "Bajas y Regularización", desc: "Cese formal o normalización", landings: [{ id: "baja-l", title: "Bajas y Regularización",
         seoTitle: "Baja de Habilitación Comercial La Plata | Gestor La Plata",
+        derivaA: "https://habilitacioneslaplata.com/baja-comercial",
         pregunta: "¿Cerraste pero nunca diste de baja?",
         tagline: "Bajas y Regularización – La Plata",
         intro: "Cerrar las persianas no significa cerrar el comercio ante la ley. Gestionamos el cese formal de tu actividad ante la Municipalidad de La Plata, o normalizamos trámites que quedaron frenados. Evitá deudas y sanciones futuras.",
@@ -398,6 +401,7 @@ const SERVICES = [
     subs: [
       { id: "publicidad", title: "Publicidad y Mesas y Sillas", desc: "Cartelería y ocupación de vereda", landings: [{ id: "publicidad-l", title: "Publicidad y Mesas",
         seoTitle: "Publicidad y Mesas y Sillas La Plata | Gestor La Plata",
+        derivaA: "https://habilitacioneslaplata.com/publicidad-propaganda-la-plata",
         pregunta: "¿Tenés carteles o mesas en la vereda sin declarar?",
         tagline: "Publicidad, Propaganda y Mesas y Sillas – La Plata",
         intro: "Tu marca legalmente visible y tu espacio optimizado. Gestionamos la declaración de cartelería y el permiso de ocupación de vereda ante la Municipalidad y la APR de La Plata.",
@@ -422,6 +426,7 @@ const SERVICES = [
       }] },
       { id: "reba", title: "Licencia ReBA (Alcohol)", desc: "Inscripción y renovación anual", landings: [{ id: "reba-l", title: "Licencia ReBA",
         seoTitle: "Licencia ReBA Venta de Alcohol La Plata | Gestor La Plata",
+        derivaA: "https://habilitacioneslaplata.com/licencia-reba-la-plata",
         pregunta: "¿Vendés alcohol y no tenés la licencia al día?",
         tagline: "Licencia ReBA – Venta de Bebidas Alcohólicas – La Plata",
         intro: "Comercializá legalmente bebidas alcohólicas en La Plata. Gestionamos tu inscripción y renovación anual en el Registro Provincial de Bebidas Alcohólicas (ReBA) a través de la Municipalidad.",
@@ -510,9 +515,53 @@ function FI({ q, a }) { const [o, so] = useState(false); return <div style={{ bo
 const scopeLabel = (s) => s === "LP" ? "Exclusivo La Plata" : "Alcance Provincial";
 const scopeColor = (s) => s === "LP" ? "#F4A261" : "#3B6B8A";
 
+// ─── DERIVADOR A HABILITACIONES LA PLATA ───────────────────────────────────
+// Para servicios de habilitaciones: en vez de contenido completo (que canibaliza
+// el SEO de habilitacioneslaplata.com), mostramos un bloque que deriva a la web
+// especializada. Setea canonical hacia la URL de HAB. Reversible: se activa solo
+// si la landing tiene el campo `derivaA`.
+
+function DerivadorHAB({ landing: L, nav }) {
+  useEffect(() => {
+    document.title = L.seoTitle || `${L.title} | Gestor La Plata`;
+    // Canonical hacia HAB: le dice a Google cual es la pagina canonica del tema
+    let link = document.querySelector('link[rel="canonical"]');
+    if (!link) { link = document.createElement('link'); link.rel = 'canonical'; document.head.appendChild(link); }
+    const prev = link.getAttribute('href');
+    link.setAttribute('href', L.derivaA);
+    return () => { if (prev) link.setAttribute('href', prev); };
+  }, [L]);
+
+  return <div>
+    <section style={{ background: "linear-gradient(135deg, #1D3557, #264673)", padding: "130px 24px 80px", minHeight: "60vh", display: "flex", alignItems: "center" }}>
+      <div style={{ maxWidth: 760, margin: "0 auto", textAlign: "center" }}>
+        <button onClick={() => nav("home")} style={{ background: "none", border: "none", color: "rgba(255,255,255,0.5)", fontFamily: "'Inter',sans-serif", fontSize: 14, cursor: "pointer", display: "inline-flex", alignItems: "center", gap: 4, marginBottom: 28, padding: 0 }}><ChevronLeft size={16} /> Inicio</button>
+        <div style={{ marginBottom: 18 }}><Bdg c="#F4A261" lg>Unidad especializada</Bdg></div>
+        <h1 style={{ fontFamily: "'Poppins',sans-serif", fontWeight: 700, fontSize: "clamp(28px,4vw,42px)", color: "#F1F3F5", margin: "0 0 18px", lineHeight: 1.2 }}>{L.title} en La Plata</h1>
+        <p style={{ fontFamily: "'Inter',sans-serif", fontSize: 18, color: "rgba(241,243,245,0.82)", lineHeight: 1.65, margin: "0 0 14px", maxWidth: 640, marginLeft: "auto", marginRight: "auto" }}>
+          Las habilitaciones comerciales del Partido de La Plata las gestiona <strong style={{ color: "#fff" }}>Habilitaciones La Plata</strong>, nuestra unidad especializada. Mismo equipo, misma matrícula 10001, con un sitio dedicado exclusivamente a este servicio.
+        </p>
+        <p style={{ fontFamily: "'Inter',sans-serif", fontSize: 15, color: "rgba(241,243,245,0.6)", lineHeight: 1.6, margin: "0 0 36px" }}>
+          Te llevamos al lugar correcto para resolver tu trámite más rápido.
+        </p>
+        <div style={{ display: "flex", gap: 14, justifyContent: "center", flexWrap: "wrap" }}>
+          <a href={L.derivaA} style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "#F4A261", color: "#1D3557", fontFamily: "'Poppins',sans-serif", fontWeight: 700, fontSize: 15, padding: "15px 28px", borderRadius: 8, textDecoration: "none", boxShadow: "0 4px 16px rgba(244,162,97,0.35)" }}>
+            Ir a Habilitaciones La Plata <ChevronRight size={18} />
+          </a>
+          <Btn v="outlineW" href={wl(L.wa || "Hola, necesito asesoramiento sobre una habilitación comercial en La Plata.")}><MessageCircle size={16} /> Consultar por WhatsApp</Btn>
+        </div>
+        <p style={{ fontFamily: "'Inter',sans-serif", fontSize: 13, color: "rgba(241,243,245,0.45)", margin: "32px 0 0" }}>
+          habilitacioneslaplata.com · Un servicio de Gestor La Plata
+        </p>
+      </div>
+    </section>
+  </div>;
+}
+
 // ─── ENHANCED LANDING (UNIVERSAL) with PREGUNTA H1 + TAGLINE H2 ────────────
 
 function EnhancedLanding({ service, sub, landing: L, nav }) {
+  // Si la landing deriva a Habilitaciones La Plata, mostramos el derivador.
   const hasRisks = L.riesgos && L.riesgos.length > 0;
   const hasDatosGroups = L.datosGroups && L.datosGroups.length > 0;
   const plazosArr = L.plazos || [];
@@ -524,7 +573,11 @@ function EnhancedLanding({ service, sub, landing: L, nav }) {
     return () => window.removeEventListener('resize', handler);
   }, []);
 
-  useEffect(() => { document.title = L.seoTitle || `${L.title} | Gestor La Plata`; }, [L]);
+  useEffect(() => { if (!L.derivaA) document.title = L.seoTitle || `${L.title} | Gestor La Plata`; }, [L]);
+
+  // Si la landing deriva a Habilitaciones La Plata, mostramos el derivador
+  // (hooks ya ejecutados arriba para respetar las reglas de React).
+  if (L.derivaA) return <DerivadorHAB landing={L} nav={nav} />;
 
   return <div>
     <section style={{ background: "#1D3557", position: "relative", overflow: "hidden" }}>
@@ -659,7 +712,10 @@ function HomePage({ nav }) {
 // ─── BLOCK / SUB / ABOUT ────────────────────────────────────────────────────
 
 function BlockPage({ service: s, nav }) {
-  useEffect(() => { document.title = `${s.title} | Gestor La Plata`; }, [s]);
+  // Si la categoria deriva a Habilitaciones La Plata, mostramos el derivador
+  // (el title lo setea DerivadorHAB). El useEffect solo aplica al hub normal.
+  useEffect(() => { if (!s.derivaA) document.title = `${s.title} | Gestor La Plata`; }, [s]);
+  if (s.derivaA) return <DerivadorHAB landing={{ title: s.title, seoTitle: `${s.title} | Gestor La Plata`, derivaA: s.derivaA, wa: "Hola, necesito asesoramiento sobre una habilitación comercial en La Plata." }} nav={nav} />;
   return <div>
     <section style={{ background: "linear-gradient(135deg, #1D3557, #264673)", padding: "130px 24px 70px" }}><div style={{ maxWidth: 1200, margin: "0 auto" }}><button onClick={() => nav("home")} style={{ background: "none", border: "none", color: "rgba(255,255,255,0.5)", fontFamily: "'Inter',sans-serif", fontSize: 14, cursor: "pointer", display: "flex", alignItems: "center", gap: 4, marginBottom: 20, padding: 0 }}><ChevronLeft size={16} /> Inicio</button><Bdg c={scopeColor(s.scope)} lg>{scopeLabel(s.scope)}</Bdg><h1 style={{ fontFamily: "'Poppins',sans-serif", fontWeight: 700, fontSize: "clamp(28px,4vw,44px)", color: "#F1F3F5", margin: "16px 0 8px" }}>{s.title}</h1><p style={{ fontFamily: "'Inter',sans-serif", fontSize: 17, color: "rgba(241,243,245,0.7)", maxWidth: 600 }}>{s.desc}</p></div></section>
     <section style={{ padding: "60px 24px", background: "#F1F3F5" }}><div style={{ maxWidth: 1200, margin: "0 auto" }}><ST badge="Servicios" title="Elegí el que necesitás" />
