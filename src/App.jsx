@@ -540,7 +540,7 @@ function DerivadorHAB({ landing: L, nav }) {
         <div style={{ marginBottom: 18 }}><Bdg c="#F4A261" lg>Unidad especializada</Bdg></div>
         <h1 style={{ fontFamily: "'Poppins',sans-serif", fontWeight: 700, fontSize: "clamp(28px,4vw,42px)", color: "#F1F3F5", margin: "0 0 18px", lineHeight: 1.2 }}>{L.title} en La Plata</h1>
         <p style={{ fontFamily: "'Inter',sans-serif", fontSize: 18, color: "rgba(241,243,245,0.82)", lineHeight: 1.65, margin: "0 0 14px", maxWidth: 640, marginLeft: "auto", marginRight: "auto" }}>
-          Las habilitaciones comerciales del Partido de La Plata las gestiona <strong style={{ color: "#fff" }}>Habilitaciones La Plata</strong>, nuestra unidad especializada. Mismo equipo, misma matrícula 10001, con un sitio dedicado exclusivamente a este servicio.
+          Las habilitaciones comerciales del Partido de La Plata las gestiona <strong style={{ color: "#fff" }}>Habilitaciones La Plata</strong>, nuestra unidad especializada. Con un sitio dedicado exclusivamente a este servicio.
         </p>
         <p style={{ fontFamily: "'Inter',sans-serif", fontSize: 15, color: "rgba(241,243,245,0.6)", lineHeight: 1.6, margin: "0 0 36px" }}>
           Te llevamos al lugar correcto para resolver tu trámite más rápido.
