@@ -40,7 +40,8 @@
     { "source": "/baja-de-habilitacion",            "destination": "/baja-comercial",           "permanent": true },
     { "source": "/permiso-para-eventos",            "destination": "/eventos-la-plata",         "permanent": true },
     { "source": "/publicidad-y-mesas-y-sillas",     "destination": "/publicidad-la-plata",      "permanent": true },
-    { "source": "/licencia-reba",                   "destination": "/reba-la-plata",            "permanent": true }
+    { "source": "/licencia-reba",                   "destination": "/reba-la-plata",            "permanent": true },
+    { "source": "/permisos-y-publicidad",           "destination": "https://habilitacioneslaplata.com/publicidad-propaganda-la-plata", "permanent": true }
   ],
   "rewrites": [
     {
