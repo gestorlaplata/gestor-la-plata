@@ -676,7 +676,7 @@ function EnhancedLanding({ service, sub, landing: L, nav }) {
 function HomePage({ nav }) {
   useEffect(() => { document.title = "Gestor La Plata | Gestoría Profesional en La Plata y PBA"; }, []);
   return <div>
-    <section style={{ background: "radial-gradient(ellipse at 28% 25%, #2B466B 0%, rgba(43,70,107,0) 55%), linear-gradient(150deg, #24395B 0%, #1D3557 50%, #15223A 100%)", position: "relative", overflow: "hidden" }}>
+    <section style={{ background: "radial-gradient(ellipse at 30% 55%, rgba(59,107,138,0.55) 0%, rgba(43,70,107,0.25) 35%, rgba(29,53,87,0) 70%), #1D3557", position: "relative", overflow: "hidden" }}>
       {/* Hero a una columna (estilo HAB): contenido centrado a la izquierda, ancho contenido */}
       <div style={{ maxWidth: 1140, margin: "0 auto", padding: "168px 40px 96px", position: "relative", zIndex: 1 }}>
         <div style={{ maxWidth: 760 }}>
