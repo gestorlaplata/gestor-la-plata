@@ -397,7 +397,7 @@ const SERVICES = [
       }] },
     ]
   },
-  { id: "permisos", icon: Megaphone, title: "Permisos y Publicidad", scope: "LP", desc: "Licencias ReBA y publicidad en vía pública", color: "#F4A261",
+  { id: "permisos", icon: Megaphone, title: "Permisos y Publicidad", scope: "LP", desc: "Licencias ReBA y publicidad en vía pública", color: "#F4A261", derivaA: "https://habilitacioneslaplata.com/publicidad-propaganda-la-plata", derivaTitle: "Publicidad y Mesas",
     subs: [
       { id: "publicidad", title: "Publicidad y Mesas y Sillas", desc: "Cartelería y ocupación de vereda", landings: [{ id: "publicidad-l", title: "Publicidad y Mesas",
         seoTitle: "Publicidad y Mesas y Sillas La Plata | Gestor La Plata",
@@ -727,7 +727,7 @@ function BlockPage({ service: s, nav }) {
   // Si la categoria deriva a Habilitaciones La Plata, mostramos el derivador
   // (el title lo setea DerivadorHAB). El useEffect solo aplica al hub normal.
   useEffect(() => { if (!s.derivaA) document.title = `${s.title} | Gestor La Plata`; }, [s]);
-  if (s.derivaA) return <DerivadorHAB landing={{ title: s.title, seoTitle: `${s.title} | Gestor La Plata`, derivaA: s.derivaA, wa: "Hola, necesito asesoramiento sobre una habilitación comercial en La Plata." }} nav={nav} />;
+  if (s.derivaA) return <DerivadorHAB landing={{ title: s.derivaTitle || s.title, seoTitle: `${s.title} | Gestor La Plata`, derivaA: s.derivaA, wa: "Hola, necesito asesoramiento sobre una habilitación comercial en La Plata." }} nav={nav} />;
   return <div>
     <section style={{ background: "radial-gradient(ellipse at 28% 25%, #2B466B 0%, rgba(43,70,107,0) 55%), linear-gradient(150deg, #24395B 0%, #1D3557 50%, #15223A 100%)", padding: "130px 24px 70px" }}><div style={{ maxWidth: 1200, margin: "0 auto" }}><button onClick={() => nav("home")} style={{ background: "none", border: "none", color: "rgba(255,255,255,0.5)", fontFamily: "'Inter',sans-serif", fontSize: 14, cursor: "pointer", display: "flex", alignItems: "center", gap: 4, marginBottom: 20, padding: 0 }}><ChevronLeft size={16} /> Inicio</button><Bdg c={scopeColor(s.scope)} lg>{scopeLabel(s.scope)}</Bdg><h1 style={{ fontFamily: "'Poppins',sans-serif", fontWeight: 700, fontSize: "clamp(28px,4vw,44px)", color: "#F1F3F5", margin: "16px 0 8px" }}>{s.title}</h1><p style={{ fontFamily: "'Inter',sans-serif", fontSize: 17, color: "rgba(241,243,245,0.7)", maxWidth: 600 }}>{s.desc}</p></div></section>
     <section style={{ padding: "60px 24px", background: "#F1F3F5" }}><div style={{ maxWidth: 1200, margin: "0 auto" }}><ST badge="Servicios" title="Elegí el que necesitás" />
