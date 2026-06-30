@@ -1159,6 +1159,11 @@ export default function App() {
     section>div[style*="minmax(260"]{grid-template-columns:1fr!important}
     section>div[style*="minmax(220"]{grid-template-columns:1fr!important}
     section>div[style*="minmax(200"]{grid-template-columns:1fr!important}
+    .glp-footer-grid{grid-template-columns:1fr!important;gap:32px!important;padding:48px 24px 36px!important}
+    .glp-footer-grid p[style*="max-width: 320"]{max-width:none!important}
+  }
+  @media(min-width:600px) and (max-width:900px){
+    .glp-footer-grid{grid-template-columns:1fr 1fr!important}
   }
 `}</style>
   </div>;
