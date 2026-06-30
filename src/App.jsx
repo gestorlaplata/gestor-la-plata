@@ -678,7 +678,7 @@ function HomePage({ nav }) {
   return <div>
     <section style={{ background: "radial-gradient(ellipse at 30% 55%, rgba(59,107,138,0.55) 0%, rgba(43,70,107,0.25) 35%, rgba(29,53,87,0) 70%), #1D3557", position: "relative", overflow: "hidden" }}>
       {/* Hero a una columna (estilo HAB): contenido centrado a la izquierda, ancho contenido */}
-      <div style={{ maxWidth: 1140, margin: "0 auto", padding: "168px 40px 96px", position: "relative", zIndex: 1 }}>
+      <div className="glp-hero-inner" style={{ maxWidth: 1140, margin: "0 auto", padding: "168px 40px 96px", position: "relative", zIndex: 1 }}>
         <div style={{ maxWidth: 760 }}>
         <div style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "rgba(244,162,97,0.12)", borderRadius: 30, padding: "6px 16px", marginBottom: 28 }}><div style={{ width: 8, height: 8, borderRadius: "50%", background: "#25D366", animation: "pulse 2s infinite" }} /><span style={{ fontFamily: "'Inter',sans-serif", fontSize: 13, color: "#F4A261", fontWeight: 500 }}>Respondemos en minutos</span></div>
         <h1 style={{ fontFamily: "'Poppins',sans-serif", fontWeight: 700, fontSize: "clamp(36px,5vw,58px)", color: "#F1F3F5", margin: "0 0 20px", lineHeight: 1.08 }}>La burocracia<br /><span style={{ color: "#F4A261" }}>no tiene por qué</span> frenarte.</h1>
@@ -1143,7 +1143,7 @@ export default function App() {
   .topbar{display:block}
   .footer-link:hover{color:#F4A261!important}
   .navbtn:hover{color:#F4A261!important}
-  @media(max-width:1023px){.dn{display:none!important}.mb{display:flex!important}.topbar{display:none!important}.mainnav{top:0!important}}
+  @media(max-width:1023px){.dn{display:none!important}.mb{display:flex!important}}
   @media(min-width:1024px){.mm{display:none!important}}
   *{box-sizing:border-box}
   @keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}
@@ -1161,6 +1161,7 @@ export default function App() {
     section>div[style*="minmax(200"]{grid-template-columns:1fr!important}
     .glp-footer-grid{grid-template-columns:1fr!important;gap:32px!important;padding:48px 24px 36px!important}
     .glp-footer-grid p[style*="max-width: 320"]{max-width:none!important}
+    .glp-hero-inner{padding:120px 24px 64px!important}
   }
   @media(min-width:600px) and (max-width:900px){
     .glp-footer-grid{grid-template-columns:1fr 1fr!important}
