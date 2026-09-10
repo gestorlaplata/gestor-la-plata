@@ -13,6 +13,10 @@
     }
   ],
   "redirects": [
+    { "source": "/resenas",   "destination": "https://www.google.com/search?q=Gestor+La+Plata&kgmid=/g/11rf7rhzh9&hl=es-419", "permanent": false },
+    { "source": "/reseñas",   "destination": "https://www.google.com/search?q=Gestor+La+Plata&kgmid=/g/11rf7rhzh9&hl=es-419", "permanent": false },
+    { "source": "/opiniones", "destination": "https://www.google.com/search?q=Gestor+La+Plata&kgmid=/g/11rf7rhzh9&hl=es-419", "permanent": false },
+    { "source": "/opinar", "destination": "https://g.page/r/CQNyqKDgQJIhEBM/review", "permanent": false },
     { "source": "/review", "destination": "https://g.page/r/CQNyqKDgQJIhEBM/review", "permanent": false },
     { "source": "/investigacion",                   "destination": "/estudio-de-titulo",        "permanent": true },
     { "source": "/copias",                          "destination": "/copia-de-asiento",         "permanent": true },
