@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { ChevronRight, ChevronDown, Menu, X, ArrowUpRight, Mail, MapPin, Clock, Shield, Zap, MessageCircle, FileText, Building2, Landmark, ScrollText, Store, Megaphone, ArrowRight, CheckCircle2, AlertTriangle, ChevronLeft, Star, Users, Globe, Smartphone, ArrowDown, Send, Search, Upload, CircleDollarSign, BadgeCheck, ShieldAlert, Timer, Truck, Lock, XCircle, Ban, Scale, Gavel, FileWarning, Receipt, Siren, Package, Eye } from "lucide-react";
+import ResenasPage from "./ResenasPage";
 
 const WA = "https://wa.me/5492214886197";
 const wl = (m) => `${WA}?text=${encodeURIComponent(m)}`;
@@ -718,7 +719,7 @@ function HomePage({ nav }) {
     </div></section>
     <section style={{ padding: "80px 40px", background: "#fff" }}><div style={{ maxWidth: 1140, margin: "0 auto" }}><ST num="04" badge="Testimonios" title={<>Lo que dicen quienes <span style={{ color: "#F4A261" }}>ya confiaron en nosotros</span></>} /><div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 24 }}>{REVIEWS.map((r, i) => <div key={i} style={{ background: "#F8F9FA", borderRadius: 14, padding: 32, position: "relative", border: "1px solid #E9ECEF" }}><div style={{ position: "absolute", top: 16, right: 20, fontFamily: "Georgia,serif", fontSize: 72, color: "#3B6B8A", opacity: 0.08, lineHeight: 1 }}>"</div><div style={{ display: "flex", gap: 2, marginBottom: 16 }}>{[...Array(r.stars)].map((_, j) => <Star key={j} size={16} fill="#F4A261" color="#F4A261" />)}</div><p style={{ fontFamily: "'Inter',sans-serif", fontSize: 15, color: "#212529", lineHeight: 1.7, margin: "0 0 20px", position: "relative", zIndex: 1 }}>{r.text}</p><div style={{ display: "flex", alignItems: "center", gap: 12 }}><div style={{ width: 40, height: 40, borderRadius: "50%", background: "#1D3557", display: "flex", alignItems: "center", justifyContent: "center" }}><span style={{ fontFamily: "'Poppins',sans-serif", fontWeight: 700, fontSize: 16, color: "#F1F3F5" }}>{r.author[0]}</span></div><div><div style={{ fontFamily: "'Poppins',sans-serif", fontWeight: 600, fontSize: 14, color: "#1D3557" }}>{r.author}</div><div style={{ fontFamily: "'Inter',sans-serif", fontSize: 12, color: "#3B6B8A" }}>{r.rubro}</div></div></div></div>)}</div>
           <div style={{ textAlign: "center", marginTop: 32 }}>
-            <Btn sm href={GOOGLE_REVIEWS_URL} v="outline"><Star size={14} /> Ver las +440 reseñas en Google</Btn>
+            <Btn sm onClick={() => nav("resenas")} v="outline"><Star size={14} /> Ver las 436 reseñas, con nuestras respuestas</Btn>
           </div>
         </div></section>
     <section style={{ padding: "80px 40px", background: "radial-gradient(ellipse at 28% 25%, #2B466B 0%, rgba(43,70,107,0) 55%), linear-gradient(150deg, #24395B 0%, #1D3557 50%, #15223A 100%)", position: "relative", overflow: "hidden" }}><div style={{ position: "absolute", top: 0, right: 0, width: "40%", height: "100%", background: "linear-gradient(135deg, rgba(69,123,157,0.1), transparent)" }} /><div style={{ maxWidth: 1140, margin: "0 auto", position: "relative", zIndex: 1 }}><ST num="05" badge="Diferenciales" title={<>¿Por qué <span style={{ color: "#F4A261" }}>elegirnos?</span></>} light /><div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: 20 }}>{[{ icon: MapPin, t: "Enfoque 100% Local", d: "Dominamos cada dependencia de La Plata y PBA." }, { icon: Zap, t: "Agilidad Real", d: "Presencia diaria en mesas de entrada. Respuesta rápida garantizada." }, { icon: Shield, t: "Rigurosidad Técnica", d: "Revisamos todo antes de presentar. Cero rechazos." }, { icon: Smartphone, t: "100% Digital", d: "Todo por WhatsApp. Seguimiento en tiempo real." }].map((d, i) => { const I = d.icon; return <div key={i} style={{ padding: 32, borderRadius: 14, background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.08)" }}><div style={{ width: 48, height: 48, borderRadius: 10, background: "rgba(244,162,97,0.12)", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 20 }}><I size={24} color="#F4A261" /></div><h3 style={{ fontFamily: "'Poppins',sans-serif", fontWeight: 600, fontSize: 18, color: "#F1F3F5", margin: "0 0 8px" }}>{d.t}</h3><p style={{ fontFamily: "'Inter',sans-serif", fontSize: 14, color: "rgba(241,243,245,0.6)", lineHeight: 1.7, margin: 0 }}>{d.d}</p></div>; })}</div></div></section>
@@ -778,7 +779,7 @@ function AboutPage({ nav }) {
     {/* Organismos */}
     <section style={{ padding: "60px 24px", background: "#F1F3F5" }}><div style={{ maxWidth: 1200, margin: "0 auto" }}><ST badge="Alcance" title="Organismos donde operamos" /><div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: 16 }}>{[{ icon: Landmark, t: "RPBA", d: "Registro de la Propiedad Inmueble de la Provincia de Buenos Aires" }, { icon: Building2, t: "ARBA / Catastro", d: "Agencia de Recaudación de Buenos Aires y Dirección de Catastro" }, { icon: ScrollText, t: "Registro de las Personas", d: "Casa Central en La Plata – Actas de toda la Provincia" }, { icon: Store, t: "Municipalidad de La Plata", d: "Habilitaciones comerciales, permisos y publicidad – APR" }].map((o, i) => { const I = o.icon; return <Card key={i} hover={false} style={{ borderLeft: "4px solid #3B6B8A" }}><I size={24} color="#3B6B8A" style={{ marginBottom: 12 }} /><h3 style={{ fontFamily: "'Poppins',sans-serif", fontWeight: 600, fontSize: 15, color: "#1D3557", margin: "0 0 6px" }}>{o.t}</h3><p style={{ fontFamily: "'Inter',sans-serif", fontSize: 13, color: "#3B6B8A", margin: 0 }}>{o.d}</p></Card>; })}</div></div></section>
     {/* Testimonios */}
-    <section style={{ padding: "60px 24px", background: "#fff" }}><div style={{ maxWidth: 1200, margin: "0 auto" }}><ST badge="Testimonios" title="Lo que dicen nuestros clientes" /><div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: 24 }}>{REVIEWS.slice(0, 3).map((r, i) => <div key={i} style={{ background: "#F8F9FA", borderRadius: 14, padding: 32, position: "relative", border: "1px solid #E9ECEF" }}><div style={{ position: "absolute", top: 16, right: 20, fontFamily: "Georgia,serif", fontSize: 72, color: "#3B6B8A", opacity: 0.08, lineHeight: 1 }}>"</div><div style={{ display: "flex", gap: 2, marginBottom: 16 }}>{[...Array(r.stars)].map((_, j) => <Star key={j} size={16} fill="#F4A261" color="#F4A261" />)}</div><p style={{ fontFamily: "'Inter',sans-serif", fontSize: 15, color: "#212529", lineHeight: 1.7, margin: "0 0 20px", position: "relative", zIndex: 1 }}>{r.text}</p><div style={{ display: "flex", alignItems: "center", gap: 12 }}><div style={{ width: 40, height: 40, borderRadius: "50%", background: "#1D3557", display: "flex", alignItems: "center", justifyContent: "center" }}><span style={{ fontFamily: "'Poppins',sans-serif", fontWeight: 700, fontSize: 16, color: "#F1F3F5" }}>{r.author[0]}</span></div><div><div style={{ fontFamily: "'Poppins',sans-serif", fontWeight: 600, fontSize: 14, color: "#1D3557" }}>{r.author}</div><div style={{ fontFamily: "'Inter',sans-serif", fontSize: 12, color: "#3B6B8A" }}>{r.rubro}</div></div></div></div>)}</div><div style={{ textAlign: "center", marginTop: 32 }}><Btn sm href={GOOGLE_REVIEWS_URL} v="outline"><Star size={14} /> Ver las +440 reseñas en Google</Btn></div></div></section>
+    <section style={{ padding: "60px 24px", background: "#fff" }}><div style={{ maxWidth: 1200, margin: "0 auto" }}><ST badge="Testimonios" title="Lo que dicen nuestros clientes" /><div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", gap: 24 }}>{REVIEWS.slice(0, 3).map((r, i) => <div key={i} style={{ background: "#F8F9FA", borderRadius: 14, padding: 32, position: "relative", border: "1px solid #E9ECEF" }}><div style={{ position: "absolute", top: 16, right: 20, fontFamily: "Georgia,serif", fontSize: 72, color: "#3B6B8A", opacity: 0.08, lineHeight: 1 }}>"</div><div style={{ display: "flex", gap: 2, marginBottom: 16 }}>{[...Array(r.stars)].map((_, j) => <Star key={j} size={16} fill="#F4A261" color="#F4A261" />)}</div><p style={{ fontFamily: "'Inter',sans-serif", fontSize: 15, color: "#212529", lineHeight: 1.7, margin: "0 0 20px", position: "relative", zIndex: 1 }}>{r.text}</p><div style={{ display: "flex", alignItems: "center", gap: 12 }}><div style={{ width: 40, height: 40, borderRadius: "50%", background: "#1D3557", display: "flex", alignItems: "center", justifyContent: "center" }}><span style={{ fontFamily: "'Poppins',sans-serif", fontWeight: 700, fontSize: 16, color: "#F1F3F5" }}>{r.author[0]}</span></div><div><div style={{ fontFamily: "'Poppins',sans-serif", fontWeight: 600, fontSize: 14, color: "#1D3557" }}>{r.author}</div><div style={{ fontFamily: "'Inter',sans-serif", fontSize: 12, color: "#3B6B8A" }}>{r.rubro}</div></div></div></div>)}</div><div style={{ textAlign: "center", marginTop: 32 }}><Btn sm onClick={() => nav("resenas")} v="outline"><Star size={14} /> Ver las 436 reseñas, con nuestras respuestas</Btn></div></div></section>
     {/* CTA final */}
     <section style={{ padding: "60px 24px", background: "radial-gradient(ellipse at 28% 25%, #2B466B 0%, rgba(43,70,107,0) 55%), linear-gradient(150deg, #24395B 0%, #1D3557 50%, #15223A 100%)" }}><div style={{ maxWidth: 800, margin: "0 auto", textAlign: "center" }}><img src="/isotipo-glp.png" alt="Gestor La Plata" width="120" height="120" style={{ width: 120, height: 120, objectFit: "contain", display: "block", margin: "0 auto 10px" }} /><h2 style={{ fontFamily: "'Poppins',sans-serif", fontWeight: 700, fontSize: "clamp(24px,3.5vw,34px)", color: "#F1F3F5", margin: "0 0 12px" }}>¿Listo para <span style={{ color: "#F4A261" }}>resolver</span> tu trámite?</h2><p style={{ fontFamily: "'Inter',sans-serif", fontSize: 16, color: "rgba(241,243,245,0.65)", margin: "0 0 32px" }}>Presupuesto sin cargo. Respondemos en minutos.</p><div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}><Btn href={wl("Hola! Quiero hacer una consulta.")}><MessageCircle size={18} /> Consultá ahora</Btn><Btn v="outlineW" onClick={() => nav("home")}>Ver servicios <ArrowRight size={16} /></Btn></div></div></section>
   </div>;
@@ -923,6 +924,8 @@ function CookiesPolicyPage({ nav }) {
 // ─── SEO ROUTING ────────────────────────────────────────────────────────────
 
 const SLUGS = {
+  // Pagina de reseñas
+  resenas: "resenas",
   // Bloques de servicio
   registrales: "servicios-registrales",
   arba: "arba-y-catastro",
@@ -960,6 +963,7 @@ const SLUG_REVERSE = Object.fromEntries(Object.entries(SLUGS).map(([k, v]) => [v
 
 function stateToPath(r) {
   if (r.p === "home") return "/";
+  if (r.p === "resenas") return "/" + SLUGS.resenas;
   if (r.p === "about") return "/" + SLUGS.about;
   if (r.p === "privacy") return "/" + SLUGS.privacy;
   if (r.p === "cookies") return "/" + SLUGS.cookies;
@@ -975,6 +979,7 @@ function pathToState(path) {
   const key = SLUG_REVERSE[slug];
   if (!key) return { p: "home" };
   // Static pages
+  if (key === "resenas") return { p: "resenas" };
   if (key === "about") return { p: "about" };
   if (key === "privacy") return { p: "privacy" };
   if (key === "cookies") return { p: "cookies" };
@@ -1001,6 +1006,7 @@ function getMetaDescription(r, cs, csub, cl) {
   if (r.p === "landing" && cl) return cl.intro.substring(0, 155) + "...";
   if (r.p === "block" && cs) return `${cs.title} en La Plata y PBA. ${cs.desc}. Gestoría profesional con seguimiento digital.`;
   if (r.p === "sub" && csub) return `${csub.title}: ${csub.desc}. Gestión profesional en La Plata y Provincia de Buenos Aires.`;
+  if (r.p === "resenas") return "Las 436 reseñas publicadas en Google de Gestor La Plata, completas y con nuestra respuesta. Promedio 5,0. Buscalas por tramite.";
   if (r.p === "about") return "Gestor La Plata: especialistas en gestión registral y municipal. Equipo profesional dedicado a destrabar trámites en La Plata y PBA.";
   if (r.p === "privacy") return "Política de Privacidad de Gestor La Plata. Conocé cómo protegemos tus datos personales.";
   if (r.p === "cookies") return "Política de Cookies de Gestor La Plata. Información sobre el uso de cookies en nuestro sitio web.";
@@ -1120,13 +1126,14 @@ export default function App() {
     <nav className="mainnav" style={{ position: "fixed", top: scrolled ? 0 : 32, left: 0, right: 0, zIndex: 999, background: "#1D3557", backdropFilter: "blur(12px)", borderBottom: "1px solid rgba(255,255,255,0.06)", transition: "top 0.25s ease"}}>
       <div style={{ maxWidth: 1400, margin: "0 auto", padding: "0 32px", height: 64, display: "flex", alignItems: "center", justifyContent: "space-between" }}>
         <div onClick={() => nav("home")} role="button" aria-label="Ir al inicio - Gestor La Plata" style={{ cursor: "pointer", display: "flex", alignItems: "center", gap: 10, marginRight: 32, flexShrink: 0 }}><img src="/isotipo-glp.png" alt="Gestor La Plata" width="52" height="52" style={{ width: 52, height: 52, objectFit: "contain", display: "block" }} /><span style={{ fontFamily: "'Poppins',sans-serif", fontWeight: 600, fontSize: 15, letterSpacing: "0.08em", color: "#F1F3F5", whiteSpace: "nowrap" }}>GESTOR <span style={{ color: "#F4A261", fontWeight: 600 }}>LA PLATA</span></span></div>
-        <div className="dn" style={{ display: "flex", alignItems: "center", gap: 2 }}><NB o={() => nav("home")} a={r.p === "home"}>Inicio</NB>{MENU_SERVICES.map(s => <NB key={s.id} o={() => nav("block", s.id)} a={r.b === s.id}>{s.title.replace("Servicios ", "").replace("Comerciales", "")}</NB>)}<NB o={() => nav("about")} a={r.p === "about"}>Nosotros</NB><Btn sm href={wl("Hola!")} style={{ marginLeft: 8, fontSize: 10, fontWeight: 700, padding: "8px 14px", letterSpacing: "0.08em", gap: 5 }}>Consultar</Btn></div>
+        <div className="dn" style={{ display: "flex", alignItems: "center", gap: 2 }}><NB o={() => nav("home")} a={r.p === "home"}>Inicio</NB>{MENU_SERVICES.map(s => <NB key={s.id} o={() => nav("block", s.id)} a={r.b === s.id}>{s.title.replace("Servicios ", "").replace("Comerciales", "")}</NB>)}<NB o={() => nav("resenas")} a={r.p === "resenas"}>Reseñas</NB><NB o={() => nav("about")} a={r.p === "about"}>Nosotros</NB><Btn sm href={wl("Hola!")} style={{ marginLeft: 8, fontSize: 10, fontWeight: 700, padding: "8px 14px", letterSpacing: "0.08em", gap: 5 }}>Consultar</Btn></div>
         <button onClick={() => smo(!mo)} className="mb" style={{ background: "none", border: "none", color: "#F1F3F5", cursor: "pointer" }}>{mo ? <X size={24} /> : <Menu size={24} />}</button>
       </div>
       {mo && <div className="mm" style={{ background: "#1D3557", padding: "16px 24px 24px", borderTop: "1px solid rgba(255,255,255,0.06)" }}><NB o={() => nav("home")} m>Inicio</NB>{MENU_SERVICES.map(s => <NB key={s.id} o={() => nav("block", s.id)} m>{s.title}</NB>)}<NB o={() => nav("about")} m>Nosotros</NB><div style={{ marginTop: 12 }}><Btn sm href={wl("Hola!")}>Consultar</Btn></div></div>}
     </nav>
     <main>
       {r.p === "home" && <HomePage nav={nav} />}
+      {r.p === "resenas" && <ResenasPage />}
       {r.p === "about" && <AboutPage nav={nav} />}
       {r.p === "block" && cs && <BlockPage service={cs} nav={nav} />}
       {r.p === "sub" && cs && csub && <SubPage service={cs} sub={csub} nav={nav} />}
@@ -1142,6 +1149,9 @@ export default function App() {
   .mb{display:none!important}
   .topbar{display:block}
   .footer-link:hover{color:#F4A261!important}
+  .glp-res-clamp{display:-webkit-box;-webkit-line-clamp:6;-webkit-box-orient:vertical;overflow:hidden}
+  .glp-res-dist:hover:not(:disabled){background:#fff!important;border-color:#E9ECEF!important}
+  .glp-res-mas:hover{background:#1D3557!important;color:#fff!important}
   .navbtn:hover{color:#F4A261!important}
   @media(max-width:1023px){.dn{display:none!important}.mb{display:flex!important}}
   @media(min-width:1024px){.mm{display:none!important}}

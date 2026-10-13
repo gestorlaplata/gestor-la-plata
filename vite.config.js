@@ -36,6 +36,7 @@ const ROUTES = [
   '/baja-comercial',
   '/publicidad-la-plata',
   '/reba-la-plata',
+  '/resenas',
   '/quienes-somos',
   '/politica-de-privacidad',
   '/politica-de-cookies',
