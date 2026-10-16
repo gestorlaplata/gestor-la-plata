@@ -5,24 +5,64 @@
 export const META_RESENAS = {
   "negocio": "Gestor La Plata",
   "matricula": "10001 PBA",
-  "total": 436,
+  "total": 441,
   "promedio": 4.98,
   "distribucion": {
     "1": 2,
     "2": 0,
     "3": 0,
     "4": 1,
-    "5": 433
+    "5": 438
   },
-  "conTexto": 398,
-  "respondidas": 431,
+  "conTexto": 403,
+  "respondidas": 436,
   "desde": "2022-02-02",
-  "hasta": "2026-10-12",
+  "hasta": "2026-10-16",
   "fuente": "Google Business Profile vía Google Takeout",
-  "exportado": "2026-10-13"
+  "exportado": "2026-10-16"
 };
 
 export const RESENAS_SEED = [
+  {
+    "fecha": "2026-10-16",
+    "cliente": "Leo Di Cesare",
+    "estrellas": 5,
+    "texto": "Rápita y muy buena atención. Lo recomiendo.",
+    "respuesta": "Muchas gracias, Leo! Estamos en contacto para lo que necesites.\nSaludos!",
+    "fechaRespuesta": "2026-10-16"
+  },
+  {
+    "fecha": "2026-10-15",
+    "cliente": "atletismo martinez",
+    "estrellas": 5,
+    "texto": "Excelente servicio muy confiable",
+    "respuesta": "Muchas gracias, Fabi! Estamos en contacto para lo que necesites.\nSaludos!",
+    "fechaRespuesta": "2026-10-16"
+  },
+  {
+    "fecha": "2026-10-15",
+    "cliente": "Gustavo Bastia",
+    "estrellas": 5,
+    "texto": "Excelente atención, eficiente.\nEn 24 hs consiguió los datos certeros que necesitaba.\nRecomiendo totalmente sus servicios.",
+    "respuesta": "Muchas gracias Gustavo! Estoy a disposición para lo que necesites!",
+    "fechaRespuesta": "2026-10-16"
+  },
+  {
+    "fecha": "2026-10-14",
+    "cliente": "Juan Nicolás Dignani",
+    "estrellas": 5,
+    "texto": "Me atendieron rapidisimo y me hicieron un tramite por whatsap sin problemas. Ademas de la amabilidad en la atención. Recomiendo.",
+    "respuesta": "Muchas gracias Juan. Un placer ayudarte con el informe de dominio Registral. Estamos a disposición para lo que necesites. Saludos!",
+    "fechaRespuesta": "2026-10-16"
+  },
+  {
+    "fecha": "2026-10-14",
+    "cliente": "ruben alejandro romero",
+    "estrellas": 5,
+    "texto": "Excelente atención, excelente servicio , explica al detalle todas las dudas ,altamente recomendable",
+    "respuesta": "Muchas gracias, Rubén! Ha sido un placer tratar con vos! Cualquier trámite que surja estamos a disposición! saludos!",
+    "fechaRespuesta": "2026-10-16"
+  },
   {
     "fecha": "2026-10-12",
     "cliente": "Walter Paz",
@@ -125,46 +165,6 @@ export const RESENAS_SEED = [
     "estrellas": 5,
     "texto": "Buenisimo",
     "respuesta": "Muchas gracias Lorena!",
-    "fechaRespuesta": "2026-10-13"
-  },
-  {
-    "fecha": "2026-09-29",
-    "cliente": "ANGEL SANCHEZ",
-    "estrellas": 5,
-    "texto": "Excelente servicio.",
-    "respuesta": "Muchas gracias, Angel! Estamos a disposición para lo que necesites!",
-    "fechaRespuesta": "2026-10-13"
-  },
-  {
-    "fecha": "2026-09-29",
-    "cliente": "Hernan Luchini",
-    "estrellas": 5,
-    "texto": "Quería remarcar el impecable servicio por parte de Santiago que me encontró el acta de nacimiento de mi bisabuela en un día. Acta que, por cierto, no fue fácil para mí conseguirla por mis medios. Realmente contento con la gestión y no dudaré en volver a escribirle a Santiago si vuelvo a requerir de su ayuda. Mil gracias!!!",
-    "respuesta": "Muchas gracias, Hernan! Qué alegría haber podido dar con el acta de tu bisabuela tan rápido, sobre todo sabiendo que venías renegar con eso. Un placer haberte ayudado y acá estoy para lo que necesites más adelante. Un abrazo!",
-    "fechaRespuesta": "2026-10-13"
-  },
-  {
-    "fecha": "2026-09-29",
-    "cliente": "Talia Anderson",
-    "estrellas": 5,
-    "texto": "Excelente servicio. Desde Estados Unidos necesitaba la partida de nacimiento de mi madre de la Provincia de Buenos Aires para un trámite consular. Respondieron enseguida, me explicaron todo con claridad, pude pagar por Western Union y recibí la partida digital al día siguiente. Muy recomendable.\n\nFast, clear, and easy to work with from the U.S. Highly recommended for anyone abroad who needs documents from Buenos Aires Province.",
-    "respuesta": "Muchas gracias, Talia! Qué bueno haber podido ayudarte desde tan lejos con la partida de tu mamá y que haya salido todo tan rápido. Un placer y a disposición para cualquier otro trámite que necesites por acá. Un saludo!",
-    "fechaRespuesta": "2026-10-13"
-  },
-  {
-    "fecha": "2026-09-28",
-    "cliente": "Tomás Ibañez",
-    "estrellas": 5,
-    "texto": "Excelente servicio! Destaco especialmente la celeridad y eficiencia con la que se gestionó el trámite. También la preocupación constante por mantenerme informado sobre el estado y evolución del mismo. Muy recomendable.",
-    "respuesta": "Muchas gracias, Tomás! Me alegra mucho que te hayas sentido bien acompañado durante todo el proceso y que haya salido rápido. Un abrazo grande!",
-    "fechaRespuesta": "2026-10-13"
-  },
-  {
-    "fecha": "2026-09-25",
-    "cliente": "marina pinto",
-    "estrellas": 5,
-    "texto": "Santiago y su equipo fueron súper profesionales? El trámite salió antes de lo determinado!!! Muy eficientes . Super recomendable",
-    "respuesta": "Muchas gracias, Marina! Qué bueno que hayas quedado contenta con el trabajo. Un saludo grande !",
     "fechaRespuesta": "2026-10-13"
   }
 ];
