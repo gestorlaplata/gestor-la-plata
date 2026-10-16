@@ -1129,7 +1129,7 @@ export default function App() {
         <div className="dn" style={{ display: "flex", alignItems: "center", gap: 2 }}><NB o={() => nav("home")} a={r.p === "home"}>Inicio</NB>{MENU_SERVICES.map(s => <NB key={s.id} o={() => nav("block", s.id)} a={r.b === s.id}>{s.title.replace("Servicios ", "").replace("Comerciales", "")}</NB>)}<NB o={() => nav("resenas")} a={r.p === "resenas"}>Reseñas</NB><NB o={() => nav("about")} a={r.p === "about"}>Nosotros</NB><Btn sm href={wl("Hola!")} style={{ marginLeft: 8, fontSize: 10, fontWeight: 700, padding: "8px 14px", letterSpacing: "0.08em", gap: 5 }}>Consultar</Btn></div>
         <button onClick={() => smo(!mo)} className="mb" style={{ background: "none", border: "none", color: "#F1F3F5", cursor: "pointer" }}>{mo ? <X size={24} /> : <Menu size={24} />}</button>
       </div>
-      {mo && <div className="mm" style={{ background: "#1D3557", padding: "16px 24px 24px", borderTop: "1px solid rgba(255,255,255,0.06)" }}><NB o={() => nav("home")} m>Inicio</NB>{MENU_SERVICES.map(s => <NB key={s.id} o={() => nav("block", s.id)} m>{s.title}</NB>)}<NB o={() => nav("about")} m>Nosotros</NB><div style={{ marginTop: 12 }}><Btn sm href={wl("Hola!")}>Consultar</Btn></div></div>}
+      {mo && <div className="mm" style={{ background: "#1D3557", padding: "16px 24px 24px", borderTop: "1px solid rgba(255,255,255,0.06)" }}><NB o={() => nav("home")} m>Inicio</NB>{MENU_SERVICES.map(s => <NB key={s.id} o={() => nav("block", s.id)} m>{s.title}</NB>)}<NB o={() => nav("resenas")} m>Reseñas</NB><NB o={() => nav("about")} m>Nosotros</NB><div style={{ marginTop: 12 }}><Btn sm href={wl("Hola!")}>Consultar</Btn></div></div>}
     </nav>
     <main>
       {r.p === "home" && <HomePage nav={nav} />}
@@ -1155,6 +1155,9 @@ export default function App() {
   .navbtn:hover{color:#F4A261!important}
   @media(max-width:1023px){.dn{display:none!important}.mb{display:flex!important}}
   @media(min-width:1024px){.mm{display:none!important}}
+  /* El menu mobile cuelga de una barra fija: si crece mas que la pantalla
+     hay que poder scrollearlo, si no tapa todo y no se sale. */
+  .mm{max-height:calc(100vh - 110px);max-height:calc(100dvh - 110px);overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch}
   *{box-sizing:border-box}
   @keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}
   @keyframes cookieSlide{from{transform:translateY(100%)}to{transform:translateY(0)}}
