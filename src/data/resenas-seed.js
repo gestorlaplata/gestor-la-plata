@@ -5,17 +5,17 @@
 export const META_RESENAS = {
   "negocio": "Gestor La Plata",
   "matricula": "10001 PBA",
-  "total": 444,
+  "total": 445,
   "promedio": 4.98,
   "distribucion": {
     "1": 2,
     "2": 0,
     "3": 0,
     "4": 1,
-    "5": 441
+    "5": 442
   },
-  "conTexto": 406,
-  "respondidas": 439,
+  "conTexto": 407,
+  "respondidas": 440,
   "desde": "2022-02-02",
   "hasta": "2026-10-16",
   "fuente": "Google Business Profile vía Google Takeout",
@@ -23,6 +23,14 @@ export const META_RESENAS = {
 };
 
 export const RESENAS_SEED = [
+  {
+    "fecha": "2026-10-16",
+    "cliente": "ImDombo1",
+    "estrellas": 5,
+    "texto": "En mi caso necesitaba urgente un certificado del RENAPER en la Plata, y en línea encontre Gestor La Plata, acordamos los honorarios y al otro día tenía en mi poder el documento. Super confiable y una eficiencia poco conocida",
+    "respuesta": "Muchas gracias!! Un placer ayudarte. Saludos!!",
+    "fechaRespuesta": "2026-10-16"
+  },
   {
     "fecha": "2026-10-16",
     "cliente": "tiki maradei",
@@ -157,14 +165,6 @@ export const RESENAS_SEED = [
     "estrellas": 5,
     "texto": "Excelente atención y predisposición",
     "respuesta": "Muchas gracias, Daniel! Me alegra un montón que hayas tenido una buena experiencia y te haya servido la atención. Un abrazo!",
-    "fechaRespuesta": "2026-10-13"
-  },
-  {
-    "fecha": "2026-10-02",
-    "cliente": "Lubin Daza",
-    "estrellas": 5,
-    "texto": "Todo excelente, en tiempo y forma.",
-    "respuesta": "Muchas gracias, Lubin! Qué bueno que haya salido todo tal cual lo planeamos. Un saludo grande!",
     "fechaRespuesta": "2026-10-13"
   }
 ];
