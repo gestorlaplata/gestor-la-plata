@@ -5,17 +5,17 @@
 export const META_RESENAS = {
   "negocio": "Gestor La Plata",
   "matricula": "10001 PBA",
-  "total": 443,
+  "total": 444,
   "promedio": 4.98,
   "distribucion": {
     "1": 2,
     "2": 0,
     "3": 0,
     "4": 1,
-    "5": 440
+    "5": 441
   },
-  "conTexto": 405,
-  "respondidas": 438,
+  "conTexto": 406,
+  "respondidas": 439,
   "desde": "2022-02-02",
   "hasta": "2026-10-16",
   "fuente": "Google Business Profile vía Google Takeout",
@@ -23,6 +23,14 @@ export const META_RESENAS = {
 };
 
 export const RESENAS_SEED = [
+  {
+    "fecha": "2026-10-16",
+    "cliente": "tiki maradei",
+    "estrellas": 5,
+    "texto": "Excelente trabajo, el mejor gestor .... Lejos",
+    "respuesta": "Muchas gracias Leandro!! estamos en contacto!",
+    "fechaRespuesta": "2026-10-16"
+  },
   {
     "fecha": "2026-10-16",
     "cliente": "Jose Hernandez",
@@ -157,14 +165,6 @@ export const RESENAS_SEED = [
     "estrellas": 5,
     "texto": "Todo excelente, en tiempo y forma.",
     "respuesta": "Muchas gracias, Lubin! Qué bueno que haya salido todo tal cual lo planeamos. Un saludo grande!",
-    "fechaRespuesta": "2026-10-13"
-  },
-  {
-    "fecha": "2026-10-01",
-    "cliente": "MAURO FERRARI",
-    "estrellas": 5,
-    "texto": "Excelente atención y servicio. Muy recomendable!",
-    "respuesta": "Muchas gracias, Mauro! Me alegra mucho que te haya servido el servicio. Un abrazo grande!",
     "fechaRespuesta": "2026-10-13"
   }
 ];
