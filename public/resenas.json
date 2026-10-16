@@ -2,23 +2,39 @@
   "meta": {
     "negocio": "Gestor La Plata",
     "matricula": "10001 PBA",
-    "total": 441,
+    "total": 443,
     "promedio": 4.98,
     "distribucion": {
-      "5": 438,
+      "5": 440,
       "4": 1,
       "3": 0,
       "2": 0,
       "1": 2
     },
-    "conTexto": 403,
-    "respondidas": 436,
+    "conTexto": 405,
+    "respondidas": 438,
     "desde": "2022-02-02",
     "hasta": "2026-10-16",
     "fuente": "Google Business Profile vía Google Takeout",
     "exportado": "2026-10-16"
   },
   "resenas": [
+    {
+      "fecha": "2026-10-16",
+      "cliente": "Jose Hernandez",
+      "estrellas": 5,
+      "texto": "Unos genios te acompañan en todo,siempre estan ahi para ayudarte y con la mejor onda,mas que recomendadisimos! 10/10🙌🏻solucionan todo rapido",
+      "respuesta": "Muchas gracias!! Un placer ayudarte!\nestamos a disposición para lo que necesites en el futuro. Saludos!!",
+      "fechaRespuesta": "2026-10-16"
+    },
+    {
+      "fecha": "2026-10-16",
+      "cliente": "Martin Petus",
+      "estrellas": 5,
+      "texto": "Excelente gestion",
+      "respuesta": "Muhcas gracias Martín!!\nEstamos en contacto !",
+      "fechaRespuesta": "2026-10-16"
+    },
     {
       "fecha": "2026-10-16",
       "cliente": "Leo Di Cesare",

@@ -48,3 +48,13 @@ writeFileSync(SALIDA, salida, 'utf8');
 console.log(
   `[resenas] seed generado: ${seed.length} reseñas de ${datos.meta.total} · promedio ${datos.meta.promedio}`
 );
+
+// El schema de LocalBusiness vive en index.html (HTML estatico, no puede leer
+// el JSON). Lo sincronizamos aca para que el reviewCount no quede viejo.
+const INDEX = resolve(raiz, 'index.html');
+const html = readFileSync(INDEX, 'utf8');
+const htmlNuevo = html.replace(/("reviewCount":\s*")\d+(")/, `$1${datos.meta.total}$2`);
+if (htmlNuevo !== html) {
+  writeFileSync(INDEX, htmlNuevo, 'utf8');
+  console.log(`[resenas] index.html: reviewCount -> ${datos.meta.total}`);
+}

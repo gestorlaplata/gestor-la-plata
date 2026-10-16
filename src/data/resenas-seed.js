@@ -5,17 +5,17 @@
 export const META_RESENAS = {
   "negocio": "Gestor La Plata",
   "matricula": "10001 PBA",
-  "total": 441,
+  "total": 443,
   "promedio": 4.98,
   "distribucion": {
     "1": 2,
     "2": 0,
     "3": 0,
     "4": 1,
-    "5": 438
+    "5": 440
   },
-  "conTexto": 403,
-  "respondidas": 436,
+  "conTexto": 405,
+  "respondidas": 438,
   "desde": "2022-02-02",
   "hasta": "2026-10-16",
   "fuente": "Google Business Profile vía Google Takeout",
@@ -23,6 +23,22 @@ export const META_RESENAS = {
 };
 
 export const RESENAS_SEED = [
+  {
+    "fecha": "2026-10-16",
+    "cliente": "Jose Hernandez",
+    "estrellas": 5,
+    "texto": "Unos genios te acompañan en todo,siempre estan ahi para ayudarte y con la mejor onda,mas que recomendadisimos! 10/10🙌🏻solucionan todo rapido",
+    "respuesta": "Muchas gracias!! Un placer ayudarte!\nestamos a disposición para lo que necesites en el futuro. Saludos!!",
+    "fechaRespuesta": "2026-10-16"
+  },
+  {
+    "fecha": "2026-10-16",
+    "cliente": "Martin Petus",
+    "estrellas": 5,
+    "texto": "Excelente gestion",
+    "respuesta": "Muhcas gracias Martín!!\nEstamos en contacto !",
+    "fechaRespuesta": "2026-10-16"
+  },
   {
     "fecha": "2026-10-16",
     "cliente": "Leo Di Cesare",
@@ -149,22 +165,6 @@ export const RESENAS_SEED = [
     "estrellas": 5,
     "texto": "Excelente atención y servicio. Muy recomendable!",
     "respuesta": "Muchas gracias, Mauro! Me alegra mucho que te haya servido el servicio. Un abrazo grande!",
-    "fechaRespuesta": "2026-10-13"
-  },
-  {
-    "fecha": "2026-09-30",
-    "cliente": "Camila Costa",
-    "estrellas": 5,
-    "texto": "Santiago fue muy amable, respondió al instante y resolvió mi consulta. En menos de una semana ya tenía los documentos que necesitaba para avanzar en un trámite. Súper recomiendo!",
-    "respuesta": "Muchas gracias, Camila! Qué bueno que pudimos resolverlo rápido para que puedas seguir con tu trámite. Un saludo grande! Estamos en contacto para lo que necesites",
-    "fechaRespuesta": "2026-10-13"
-  },
-  {
-    "fecha": "2026-09-30",
-    "cliente": "Lorena Avit",
-    "estrellas": 5,
-    "texto": "Buenisimo",
-    "respuesta": "Muchas gracias Lorena!",
     "fechaRespuesta": "2026-10-13"
   }
 ];
