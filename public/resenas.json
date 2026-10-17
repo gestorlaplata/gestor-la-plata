@@ -2,23 +2,39 @@
   "meta": {
     "negocio": "Gestor La Plata",
     "matricula": "10001 PBA",
-    "total": 445,
+    "total": 447,
     "promedio": 4.98,
     "distribucion": {
-      "5": 442,
+      "5": 444,
       "4": 1,
       "3": 0,
       "2": 0,
       "1": 2
     },
-    "conTexto": 407,
-    "respondidas": 440,
+    "conTexto": 408,
+    "respondidas": 442,
     "desde": "2022-02-02",
     "hasta": "2026-10-16",
     "fuente": "Google Business Profile vía Google Takeout",
-    "exportado": "2026-10-16"
+    "exportado": "2026-10-17"
   },
   "resenas": [
+    {
+      "fecha": "2026-10-16",
+      "cliente": "Laureano Maier",
+      "estrellas": 5,
+      "texto": "Muy buena antencion..",
+      "respuesta": "Muchas gracias, Laureano! Un placer ayudarte!! Saludos!",
+      "fechaRespuesta": "2026-10-17"
+    },
+    {
+      "fecha": "2026-10-16",
+      "cliente": "Jorge Marcelo Vargas Perez",
+      "estrellas": 5,
+      "texto": "",
+      "respuesta": "Muchas gracias, Marcelo! Estamos a disposición para lo que necesites. saludos!",
+      "fechaRespuesta": "2026-10-17"
+    },
     {
       "fecha": "2026-10-16",
       "cliente": "ImDombo1",

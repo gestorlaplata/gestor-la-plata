@@ -5,24 +5,32 @@
 export const META_RESENAS = {
   "negocio": "Gestor La Plata",
   "matricula": "10001 PBA",
-  "total": 445,
+  "total": 447,
   "promedio": 4.98,
   "distribucion": {
     "1": 2,
     "2": 0,
     "3": 0,
     "4": 1,
-    "5": 442
+    "5": 444
   },
-  "conTexto": 407,
-  "respondidas": 440,
+  "conTexto": 408,
+  "respondidas": 442,
   "desde": "2022-02-02",
   "hasta": "2026-10-16",
   "fuente": "Google Business Profile vía Google Takeout",
-  "exportado": "2026-10-16"
+  "exportado": "2026-10-17"
 };
 
 export const RESENAS_SEED = [
+  {
+    "fecha": "2026-10-16",
+    "cliente": "Laureano Maier",
+    "estrellas": 5,
+    "texto": "Muy buena antencion..",
+    "respuesta": "Muchas gracias, Laureano! Un placer ayudarte!! Saludos!",
+    "fechaRespuesta": "2026-10-17"
+  },
   {
     "fecha": "2026-10-16",
     "cliente": "ImDombo1",
@@ -157,14 +165,6 @@ export const RESENAS_SEED = [
     "estrellas": 5,
     "texto": "La atención es muy buena, las explicaciones muy claras y los plazos bastante rápidos. Muy conformes con el asesoramiento que nos brindaron",
     "respuesta": "Muchas gracias, Victoria! Me alegra mucho saber que quedaron conformes con el asesoramiento y resultado de la gestión!  A disposición para lo que necesiten. Un saludo!",
-    "fechaRespuesta": "2026-10-13"
-  },
-  {
-    "fecha": "2026-10-05",
-    "cliente": "Daniel Aspra",
-    "estrellas": 5,
-    "texto": "Excelente atención y predisposición",
-    "respuesta": "Muchas gracias, Daniel! Me alegra un montón que hayas tenido una buena experiencia y te haya servido la atención. Un abrazo!",
     "fechaRespuesta": "2026-10-13"
   }
 ];
