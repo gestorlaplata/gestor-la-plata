@@ -5,24 +5,40 @@
 export const META_RESENAS = {
   "negocio": "Gestor La Plata",
   "matricula": "10001 PBA",
-  "total": 447,
+  "total": 450,
   "promedio": 4.98,
   "distribucion": {
     "1": 2,
     "2": 0,
     "3": 0,
     "4": 1,
-    "5": 444
+    "5": 447
   },
-  "conTexto": 408,
-  "respondidas": 442,
+  "conTexto": 410,
+  "respondidas": 445,
   "desde": "2022-02-02",
-  "hasta": "2026-10-16",
+  "hasta": "2026-10-20",
   "fuente": "Google Business Profile vía Google Takeout",
-  "exportado": "2026-10-17"
+  "exportado": "2026-10-20"
 };
 
 export const RESENAS_SEED = [
+  {
+    "fecha": "2026-10-20",
+    "cliente": "Fernanda Aguiar",
+    "estrellas": 5,
+    "texto": "Todo correcto y con rapidez. Muy recomendable",
+    "respuesta": "Muchas gracias por tu reseña y comentario, Fernanda! Estamos en contacto! Saludos!",
+    "fechaRespuesta": "2026-10-20"
+  },
+  {
+    "fecha": "2026-10-19",
+    "cliente": "Andres Jose Colavolpe",
+    "estrellas": 5,
+    "texto": "La atención de Santiago excelente! Y el servicio en general, tanto en tiempos como info. Recomiendo, Gracias!",
+    "respuesta": "Muchas gracias por tu reseña y comentario, Andrés! Un Placer ayudarte! Saludos!",
+    "fechaRespuesta": "2026-10-20"
+  },
   {
     "fecha": "2026-10-16",
     "cliente": "Laureano Maier",
@@ -149,22 +165,6 @@ export const RESENAS_SEED = [
     "estrellas": 5,
     "texto": "Buena Atención en todo momento",
     "respuesta": "Muchas gracias, Gabriel!  A disposición para lo que necesites. Un saludo!",
-    "fechaRespuesta": "2026-10-13"
-  },
-  {
-    "fecha": "2026-10-06",
-    "cliente": "Diana Martinez",
-    "estrellas": 5,
-    "texto": "Exelente muy buen servicio",
-    "respuesta": "Muchas gracias, Diana! A disposición para lo que necesites. Un saludo!",
-    "fechaRespuesta": "2026-10-13"
-  },
-  {
-    "fecha": "2026-10-05",
-    "cliente": "victoria santos",
-    "estrellas": 5,
-    "texto": "La atención es muy buena, las explicaciones muy claras y los plazos bastante rápidos. Muy conformes con el asesoramiento que nos brindaron",
-    "respuesta": "Muchas gracias, Victoria! Me alegra mucho saber que quedaron conformes con el asesoramiento y resultado de la gestión!  A disposición para lo que necesiten. Un saludo!",
     "fechaRespuesta": "2026-10-13"
   }
 ];
