@@ -2,23 +2,63 @@
   "meta": {
     "negocio": "Gestor La Plata",
     "matricula": "10001 PBA",
-    "total": 450,
+    "total": 455,
     "promedio": 4.98,
     "distribucion": {
-      "5": 447,
+      "5": 452,
       "4": 1,
       "3": 0,
       "2": 0,
       "1": 2
     },
-    "conTexto": 410,
-    "respondidas": 445,
+    "conTexto": 413,
+    "respondidas": 450,
     "desde": "2022-02-02",
-    "hasta": "2026-10-20",
+    "hasta": "2026-10-21",
     "fuente": "Google Business Profile vía Google Takeout",
-    "exportado": "2026-10-20"
+    "exportado": "2026-10-21"
   },
   "resenas": [
+    {
+      "fecha": "2026-10-21",
+      "cliente": "Emanuel Castro",
+      "estrellas": 5,
+      "texto": "Me ayudó en la duda que tenía y estuvo a disposición en todo momento. Lo recomiendo!",
+      "respuesta": "Muchas gracias Emanuel por tu comentario y calificación! Estamos en contacto para lo que necesites. Saludos!",
+      "fechaRespuesta": "2026-10-21"
+    },
+    {
+      "fecha": "2026-10-20",
+      "cliente": "Ramon Alejandro Scofano",
+      "estrellas": 5,
+      "texto": "",
+      "respuesta": "Muchas gracias Ramón por tu calificación! Estamos en contacto para lo que necesites. Saludos!",
+      "fechaRespuesta": "2026-10-21"
+    },
+    {
+      "fecha": "2026-10-20",
+      "cliente": "Griselda Scofano",
+      "estrellas": 5,
+      "texto": "",
+      "respuesta": "Muchas gracias Griselda por tu calificación! Estoy a disposición para lo que necesites! Saludos!",
+      "fechaRespuesta": "2026-10-21"
+    },
+    {
+      "fecha": "2026-10-20",
+      "cliente": "Lisa Pereira",
+      "estrellas": 5,
+      "texto": "Excelente servicio, muy buena atención y predisposición. Santiago es una persona responsable, profesional y comprometida con su trabajo. Me brindó confianza y claridad durante todo el proceso, resolviendo mis dudas y ofreciendo una atención impecable. Lo recomiendo totalmente a quienes necesiten un gestor confiable. ¡Muchas gracias por todo!",
+      "respuesta": "Muchas gracias Lis por tu comentario y calificación. Ha sido un placer tratar con vos y ayudarte con esta cuestión! Estoy a disposición para lo que necesites! Saludos!",
+      "fechaRespuesta": "2026-10-21"
+    },
+    {
+      "fecha": "2026-10-20",
+      "cliente": "Sergio Scofano",
+      "estrellas": 5,
+      "texto": "Rápido y efectivo",
+      "respuesta": "Muchas gracias Sergio!",
+      "fechaRespuesta": "2026-10-21"
+    },
     {
       "fecha": "2026-10-20",
       "cliente": "Fernanda Aguiar",

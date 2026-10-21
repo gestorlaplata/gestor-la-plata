@@ -5,24 +5,48 @@
 export const META_RESENAS = {
   "negocio": "Gestor La Plata",
   "matricula": "10001 PBA",
-  "total": 450,
+  "total": 455,
   "promedio": 4.98,
   "distribucion": {
     "1": 2,
     "2": 0,
     "3": 0,
     "4": 1,
-    "5": 447
+    "5": 452
   },
-  "conTexto": 410,
-  "respondidas": 445,
+  "conTexto": 413,
+  "respondidas": 450,
   "desde": "2022-02-02",
-  "hasta": "2026-10-20",
+  "hasta": "2026-10-21",
   "fuente": "Google Business Profile vía Google Takeout",
-  "exportado": "2026-10-20"
+  "exportado": "2026-10-21"
 };
 
 export const RESENAS_SEED = [
+  {
+    "fecha": "2026-10-21",
+    "cliente": "Emanuel Castro",
+    "estrellas": 5,
+    "texto": "Me ayudó en la duda que tenía y estuvo a disposición en todo momento. Lo recomiendo!",
+    "respuesta": "Muchas gracias Emanuel por tu comentario y calificación! Estamos en contacto para lo que necesites. Saludos!",
+    "fechaRespuesta": "2026-10-21"
+  },
+  {
+    "fecha": "2026-10-20",
+    "cliente": "Lisa Pereira",
+    "estrellas": 5,
+    "texto": "Excelente servicio, muy buena atención y predisposición. Santiago es una persona responsable, profesional y comprometida con su trabajo. Me brindó confianza y claridad durante todo el proceso, resolviendo mis dudas y ofreciendo una atención impecable. Lo recomiendo totalmente a quienes necesiten un gestor confiable. ¡Muchas gracias por todo!",
+    "respuesta": "Muchas gracias Lis por tu comentario y calificación. Ha sido un placer tratar con vos y ayudarte con esta cuestión! Estoy a disposición para lo que necesites! Saludos!",
+    "fechaRespuesta": "2026-10-21"
+  },
+  {
+    "fecha": "2026-10-20",
+    "cliente": "Sergio Scofano",
+    "estrellas": 5,
+    "texto": "Rápido y efectivo",
+    "respuesta": "Muchas gracias Sergio!",
+    "fechaRespuesta": "2026-10-21"
+  },
   {
     "fecha": "2026-10-20",
     "cliente": "Fernanda Aguiar",
@@ -141,30 +165,6 @@ export const RESENAS_SEED = [
     "estrellas": 5,
     "texto": "Un capo. Rapido eficiente",
     "respuesta": "Muchas gracias, Damian! Me alegra que haya salido todo rápido y bien. A disposición para lo que necesites. Un abrazo!",
-    "fechaRespuesta": "2026-10-13"
-  },
-  {
-    "fecha": "2026-10-08",
-    "cliente": "Celunort Arg",
-    "estrellas": 5,
-    "texto": "Pedí dos informe de forma URGENTE y tuve una excelente atención y muy rápida su respuesta.  Gente seria y responsables Mucha Gracias",
-    "respuesta": "Muchas gracias! Me alegra haber podido resolver los informes con la urgencia que necesitaban. A disposición para lo que precisen. Un saludo!",
-    "fechaRespuesta": "2026-10-13"
-  },
-  {
-    "fecha": "2026-10-07",
-    "cliente": "Brian Kiptik",
-    "estrellas": 5,
-    "texto": "Exelente atencion, santiago me respondiero todas mis dudas de la mejor manera y en cuanto a los tramites que me gestiono fue rapido y 100% eficaz. Muchas gracias!!!",
-    "respuesta": "Muchas gracias por tu comentario, Estamos en contacto para lo que necesites! Un saludo!",
-    "fechaRespuesta": "2026-10-13"
-  },
-  {
-    "fecha": "2026-10-07",
-    "cliente": "Gabriel Cardozo",
-    "estrellas": 5,
-    "texto": "Buena Atención en todo momento",
-    "respuesta": "Muchas gracias, Gabriel!  A disposición para lo que necesites. Un saludo!",
     "fechaRespuesta": "2026-10-13"
   }
 ];
