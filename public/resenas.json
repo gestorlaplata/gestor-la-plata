@@ -2,23 +2,39 @@
   "meta": {
     "negocio": "Gestor La Plata",
     "matricula": "10001 PBA",
-    "total": 455,
+    "total": 457,
     "promedio": 4.98,
     "distribucion": {
-      "5": 452,
+      "5": 454,
       "4": 1,
       "3": 0,
       "2": 0,
       "1": 2
     },
-    "conTexto": 413,
-    "respondidas": 450,
+    "conTexto": 415,
+    "respondidas": 452,
     "desde": "2022-02-02",
-    "hasta": "2026-10-21",
+    "hasta": "2026-10-22",
     "fuente": "Google Business Profile vía Google Takeout",
-    "exportado": "2026-10-21"
+    "exportado": "2026-10-22"
   },
   "resenas": [
+    {
+      "fecha": "2026-10-22",
+      "cliente": "Sabrina Zarate",
+      "estrellas": 5,
+      "texto": "Excelente profesional, responsable y de confianza. Muy buena atención, bien predispuesto y eficiente. Súper recomendable por su compromiso y seriedad. ¡Muchas gracias por todo!",
+      "respuesta": "Gracias Sabrina por tus comentarios y puntaje! Estamos en contacto para lo que necesites!",
+      "fechaRespuesta": "2026-10-22"
+    },
+    {
+      "fecha": "2026-10-22",
+      "cliente": "Mariana Hilda Álvarez",
+      "estrellas": 5,
+      "texto": "Excelente, rapidez eficiente, confiabilidad, muy buena atención, trámite se realizó rápido y a buen precio, muy buen trato cordial y muy profesional, recomendable 💯",
+      "respuesta": "Muchas gracias Mariana por tus comentarios! Un placer haberte ayudado. Estamos en contacto para lo que necesites. Saludos!",
+      "fechaRespuesta": "2026-10-22"
+    },
     {
       "fecha": "2026-10-21",
       "cliente": "Emanuel Castro",

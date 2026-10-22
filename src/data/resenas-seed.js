@@ -5,24 +5,40 @@
 export const META_RESENAS = {
   "negocio": "Gestor La Plata",
   "matricula": "10001 PBA",
-  "total": 455,
+  "total": 457,
   "promedio": 4.98,
   "distribucion": {
     "1": 2,
     "2": 0,
     "3": 0,
     "4": 1,
-    "5": 452
+    "5": 454
   },
-  "conTexto": 413,
-  "respondidas": 450,
+  "conTexto": 415,
+  "respondidas": 452,
   "desde": "2022-02-02",
-  "hasta": "2026-10-21",
+  "hasta": "2026-10-22",
   "fuente": "Google Business Profile vía Google Takeout",
-  "exportado": "2026-10-21"
+  "exportado": "2026-10-22"
 };
 
 export const RESENAS_SEED = [
+  {
+    "fecha": "2026-10-22",
+    "cliente": "Sabrina Zarate",
+    "estrellas": 5,
+    "texto": "Excelente profesional, responsable y de confianza. Muy buena atención, bien predispuesto y eficiente. Súper recomendable por su compromiso y seriedad. ¡Muchas gracias por todo!",
+    "respuesta": "Gracias Sabrina por tus comentarios y puntaje! Estamos en contacto para lo que necesites!",
+    "fechaRespuesta": "2026-10-22"
+  },
+  {
+    "fecha": "2026-10-22",
+    "cliente": "Mariana Hilda Álvarez",
+    "estrellas": 5,
+    "texto": "Excelente, rapidez eficiente, confiabilidad, muy buena atención, trámite se realizó rápido y a buen precio, muy buen trato cordial y muy profesional, recomendable 💯",
+    "respuesta": "Muchas gracias Mariana por tus comentarios! Un placer haberte ayudado. Estamos en contacto para lo que necesites. Saludos!",
+    "fechaRespuesta": "2026-10-22"
+  },
   {
     "fecha": "2026-10-21",
     "cliente": "Emanuel Castro",
@@ -149,22 +165,6 @@ export const RESENAS_SEED = [
     "estrellas": 5,
     "texto": "Buen trato, claridad y cumplimiento de lo pedido y los plazos. Lo mío fue averiguación de titularidad de una propiedad.",
     "respuesta": "Muchas gracias por tu comentario, Walter! Me alegra mucho saber que quedaste conforme con el trato, la claridad y el cumplimiento de los plazos. Fue un placer ayudarte con la averiguación de titularidad de la propiedad. A disposición para lo que necesites!",
-    "fechaRespuesta": "2026-10-13"
-  },
-  {
-    "fecha": "2026-10-09",
-    "cliente": "Fede Gonzalez",
-    "estrellas": 5,
-    "texto": "Super recomendable ! Nos oriento en todo lo que necesitamos un trámite que para nosotros se nos hacía engorroso fue super sencillo ! Un genio!",
-    "respuesta": "¡Muchas gracias, Fede! Qué bueno saber que pudimos simplificar el trámite para ustedes. A disposición para lo que necesiten. ¡Un abrazo!",
-    "fechaRespuesta": "2026-10-13"
-  },
-  {
-    "fecha": "2026-10-08",
-    "cliente": "Damian Reynoso",
-    "estrellas": 5,
-    "texto": "Un capo. Rapido eficiente",
-    "respuesta": "Muchas gracias, Damian! Me alegra que haya salido todo rápido y bien. A disposición para lo que necesites. Un abrazo!",
     "fechaRespuesta": "2026-10-13"
   }
 ];
