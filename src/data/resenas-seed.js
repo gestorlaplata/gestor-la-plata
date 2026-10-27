@@ -5,24 +5,32 @@
 export const META_RESENAS = {
   "negocio": "Gestor La Plata",
   "matricula": "10001 PBA",
-  "total": 457,
+  "total": 458,
   "promedio": 4.98,
   "distribucion": {
     "1": 2,
     "2": 0,
     "3": 0,
     "4": 1,
-    "5": 454
+    "5": 455
   },
-  "conTexto": 415,
-  "respondidas": 452,
+  "conTexto": 416,
+  "respondidas": 453,
   "desde": "2022-02-02",
-  "hasta": "2026-10-22",
+  "hasta": "2026-10-26",
   "fuente": "Google Business Profile vía Google Takeout",
-  "exportado": "2026-10-22"
+  "exportado": "2026-10-27"
 };
 
 export const RESENAS_SEED = [
+  {
+    "fecha": "2026-10-26",
+    "cliente": "Fanny Gonzalez",
+    "estrellas": 5,
+    "texto": "Excelente servicio y asesoramiento",
+    "respuesta": "Muchas gracias Fanny!! Estamos a disposición para lo que necesites!",
+    "fechaRespuesta": "2026-10-27"
+  },
   {
     "fecha": "2026-10-22",
     "cliente": "Sabrina Zarate",
@@ -158,13 +166,5 @@ export const RESENAS_SEED = [
     "texto": "Excelente atención, excelente servicio , explica al detalle todas las dudas ,altamente recomendable",
     "respuesta": "Muchas gracias, Rubén! Ha sido un placer tratar con vos! Cualquier trámite que surja estamos a disposición! saludos!",
     "fechaRespuesta": "2026-10-16"
-  },
-  {
-    "fecha": "2026-10-12",
-    "cliente": "Walter Paz",
-    "estrellas": 5,
-    "texto": "Buen trato, claridad y cumplimiento de lo pedido y los plazos. Lo mío fue averiguación de titularidad de una propiedad.",
-    "respuesta": "Muchas gracias por tu comentario, Walter! Me alegra mucho saber que quedaste conforme con el trato, la claridad y el cumplimiento de los plazos. Fue un placer ayudarte con la averiguación de titularidad de la propiedad. A disposición para lo que necesites!",
-    "fechaRespuesta": "2026-10-13"
   }
 ];
