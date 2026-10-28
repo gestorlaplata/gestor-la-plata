@@ -5,24 +5,48 @@
 export const META_RESENAS = {
   "negocio": "Gestor La Plata",
   "matricula": "10001 PBA",
-  "total": 458,
+  "total": 462,
   "promedio": 4.98,
   "distribucion": {
     "1": 2,
     "2": 0,
     "3": 0,
     "4": 1,
-    "5": 455
+    "5": 459
   },
-  "conTexto": 416,
-  "respondidas": 453,
+  "conTexto": 419,
+  "respondidas": 457,
   "desde": "2022-02-02",
-  "hasta": "2026-10-26",
+  "hasta": "2026-10-28",
   "fuente": "Google Business Profile vía Google Takeout",
-  "exportado": "2026-10-27"
+  "exportado": "2026-10-28"
 };
 
 export const RESENAS_SEED = [
+  {
+    "fecha": "2026-10-28",
+    "cliente": "karina alejandra uller",
+    "estrellas": 5,
+    "texto": "Recomiendo muchísimo los servicios. Me asesoraron y recibí inmediatamente la información requerida sobre una propiedad familiar. Destaco la amabilidad y celeridad!",
+    "respuesta": "Gracias Karina por tu reseña y puntaje! Un placer haberte ayudado. Estamos en contacto. Saludos!!",
+    "fechaRespuesta": "2026-10-28"
+  },
+  {
+    "fecha": "2026-10-28",
+    "cliente": "Marina Berardi",
+    "estrellas": 5,
+    "texto": "Excelente servicio, muy profesional",
+    "respuesta": "Muchas gracias Marina por tu comentario y calificación! Saludos!!",
+    "fechaRespuesta": "2026-10-28"
+  },
+  {
+    "fecha": "2026-10-27",
+    "cliente": "Marisa Perez",
+    "estrellas": 5,
+    "texto": "Solicité informe de titularidad. Eficiente, a tiempo y con total corrección. Recomendable",
+    "respuesta": "Muchas gracias Marisa por tus comentarios y puntaje! Estamos a disposición para lo que necesites. Saludos!",
+    "fechaRespuesta": "2026-10-28"
+  },
   {
     "fecha": "2026-10-26",
     "cliente": "Fanny Gonzalez",
@@ -141,30 +165,6 @@ export const RESENAS_SEED = [
     "estrellas": 5,
     "texto": "Excelente servicio muy confiable",
     "respuesta": "Muchas gracias, Fabi! Estamos en contacto para lo que necesites.\nSaludos!",
-    "fechaRespuesta": "2026-10-16"
-  },
-  {
-    "fecha": "2026-10-15",
-    "cliente": "Gustavo Bastia",
-    "estrellas": 5,
-    "texto": "Excelente atención, eficiente.\nEn 24 hs consiguió los datos certeros que necesitaba.\nRecomiendo totalmente sus servicios.",
-    "respuesta": "Muchas gracias Gustavo! Estoy a disposición para lo que necesites!",
-    "fechaRespuesta": "2026-10-16"
-  },
-  {
-    "fecha": "2026-10-14",
-    "cliente": "Juan Nicolás Dignani",
-    "estrellas": 5,
-    "texto": "Me atendieron rapidisimo y me hicieron un tramite por whatsap sin problemas. Ademas de la amabilidad en la atención. Recomiendo.",
-    "respuesta": "Muchas gracias Juan. Un placer ayudarte con el informe de dominio Registral. Estamos a disposición para lo que necesites. Saludos!",
-    "fechaRespuesta": "2026-10-16"
-  },
-  {
-    "fecha": "2026-10-14",
-    "cliente": "ruben alejandro romero",
-    "estrellas": 5,
-    "texto": "Excelente atención, excelente servicio , explica al detalle todas las dudas ,altamente recomendable",
-    "respuesta": "Muchas gracias, Rubén! Ha sido un placer tratar con vos! Cualquier trámite que surja estamos a disposición! saludos!",
     "fechaRespuesta": "2026-10-16"
   }
 ];
