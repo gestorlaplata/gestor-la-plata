@@ -5,24 +5,56 @@
 export const META_RESENAS = {
   "negocio": "Gestor La Plata",
   "matricula": "10001 PBA",
-  "total": 462,
+  "total": 468,
   "promedio": 4.98,
   "distribucion": {
     "1": 2,
     "2": 0,
     "3": 0,
     "4": 1,
-    "5": 459
+    "5": 465
   },
-  "conTexto": 419,
-  "respondidas": 457,
+  "conTexto": 424,
+  "respondidas": 463,
   "desde": "2022-02-02",
-  "hasta": "2026-10-28",
+  "hasta": "2026-11-03",
   "fuente": "Google Business Profile vía Google Takeout",
-  "exportado": "2026-10-28"
+  "exportado": "2026-11-03"
 };
 
 export const RESENAS_SEED = [
+  {
+    "fecha": "2026-11-03",
+    "cliente": "SANDRA.K. LOPEZ",
+    "estrellas": 5,
+    "texto": "Excelente profesional comprometido con su trabajo",
+    "respuesta": "Muchas gracias!! Estamos en contacto para lo que necesites!",
+    "fechaRespuesta": "2026-11-03"
+  },
+  {
+    "fecha": "2026-11-03",
+    "cliente": "Federico Cubela",
+    "estrellas": 5,
+    "texto": "Excelente servicio, en menos de una semana tuve el informe solicitado. Recomiendo el servicio!",
+    "respuesta": "Muchas gracias Fede por tus comentarios y puntaje! Estamos en contacto!",
+    "fechaRespuesta": "2026-11-03"
+  },
+  {
+    "fecha": "2026-11-03",
+    "cliente": "Karina Montaña",
+    "estrellas": 5,
+    "texto": "El gestor Santiago Ippolito fue muy profesional y dispuesto a la resolución de mi solicitud; responde preguntas y trabaja de manera ágil.\nRecomiendo!",
+    "respuesta": "Muchas gracias por tomarte el tiempo de dejar una reseña y comentarios. Estamos a disposición para lo que necesites, Karina!",
+    "fechaRespuesta": "2026-11-03"
+  },
+  {
+    "fecha": "2026-11-03",
+    "cliente": "Antonella Martinz",
+    "estrellas": 5,
+    "texto": "El gestor de inmuebles Santiago fue claro, tanto en la búsqueda de info como en la conversación. Nos llevó meses pero sacamos dudas de todo. Muchas gracias por el tiempo y la dedicación a tu trabajo.",
+    "respuesta": "Anto! Muchas gracias por tomarte el tiempo de dejarnos tus comentarios. Sí, fue un estudio de título complicado pero logramos hacernos con el informe de dominio! Un éxito!",
+    "fechaRespuesta": "2026-11-03"
+  },
   {
     "fecha": "2026-10-28",
     "cliente": "karina alejandra uller",
@@ -38,6 +70,14 @@ export const RESENAS_SEED = [
     "texto": "Excelente servicio, muy profesional",
     "respuesta": "Muchas gracias Marina por tu comentario y calificación! Saludos!!",
     "fechaRespuesta": "2026-10-28"
+  },
+  {
+    "fecha": "2026-10-28",
+    "cliente": "Guillermo Gomez",
+    "estrellas": 5,
+    "texto": "Respuesta en 24 hs!!! Genial",
+    "respuesta": "Muchas gracias Guillermo!",
+    "fechaRespuesta": "2026-11-03"
   },
   {
     "fecha": "2026-10-27",
@@ -125,46 +165,6 @@ export const RESENAS_SEED = [
     "estrellas": 5,
     "texto": "En mi caso necesitaba urgente un certificado del RENAPER en la Plata, y en línea encontre Gestor La Plata, acordamos los honorarios y al otro día tenía en mi poder el documento. Super confiable y una eficiencia poco conocida",
     "respuesta": "Muchas gracias!! Un placer ayudarte. Saludos!!",
-    "fechaRespuesta": "2026-10-16"
-  },
-  {
-    "fecha": "2026-10-16",
-    "cliente": "tiki maradei",
-    "estrellas": 5,
-    "texto": "Excelente trabajo, el mejor gestor .... Lejos",
-    "respuesta": "Muchas gracias Leandro!! estamos en contacto!",
-    "fechaRespuesta": "2026-10-16"
-  },
-  {
-    "fecha": "2026-10-16",
-    "cliente": "Jose Hernandez",
-    "estrellas": 5,
-    "texto": "Unos genios te acompañan en todo,siempre estan ahi para ayudarte y con la mejor onda,mas que recomendadisimos! 10/10🙌🏻solucionan todo rapido",
-    "respuesta": "Muchas gracias!! Un placer ayudarte!\nestamos a disposición para lo que necesites en el futuro. Saludos!!",
-    "fechaRespuesta": "2026-10-16"
-  },
-  {
-    "fecha": "2026-10-16",
-    "cliente": "Martin Petus",
-    "estrellas": 5,
-    "texto": "Excelente gestion",
-    "respuesta": "Muhcas gracias Martín!!\nEstamos en contacto !",
-    "fechaRespuesta": "2026-10-16"
-  },
-  {
-    "fecha": "2026-10-16",
-    "cliente": "Leo Di Cesare",
-    "estrellas": 5,
-    "texto": "Rápita y muy buena atención. Lo recomiendo.",
-    "respuesta": "Muchas gracias, Leo! Estamos en contacto para lo que necesites.\nSaludos!",
-    "fechaRespuesta": "2026-10-16"
-  },
-  {
-    "fecha": "2026-10-15",
-    "cliente": "atletismo martinez",
-    "estrellas": 5,
-    "texto": "Excelente servicio muy confiable",
-    "respuesta": "Muchas gracias, Fabi! Estamos en contacto para lo que necesites.\nSaludos!",
     "fechaRespuesta": "2026-10-16"
   }
 ];
