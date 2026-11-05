@@ -2,23 +2,63 @@
   "meta": {
     "negocio": "Gestor La Plata",
     "matricula": "10001 PBA",
-    "total": 468,
+    "total": 473,
     "promedio": 4.98,
     "distribucion": {
-      "5": 465,
+      "5": 470,
       "4": 1,
       "3": 0,
       "2": 0,
       "1": 2
     },
-    "conTexto": 424,
-    "respondidas": 463,
+    "conTexto": 428,
+    "respondidas": 468,
     "desde": "2022-02-02",
-    "hasta": "2026-11-03",
+    "hasta": "2026-11-04",
     "fuente": "Google Business Profile vía Google Takeout",
-    "exportado": "2026-11-03"
+    "exportado": "2026-11-04"
   },
   "resenas": [
+    {
+      "fecha": "2026-11-04",
+      "cliente": "Diego Martinez",
+      "estrellas": 5,
+      "texto": "Todo muy ágil, seguro",
+      "respuesta": "Muchas gracias Diego por confiar. Un placer haberte ayudado. Estamos a disposición para lo que necesites. Saludos!",
+      "fechaRespuesta": "2026-11-04"
+    },
+    {
+      "fecha": "2026-11-04",
+      "cliente": "Jorge Martinez",
+      "estrellas": 5,
+      "texto": "Muy buena",
+      "respuesta": "Muchas gracias Jorge! Estamos en contacto. Saludos!",
+      "fechaRespuesta": "2026-11-04"
+    },
+    {
+      "fecha": "2026-11-04",
+      "cliente": "Yesica Cano",
+      "estrellas": 5,
+      "texto": "",
+      "respuesta": "Muchas gracias Yesica por tu calificación! Saludos!!",
+      "fechaRespuesta": "2026-11-04"
+    },
+    {
+      "fecha": "2026-11-03",
+      "cliente": "andrea mollo",
+      "estrellas": 5,
+      "texto": "Conforme con el tiempo en que obtuve mi informe. Muy buena atención. Recomiendo",
+      "respuesta": "Muchas gracias Andrea! Un placer haberte ayudado con el informe de dominio. Saludos!",
+      "fechaRespuesta": "2026-11-04"
+    },
+    {
+      "fecha": "2026-11-03",
+      "cliente": "Santiago Nonino",
+      "estrellas": 5,
+      "texto": "Gestor La Plata!!! 100% recomendable, Santi y Julieta resuelven todo!!!",
+      "respuesta": "Muchas gracias Santi por tus comentarios y calificación! Siempre es un placer tratar con gente como vos. Saludos!!",
+      "fechaRespuesta": "2026-11-04"
+    },
     {
       "fecha": "2026-11-03",
       "cliente": "SANDRA.K. LOPEZ",

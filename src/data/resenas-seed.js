@@ -5,24 +5,56 @@
 export const META_RESENAS = {
   "negocio": "Gestor La Plata",
   "matricula": "10001 PBA",
-  "total": 468,
+  "total": 473,
   "promedio": 4.98,
   "distribucion": {
     "1": 2,
     "2": 0,
     "3": 0,
     "4": 1,
-    "5": 465
+    "5": 470
   },
-  "conTexto": 424,
-  "respondidas": 463,
+  "conTexto": 428,
+  "respondidas": 468,
   "desde": "2022-02-02",
-  "hasta": "2026-11-03",
+  "hasta": "2026-11-04",
   "fuente": "Google Business Profile vía Google Takeout",
-  "exportado": "2026-11-03"
+  "exportado": "2026-11-04"
 };
 
 export const RESENAS_SEED = [
+  {
+    "fecha": "2026-11-04",
+    "cliente": "Diego Martinez",
+    "estrellas": 5,
+    "texto": "Todo muy ágil, seguro",
+    "respuesta": "Muchas gracias Diego por confiar. Un placer haberte ayudado. Estamos a disposición para lo que necesites. Saludos!",
+    "fechaRespuesta": "2026-11-04"
+  },
+  {
+    "fecha": "2026-11-04",
+    "cliente": "Jorge Martinez",
+    "estrellas": 5,
+    "texto": "Muy buena",
+    "respuesta": "Muchas gracias Jorge! Estamos en contacto. Saludos!",
+    "fechaRespuesta": "2026-11-04"
+  },
+  {
+    "fecha": "2026-11-03",
+    "cliente": "andrea mollo",
+    "estrellas": 5,
+    "texto": "Conforme con el tiempo en que obtuve mi informe. Muy buena atención. Recomiendo",
+    "respuesta": "Muchas gracias Andrea! Un placer haberte ayudado con el informe de dominio. Saludos!",
+    "fechaRespuesta": "2026-11-04"
+  },
+  {
+    "fecha": "2026-11-03",
+    "cliente": "Santiago Nonino",
+    "estrellas": 5,
+    "texto": "Gestor La Plata!!! 100% recomendable, Santi y Julieta resuelven todo!!!",
+    "respuesta": "Muchas gracias Santi por tus comentarios y calificación! Siempre es un placer tratar con gente como vos. Saludos!!",
+    "fechaRespuesta": "2026-11-04"
+  },
   {
     "fecha": "2026-11-03",
     "cliente": "SANDRA.K. LOPEZ",
@@ -134,37 +166,5 @@ export const RESENAS_SEED = [
     "texto": "Rápido y efectivo",
     "respuesta": "Muchas gracias Sergio!",
     "fechaRespuesta": "2026-10-21"
-  },
-  {
-    "fecha": "2026-10-20",
-    "cliente": "Fernanda Aguiar",
-    "estrellas": 5,
-    "texto": "Todo correcto y con rapidez. Muy recomendable",
-    "respuesta": "Muchas gracias por tu reseña y comentario, Fernanda! Estamos en contacto! Saludos!",
-    "fechaRespuesta": "2026-10-20"
-  },
-  {
-    "fecha": "2026-10-19",
-    "cliente": "Andres Jose Colavolpe",
-    "estrellas": 5,
-    "texto": "La atención de Santiago excelente! Y el servicio en general, tanto en tiempos como info. Recomiendo, Gracias!",
-    "respuesta": "Muchas gracias por tu reseña y comentario, Andrés! Un Placer ayudarte! Saludos!",
-    "fechaRespuesta": "2026-10-20"
-  },
-  {
-    "fecha": "2026-10-16",
-    "cliente": "Laureano Maier",
-    "estrellas": 5,
-    "texto": "Muy buena antencion..",
-    "respuesta": "Muchas gracias, Laureano! Un placer ayudarte!! Saludos!",
-    "fechaRespuesta": "2026-10-17"
-  },
-  {
-    "fecha": "2026-10-16",
-    "cliente": "ImDombo1",
-    "estrellas": 5,
-    "texto": "En mi caso necesitaba urgente un certificado del RENAPER en la Plata, y en línea encontre Gestor La Plata, acordamos los honorarios y al otro día tenía en mi poder el documento. Super confiable y una eficiencia poco conocida",
-    "respuesta": "Muchas gracias!! Un placer ayudarte. Saludos!!",
-    "fechaRespuesta": "2026-10-16"
   }
 ];
