@@ -5,24 +5,64 @@
 export const META_RESENAS = {
   "negocio": "Gestor La Plata",
   "matricula": "10001 PBA",
-  "total": 473,
+  "total": 478,
   "promedio": 4.98,
   "distribucion": {
     "1": 2,
     "2": 0,
     "3": 0,
     "4": 1,
-    "5": 470
+    "5": 475
   },
-  "conTexto": 428,
-  "respondidas": 468,
+  "conTexto": 433,
+  "respondidas": 473,
   "desde": "2022-02-02",
-  "hasta": "2026-11-04",
+  "hasta": "2026-11-12",
   "fuente": "Google Business Profile vía Google Takeout",
-  "exportado": "2026-11-04"
+  "exportado": "2026-11-13"
 };
 
 export const RESENAS_SEED = [
+  {
+    "fecha": "2026-11-12",
+    "cliente": "Jax X29",
+    "estrellas": 5,
+    "texto": "Realicé un trámite desde otra provincia y me solucionaron el problema de forma excelente y veloz.",
+    "respuesta": "Muchas gracias por tus comentarios y puntaje!! Estamos a disposición para lo que necesites. Saludos!!",
+    "fechaRespuesta": "2026-11-13"
+  },
+  {
+    "fecha": "2026-11-12",
+    "cliente": "Esteban Suppa",
+    "estrellas": 5,
+    "texto": "Espectacular el trabajo",
+    "respuesta": "Muchas gracias por confiar, Esteban! Saludos!!",
+    "fechaRespuesta": "2026-11-13"
+  },
+  {
+    "fecha": "2026-11-12",
+    "cliente": "Hector Latessa",
+    "estrellas": 5,
+    "texto": "Muy conforme con el servicio que prestan, con celeridad y eficiencia.",
+    "respuesta": "Muchas gracias por tu comentario y calificación Hector! Estamos en contacto. Saludos!",
+    "fechaRespuesta": "2026-11-13"
+  },
+  {
+    "fecha": "2026-11-10",
+    "cliente": "Alejandra Aguilera",
+    "estrellas": 5,
+    "texto": "Excelente atención Santiago, en el día resolvió mi trámite, súper recomendable 👍🏼",
+    "respuesta": "Muchas gracias por confiar Alejandra! Un saludo enorme!",
+    "fechaRespuesta": "2026-11-13"
+  },
+  {
+    "fecha": "2026-11-06",
+    "cliente": "Colin Ringleib",
+    "estrellas": 5,
+    "texto": "Much appreciated the process. Very responsive and very interesting documents were retrieved. Hopefully we will find more ways to understand our family heritage in Argentina.",
+    "respuesta": "Muchas gracias Colin por tomarte el tiempo de dejar una reseña. Un placer haberte ayudado. Saludos!",
+    "fechaRespuesta": "2026-11-13"
+  },
   {
     "fecha": "2026-11-04",
     "cliente": "Diego Martinez",
@@ -126,45 +166,5 @@ export const RESENAS_SEED = [
     "texto": "Excelente servicio y asesoramiento",
     "respuesta": "Muchas gracias Fanny!! Estamos a disposición para lo que necesites!",
     "fechaRespuesta": "2026-10-27"
-  },
-  {
-    "fecha": "2026-10-22",
-    "cliente": "Sabrina Zarate",
-    "estrellas": 5,
-    "texto": "Excelente profesional, responsable y de confianza. Muy buena atención, bien predispuesto y eficiente. Súper recomendable por su compromiso y seriedad. ¡Muchas gracias por todo!",
-    "respuesta": "Gracias Sabrina por tus comentarios y puntaje! Estamos en contacto para lo que necesites!",
-    "fechaRespuesta": "2026-10-22"
-  },
-  {
-    "fecha": "2026-10-22",
-    "cliente": "Mariana Hilda Álvarez",
-    "estrellas": 5,
-    "texto": "Excelente, rapidez eficiente, confiabilidad, muy buena atención, trámite se realizó rápido y a buen precio, muy buen trato cordial y muy profesional, recomendable 💯",
-    "respuesta": "Muchas gracias Mariana por tus comentarios! Un placer haberte ayudado. Estamos en contacto para lo que necesites. Saludos!",
-    "fechaRespuesta": "2026-10-22"
-  },
-  {
-    "fecha": "2026-10-21",
-    "cliente": "Emanuel Castro",
-    "estrellas": 5,
-    "texto": "Me ayudó en la duda que tenía y estuvo a disposición en todo momento. Lo recomiendo!",
-    "respuesta": "Muchas gracias Emanuel por tu comentario y calificación! Estamos en contacto para lo que necesites. Saludos!",
-    "fechaRespuesta": "2026-10-21"
-  },
-  {
-    "fecha": "2026-10-20",
-    "cliente": "Lisa Pereira",
-    "estrellas": 5,
-    "texto": "Excelente servicio, muy buena atención y predisposición. Santiago es una persona responsable, profesional y comprometida con su trabajo. Me brindó confianza y claridad durante todo el proceso, resolviendo mis dudas y ofreciendo una atención impecable. Lo recomiendo totalmente a quienes necesiten un gestor confiable. ¡Muchas gracias por todo!",
-    "respuesta": "Muchas gracias Lis por tu comentario y calificación. Ha sido un placer tratar con vos y ayudarte con esta cuestión! Estoy a disposición para lo que necesites! Saludos!",
-    "fechaRespuesta": "2026-10-21"
-  },
-  {
-    "fecha": "2026-10-20",
-    "cliente": "Sergio Scofano",
-    "estrellas": 5,
-    "texto": "Rápido y efectivo",
-    "respuesta": "Muchas gracias Sergio!",
-    "fechaRespuesta": "2026-10-21"
   }
 ];
