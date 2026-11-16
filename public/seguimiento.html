@@ -105,12 +105,12 @@
 
   <div class="card">
     <h1>Seguí tu trámite</h1>
-    <p class="sub">Ingresá el número de oblea que te dimos y tu apellido.</p>
+    <p class="sub">Ingresá el número que te dimos y tu apellido.</p>
 
     <form id="f" autocomplete="off">
       <div class="field">
-        <label for="oblea">N° de oblea <span class="hint">— como aparece en tu comprobante</span></label>
-        <input id="oblea" name="oblea" inputmode="numeric" placeholder="1912347/7" required>
+        <label for="oblea">N° de seguimiento <span class="hint">— los números de tu oblea, sin la barra</span></label>
+        <input id="oblea" name="oblea" inputmode="numeric" placeholder="19440205" required>
       </div>
       <div class="field">
         <label for="ape">Apellido <span class="hint">— del titular; si no entra, probá con el nombre</span></label>
@@ -260,7 +260,7 @@
   }
 
   function pintar(d){
-    $('rOb').textContent = 'Oblea N° ' + (d.oblea || '');
+    $('rOb').textContent = 'N° ' + (d.oblea || '');
     $('rTipo').textContent = d.tipo || 'Trámite registral';
     var pl = PILL[d.estado] || PILL.proceso;
     var pill = $('rPill');
@@ -360,7 +360,7 @@
       t.textContent = o.tipo || 'Trámite registral';
       var m = document.createElement('span');
       m.className = 'm';
-      m.textContent = 'Oblea ' + (o.oblea || '') + (o.fecha ? ' · ' + fechaLinda(o.fecha) : '');
+      m.textContent = 'N° ' + (o.oblea || '') + (o.fecha ? ' · ' + fechaLinda(o.fecha) : '');
       l1.appendChild(t); l1.appendChild(m);
       d.appendChild(l1);
       var pl = PILL[o.estado] || PILL.proceso;
@@ -398,7 +398,7 @@
     ev.preventDefault();
     limpiar();
     var ob = $('oblea').value, ap = $('ape').value;
-    if (!obleaKey(ob)){ error('Revisá el número de oblea: tiene que tener números, por ejemplo <b>1912347/7</b>.'); return; }
+    if (!obleaKey(ob)){ error('Revisá el número de seguimiento: son solo números, por ejemplo <b>19440205</b>.'); return; }
     if (!norm(ap)){ error('Escribí el apellido del titular de la solicitud.'); return; }
     var ks = claves(ob, ap);
     elBtn.disabled = true; elBtn.textContent = 'Buscando…';
@@ -406,7 +406,7 @@
     (function siguiente(i){
       if (i >= ks.length){
         elBtn.disabled = false; elBtn.textContent = 'Consultar';
-        error('No encontramos un trámite con esos datos.<br><br>Verificá que el <b>número de oblea</b> esté completo (incluido el número después de la barra) y que el <b>nombre</b> sea el del titular de la solicitud. Probá también con el nombre y el apellido completos. Si sigue sin aparecer, <a href="' + WA + '" target="_blank" rel="noopener">escribinos por WhatsApp</a> y lo vemos.');
+        error('No encontramos un trámite con esos datos.<br><br>Verificá que el <b>número</b> esté completo (son todos los dígitos de la oblea, incluido el último, el que va después de la barra) y que el <b>nombre</b> sea el del titular de la solicitud. Probá también con el nombre y el apellido completos. Si sigue sin aparecer, <a href="' + WA + '" target="_blank" rel="noopener">escribinos por WhatsApp</a> y lo vemos.');
         return;
       }
       buscarClave(ks[i]).then(function(d){
