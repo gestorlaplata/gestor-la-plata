@@ -285,17 +285,23 @@
       var tx = document.createElement('div');
       tx.className = 'ptxt';
       tx.textContent = PASOS[i];
-      if (n === paso && d.texto && d.texto !== PASOS[i]){
-        var nt = document.createElement('div');
-        nt.className = 'nota';
-        nt.textContent = d.texto;
-        tx.appendChild(nt);
-      }
-      if (i === 0 && d.fecha){
-        var nt2 = document.createElement('div');
-        nt2.className = 'nota';
-        nt2.textContent = fechaLinda(d.fecha);
-        tx.appendChild(nt2);
+      var nota = function(t){
+        if (!t) return;
+        var e = document.createElement('div');
+        e.className = 'nota';
+        e.textContent = t;
+        tx.appendChild(e);
+      };
+      if (n === paso && d.texto && d.texto !== PASOS[i]) nota(d.texto);
+      // La fecha en que el trámite llegó a este paso. El primero siempre la
+      // tiene (es cuando se pidió); los demás, desde que se empezó a anotar.
+      var fp = (d.fechas && d.fechas[n]) || (i === 0 ? d.fecha : '');
+      if (fp) nota(fechaLinda(fp));
+      // En el último paso, mientras no esté listo, va la fecha estimada.
+      if (n === PASOS.length && d.estado !== 'listo' && d.est && d.est.min){
+        nota(d.est.min === d.est.max
+          ? ('Estimado para el ' + fechaLinda(d.est.min))
+          : ('Estimado entre el ' + fechaLinda(d.est.min) + ' y el ' + fechaLinda(d.est.max)));
       }
       li.appendChild(mk); li.appendChild(tx);
       ol.appendChild(li);
@@ -423,10 +429,18 @@
 
   var wf = $('waFoot'); if (wf) wf.href = WA;
 
-  // El link que le mandamos por WhatsApp ya trae los dos datos puestos:
-  // /seguimiento?o=1912347/7&a=Stella. Si vienen los dos, se consulta solo
-  // y el cliente no tipea nada; si viene uno, se completa y queda esperando.
+  // El link que le mandamos por WhatsApp ya trae los dos datos puestos y se
+  // consulta solo: el cliente no tipea nada.
+  //
+  // Van despues de # y no de ?, porque el camino hasta aca tiene saltos
+  // (gestorlaplata.com -> www -> /seguimiento.html) y en cada salto un ? se
+  // puede perder. Lo que va despues del # ni siquiera viaja al servidor: lo
+  // arrastra el navegador intacto. Igual se aceptan los dos, por los links
+  // viejos que ya andan dando vueltas.
   var qs = new URLSearchParams(location.search);
+  if (!qs.get('o') && location.hash.length > 1){
+    qs = new URLSearchParams(location.hash.slice(1));
+  }
   var qo = qs.get('o'), qa = qs.get('a');
   if (qo) $('oblea').value = qo;
   if (qa) $('ape').value = qa;
