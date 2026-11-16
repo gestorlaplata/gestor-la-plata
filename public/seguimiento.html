@@ -114,7 +114,7 @@
       </div>
       <div class="field">
         <label for="ape">Apellido <span class="hint">— del titular; si no entra, probá con el nombre</span></label>
-        <input id="ape" name="ape" placeholder="Stella" required>
+        <input id="ape" name="ape" placeholder="Pérez" required>
       </div>
       <button class="go" id="btn" type="submit">Consultar</button>
     </form>
@@ -297,11 +297,19 @@
       // tiene (es cuando se pidió); los demás, desde que se empezó a anotar.
       var fp = (d.fechas && d.fechas[n]) || (i === 0 ? d.fecha : '');
       if (fp) nota(fechaLinda(fp));
-      // En el último paso, mientras no esté listo, va la fecha estimada.
-      if (n === PASOS.length && d.estado !== 'listo' && d.est && d.est.min){
-        nota(d.est.min === d.est.max
-          ? ('Estimado para el ' + fechaLinda(d.est.min))
-          : ('Estimado entre el ' + fechaLinda(d.est.min) + ' y el ' + fechaLinda(d.est.max)));
+      // En el último paso, mientras no esté listo, va el plazo contratado y
+      // la fecha estimada que sale de él.
+      if (n === PASOS.length && d.estado !== 'listo'){
+        if (d.plazo && d.plazo.max){
+          nota(d.plazo.mod + ' · ' + (d.plazo.min === d.plazo.max
+            ? (d.plazo.max + ' día' + (d.plazo.max === 1 ? '' : 's') + ' hábil' + (d.plazo.max === 1 ? '' : 'es'))
+            : (d.plazo.min + ' a ' + d.plazo.max + ' días hábiles')));
+        }
+        if (d.est && d.est.min){
+          nota(d.est.min === d.est.max
+            ? ('Estimado para el ' + fechaLinda(d.est.min))
+            : ('Estimado entre el ' + fechaLinda(d.est.min) + ' y el ' + fechaLinda(d.est.max)));
+        }
       }
       li.appendChild(mk); li.appendChild(tx);
       ol.appendChild(li);

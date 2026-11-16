@@ -1146,8 +1146,8 @@ export default function App() {
         <a href={GOOGLE_REVIEWS_URL} target="_blank" rel="noopener noreferrer" style={{ display: "inline-flex", alignItems: "center", color: "#F1F3F5", textDecoration: "none" }}>+478 reseñas</a>
         <span style={{ color: "rgba(255,255,255,0.5)" }}>·</span>
         <span style={{ display: "inline-flex", alignItems: "center" }}>Mat. 10001</span>
-        <span style={{ color: "rgba(255,255,255,0.5)" }}>·</span>
-        <a href="/seguimiento" target="_blank" rel="noopener noreferrer" style={{ display: "inline-flex", alignItems: "center", gap: 5, color: "#F4A261", textDecoration: "none", fontWeight: 600 }}><Search size={12} aria-hidden="true" /> Seguí tu trámite</a>
+        <span className="seg-top-sep" style={{ color: "rgba(255,255,255,0.5)" }}>·</span>
+        <a className="seg-top" href="/seguimiento" target="_blank" rel="noopener noreferrer" style={{ display: "inline-flex", alignItems: "center", gap: 5, color: "#F4A261", textDecoration: "none", fontWeight: 600, whiteSpace: "nowrap" }}><Search size={12} aria-hidden="true" /> Seguí tu trámite</a>
       </div>
     </div>
     <nav className="mainnav" style={{ position: "fixed", top: scrolled ? 0 : 32, left: 0, right: 0, zIndex: 999, background: "#1D3557", backdropFilter: "blur(12px)", borderBottom: "1px solid rgba(255,255,255,0.06)", transition: "top 0.25s ease"}}>
@@ -1181,6 +1181,9 @@ export default function App() {
   .glp-res-mas:hover{background:#1D3557!important;color:#fff!important}
   .navbtn:hover{color:#F4A261!important}
   @media(max-width:1023px){.dn{display:none!important}.mb{display:flex!important}}
+  /* El seguimiento no entra en la barrita de un celular: queda apretado y
+     parte el renglón. En pantalla chica vive en el menú, que es donde se busca. */
+  @media(max-width:640px){.seg-top,.seg-top-sep{display:none!important}}
   @media(min-width:1024px){.mm{display:none!important}}
   /* El menu mobile cuelga de una barra fija: si crece mas que la pantalla
      hay que poder scrollearlo, si no tapa todo y no se sale. */
