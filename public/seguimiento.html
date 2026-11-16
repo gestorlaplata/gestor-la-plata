@@ -74,6 +74,19 @@
     background:var(--green); color:#fff; text-decoration:none;
     font-family:'Poppins',sans-serif; font-weight:600; font-size:15px}
   a.dl:hover{background:#176B40}
+  a.dl.encurso{background:#fff; color:var(--navy); border:2px solid var(--navy); padding:11px}
+  a.dl.encurso:hover{background:var(--navy-50)}
+  .hist{margin-top:24px; padding-top:18px; border-top:1px solid var(--line)}
+  .hist h2{font-size:14px; letter-spacing:-.01em; margin-bottom:3px}
+  .hist .cap{font-size:13px; color:var(--slate); margin:0 0 14px}
+  .ot{border:1px solid var(--line); border-radius:11px; padding:13px 15px; margin-bottom:9px}
+  .ot .l1{display:flex; justify-content:space-between; align-items:baseline; gap:10px; flex-wrap:wrap}
+  .ot .t{font-family:'Poppins',sans-serif; font-weight:600; font-size:14.5px}
+  .ot .m{font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:12px; color:var(--slate)}
+  .ot .s{font-size:13px; color:var(--slate); margin-top:5px}
+  .ot a.mini{display:inline-block; margin-top:9px; font-size:13px; font-weight:600;
+    color:var(--navy); text-decoration:none; border-bottom:1.5px solid var(--orange); padding-bottom:1px}
+  .ot a.mini:hover{color:var(--green); border-color:var(--green)}
   .act{margin-top:18px; padding-top:14px; border-top:1px solid var(--line); font-size:12px; color:var(--slate)}
   .wa{display:block; text-align:center; margin-top:10px; padding:11px; border-radius:10px;
     background:var(--mint); color:var(--green); text-decoration:none; font-size:14px; font-weight:600;
@@ -116,6 +129,7 @@
       </div>
       <ol class="pasos" id="rPasos"></ol>
       <div id="rLink"></div>
+      <div class="hist" id="rHist"></div>
       <div class="act" id="rAct"></div>
     </div>
   </div>
@@ -289,13 +303,18 @@
 
     var cl = $('rLink');
     cl.innerHTML = '';
-    if (d.estado === 'listo' && d.link){
+    if (d.link){
+      // Es el mismo link del Registro todo el tiempo: mientras el tramite
+      // corre muestra el estado oficial, y cuando sale, el informe firmado.
+      // Lo unico que cambia es como se lo nombra. La direccion no se muestra.
       var a = document.createElement('a');
-      a.className = 'dl';
+      a.className = (d.estado === 'listo') ? 'dl' : 'dl encurso';
       a.href = d.link;
       a.target = '_blank';
       a.rel = 'noopener';
-      a.textContent = 'Ver / descargar el informe';
+      a.textContent = (d.estado === 'listo')
+        ? 'Ver / descargar el informe'
+        : 'Ver estado en el Registro';
       cl.appendChild(a);
     } else if (d.estado === 'listo'){
       var w = document.createElement('a');
@@ -309,8 +328,63 @@
       cl.appendChild(w2);
     }
 
+    pintarHistorial(d.otros);
+
     $('rAct').textContent = d.act ? ('Última actualización: ' + fechaLinda(d.act)) : '';
     elRes.className = 'show';
+  }
+
+
+  // Los otros tramites del mismo cliente. Vienen dentro del archivo del
+  // tramite consultado: con una sola oblea ve todo lo suyo, sin tener que
+  // buscar de a uno ni escribirnos para preguntar.
+  function pintarHistorial(otros){
+    var cont = $('rHist');
+    cont.innerHTML = '';
+    if (!otros || !otros.length) return;
+    var h2 = document.createElement('h2');
+    h2.textContent = 'Tus otros trámites';
+    var cap = document.createElement('p');
+    cap.className = 'cap';
+    cap.textContent = otros.length === 1
+      ? 'Tenés otro trámite con nosotros.'
+      : ('Tenés ' + otros.length + ' trámites más con nosotros.');
+    cont.appendChild(h2); cont.appendChild(cap);
+    otros.forEach(function(o){
+      var d = document.createElement('div');
+      d.className = 'ot';
+      var l1 = document.createElement('div');
+      l1.className = 'l1';
+      var t = document.createElement('span');
+      t.className = 't';
+      t.textContent = o.tipo || 'Trámite registral';
+      var m = document.createElement('span');
+      m.className = 'm';
+      m.textContent = 'Oblea ' + (o.oblea || '') + (o.fecha ? ' · ' + fechaLinda(o.fecha) : '');
+      l1.appendChild(t); l1.appendChild(m);
+      d.appendChild(l1);
+      var pl = PILL[o.estado] || PILL.proceso;
+      var s = document.createElement('div');
+      s.className = 's';
+      var chip = document.createElement('span');
+      chip.className = 'pill ' + pl[0];
+      chip.textContent = pl[1];
+      s.appendChild(chip);
+      if (o.texto){
+        var tx = document.createElement('span');
+        tx.textContent = '  ' + o.texto;
+        s.appendChild(tx);
+      }
+      d.appendChild(s);
+      if (o.link){
+        var a = document.createElement('a');
+        a.className = 'mini';
+        a.href = o.link; a.target = '_blank'; a.rel = 'noopener';
+        a.textContent = (o.estado === 'listo') ? 'Ver / descargar el informe →' : 'Ver estado en el Registro →';
+        d.appendChild(a);
+      }
+      cont.appendChild(d);
+    });
   }
 
   function buscarClave(k){
