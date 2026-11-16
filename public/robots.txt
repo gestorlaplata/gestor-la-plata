@@ -1,5 +1,8 @@
 User-agent: *
 Allow: /
+# El seguimiento de trámites es para los clientes, no para indexar
+Disallow: /seguimiento
+Disallow: /seguimiento/
 
 # IA search: habilitados para respuestas de búsqueda (no entrenamiento)
 User-agent: GPTBot

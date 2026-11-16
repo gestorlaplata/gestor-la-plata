@@ -1,0 +1,13 @@
+SEGUIMIENTO PUBLICO - Gestor La Plata
+Generado: 2026-11-16
+
+COMO SE SUBE (GitHub)
+1. En tu repositorio, borra la carpeta "seguimiento" que haya.
+2. Descomprimi este ZIP en la raiz del repo: te deja la carpeta "seguimiento".
+3. Commit + push. GitHub Pages lo publica en 1-2 minutos.
+
+La pagina seguimiento.html va una sola vez en la raiz: no hace falta
+volver a subirla en cada publicacion.
+
+Archivos de tramites en este ZIP: 954
+Links de informe incluidos: SI (solo en los finalizados)

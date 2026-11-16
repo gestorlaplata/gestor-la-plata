@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Seguí tu trámite · Gestor La Plata</title>
+<meta name="description" content="Consultá el estado de tu trámite en el Registro de la Propiedad con tu número de oblea y tu apellido.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#1D3557; --navy-700:#15263F; --navy-50:#F0F4F8;
+    --green:#1A7A4A; --mint:#E8F5EE; --mint-200:#D4ECDD;
+    --orange:#F4A261; --rose:#9F1239; --rose-50:#FFF1F2;
+    --slate:#64748B; --line:#E2E8F0;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0; background:var(--navy-50); color:var(--navy);
+    font-family:'Inter',system-ui,-apple-system,sans-serif; font-size:16px; line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{font-family:'Poppins',system-ui,sans-serif; margin:0}
+  .wrap{max-width:620px; margin:0 auto; padding:28px 18px 56px}
+  .brand{display:flex; align-items:center; gap:10px; margin-bottom:22px}
+  .brand .dot{width:34px; height:34px; border-radius:9px; background:var(--navy); color:#fff;
+    display:grid; place-items:center; font-family:'Poppins',sans-serif; font-weight:700; font-size:15px}
+  .brand b{font-family:'Poppins',sans-serif; font-size:15px; letter-spacing:-.01em}
+  .brand span{display:block; font-size:11.5px; color:var(--slate); font-weight:400; letter-spacing:.02em}
+  .card{background:#fff; border:1px solid var(--line); border-radius:14px; padding:22px;
+    box-shadow:0 1px 2px rgba(29,53,87,.06), 0 4px 16px rgba(29,53,87,.06)}
+  h1{font-size:22px; letter-spacing:-.02em; margin-bottom:6px}
+  .sub{color:var(--slate); font-size:14px; margin-bottom:20px}
+  label{display:block; font-size:12.5px; font-weight:600; color:var(--navy); margin-bottom:5px}
+  .hint{font-weight:400; color:var(--slate)}
+  input{width:100%; padding:11px 13px; border:1px solid var(--line); border-radius:9px;
+    font-size:16px; font-family:inherit; color:var(--navy); background:#fff; outline:none}
+  input:focus{border-color:var(--navy); box-shadow:0 0 0 3px rgba(29,53,87,.10)}
+  .field{margin-bottom:14px}
+  button.go{width:100%; padding:12px; border:0; border-radius:9px; background:var(--navy); color:#fff;
+    font-family:'Poppins',sans-serif; font-weight:600; font-size:15px; cursor:pointer; margin-top:4px}
+  button.go:hover{background:var(--navy-700)}
+  button.go:disabled{opacity:.6; cursor:default}
+  .msg{margin-top:16px; padding:13px 15px; border-radius:10px; font-size:14px; display:none}
+  .msg.show{display:block}
+  .msg.err{background:var(--rose-50); border:1px solid #FECDD3; color:var(--rose)}
+  #res{display:none; margin-top:20px}
+  #res.show{display:block}
+  .head{border-bottom:1px solid var(--line); padding-bottom:14px; margin-bottom:18px}
+  .ob{font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:13px; color:var(--slate)}
+  .tip{font-family:'Poppins',sans-serif; font-size:19px; margin:3px 0 8px}
+  .pill{display:inline-block; padding:4px 11px; border-radius:999px; font-size:12.5px; font-weight:600}
+  .pill.espera{background:var(--navy-50); color:var(--navy)}
+  .pill.demora{background:#FEF3C7; color:#92400E}
+  .pill.obs{background:var(--rose-50); color:var(--rose)}
+  .pill.listo{background:var(--mint); color:var(--green)}
+  ol.pasos{list-style:none; margin:0; padding:0}
+  ol.pasos li{display:flex; gap:12px; padding-bottom:16px; position:relative}
+  ol.pasos li:not(:last-child):before{content:''; position:absolute; left:11px; top:26px; bottom:0;
+    width:2px; background:var(--line)}
+  ol.pasos li.ok:not(:last-child):before{background:var(--mint-200)}
+  .mark{flex:0 0 24px; width:24px; height:24px; border-radius:50%; display:grid; place-items:center;
+    font-size:12px; font-weight:700; background:#fff; border:2px solid var(--line); color:#CBD5E1}
+  li.ok .mark{background:var(--green); border-color:var(--green); color:#fff}
+  li.now .mark{background:#fff; border-color:var(--orange); color:var(--orange)}
+  li.now.alerta .mark{border-color:var(--rose); color:var(--rose)}
+  .ptxt{font-size:14.5px; color:#94A3B8; padding-top:2px}
+  li.ok .ptxt{color:var(--navy)}
+  li.now .ptxt{color:var(--navy); font-weight:600}
+  .nota{font-size:13px; color:var(--slate); font-weight:400; margin-top:2px}
+  a.dl{display:block; text-align:center; margin-top:4px; padding:13px; border-radius:10px;
+    background:var(--green); color:#fff; text-decoration:none;
+    font-family:'Poppins',sans-serif; font-weight:600; font-size:15px}
+  a.dl:hover{background:#176B40}
+  .act{margin-top:18px; padding-top:14px; border-top:1px solid var(--line); font-size:12px; color:var(--slate)}
+  .wa{display:block; text-align:center; margin-top:10px; padding:11px; border-radius:10px;
+    background:var(--mint); color:var(--green); text-decoration:none; font-size:14px; font-weight:600;
+    border:1px solid var(--mint-200)}
+  footer{text-align:center; margin-top:22px; font-size:12px; color:var(--slate)}
+  footer a{color:var(--slate)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="brand">
+    <div class="dot">GLP</div>
+    <div><b>Gestor La Plata</b><span>Trámites registrales</span></div>
+  </div>
+
+  <div class="card">
+    <h1>Seguí tu trámite</h1>
+    <p class="sub">Ingresá el número de oblea que te dimos y tu apellido.</p>
+
+    <form id="f" autocomplete="off">
+      <div class="field">
+        <label for="oblea">N° de oblea <span class="hint">— como aparece en tu comprobante</span></label>
+        <input id="oblea" name="oblea" inputmode="numeric" placeholder="1912347/7" required>
+      </div>
+      <div class="field">
+        <label for="ape">Apellido <span class="hint">— del titular; si no entra, probá con el nombre</span></label>
+        <input id="ape" name="ape" placeholder="Stella" required>
+      </div>
+      <button class="go" id="btn" type="submit">Consultar</button>
+    </form>
+
+    <div class="msg err" id="err"></div>
+
+    <div id="res">
+      <div class="head">
+        <div class="ob" id="rOb"></div>
+        <div class="tip" id="rTipo"></div>
+        <span class="pill" id="rPill"></span>
+      </div>
+      <ol class="pasos" id="rPasos"></ol>
+      <div id="rLink"></div>
+      <div class="act" id="rAct"></div>
+    </div>
+  </div>
+
+  <footer>
+    ¿Dudas? <a href="https://wa.me/5492214886197" id="waFoot">Escribinos por WhatsApp</a>
+  </footer>
+</div>
+
+<script>
+(function(){
+  'use strict';
+
+  // ==================================================================
+  // CÓMO SE ENCUENTRA EL TRÁMITE
+  // ==================================================================
+  // No hay base de datos ni servidor: cada trámite publicado es un archivo
+  // chico dentro de /seguimiento/, cuyo nombre es una huella (SHA-256) de
+  // la oblea más el apellido. Con los dos datos correctos se arma el nombre
+  // y se pide ese archivo; sin ellos no hay nada que listar ni adivinar.
+  // Esta misma función corre igual dentro de la app de gestión, así los dos
+  // lados calculan exactamente el mismo nombre.
+  var SAL = 'glp-seg-1';
+  var CARPETA = '/seguimiento/';
+  var WA = 'https://wa.me/5492214886197';   // el mismo que usa la web
+
+  function sha256(txt){
+    function rr(v,a){ return (v>>>a)|(v<<(32-a)); }
+    var K=[0x428a2f98,0x71374491,0xb5c0fbcf,0xe9b5dba5,0x3956c25b,0x59f111f1,0x923f82a4,0xab1c5ed5,
+    0xd807aa98,0x12835b01,0x243185be,0x550c7dc3,0x72be5d74,0x80deb1fe,0x9bdc06a7,0xc19bf174,
+    0xe49b69c1,0xefbe4786,0x0fc19dc6,0x240ca1cc,0x2de92c6f,0x4a7484aa,0x5cb0a9dc,0x76f988da,
+    0x983e5152,0xa831c66d,0xb00327c8,0xbf597fc7,0xc6e00bf3,0xd5a79147,0x06ca6351,0x14292967,
+    0x27b70a85,0x2e1b2138,0x4d2c6dfc,0x53380d13,0x650a7354,0x766a0abb,0x81c2c92e,0x92722c85,
+    0xa2bfe8a1,0xa81a664b,0xc24b8b70,0xc76c51a3,0xd192e819,0xd6990624,0xf40e3585,0x106aa070,
+    0x19a4c116,0x1e376c08,0x2748774c,0x34b0bcb5,0x391c0cb3,0x4ed8aa4a,0x5b9cca4f,0x682e6ff3,
+    0x748f82ee,0x78a5636f,0x84c87814,0x8cc70208,0x90befffa,0xa4506ceb,0xbef9a3f7,0xc67178f2];
+    var H=[0x6a09e667,0xbb67ae85,0x3c6ef372,0xa54ff53a,0x510e527f,0x9b05688c,0x1f83d9ab,0x5be0cd19];
+    var s=String(txt), b=[], i, c;
+    for (i=0;i<s.length;i++){
+      c=s.charCodeAt(i);
+      if (c<0x80) b.push(c);
+      else if (c<0x800) b.push(0xc0|(c>>6),0x80|(c&63));
+      else b.push(0xe0|(c>>12),0x80|((c>>6)&63),0x80|(c&63));
+    }
+    var bl=b.length*8;
+    b.push(0x80); while (b.length%64!==56) b.push(0);
+    b.push(0,0,0,0,(bl>>>24)&255,(bl>>>16)&255,(bl>>>8)&255,bl&255);
+    var w=new Array(64), off,t,a,bb,cc,d,e,f,g,h,s0,s1,S0,S1,ch,mj,t1,t2;
+    for (off=0; off<b.length; off+=64){
+      for (t=0;t<16;t++) w[t]=((b[off+4*t]<<24)|(b[off+4*t+1]<<16)|(b[off+4*t+2]<<8)|b[off+4*t+3])|0;
+      for (t=16;t<64;t++){
+        s0=rr(w[t-15],7)^rr(w[t-15],18)^(w[t-15]>>>3);
+        s1=rr(w[t-2],17)^rr(w[t-2],19)^(w[t-2]>>>10);
+        w[t]=(((w[t-16]+s0)|0)+((w[t-7]+s1)|0))|0;
+      }
+      a=H[0];bb=H[1];cc=H[2];d=H[3];e=H[4];f=H[5];g=H[6];h=H[7];
+      for (t=0;t<64;t++){
+        S1=rr(e,6)^rr(e,11)^rr(e,25);
+        ch=(e&f)^((~e)&g);
+        t1=(((h+S1)|0)+((ch+((K[t]+w[t])|0))|0))|0;
+        S0=rr(a,2)^rr(a,13)^rr(a,22);
+        mj=(a&bb)^(a&cc)^(bb&cc);
+        t2=(S0+mj)|0;
+        h=g;g=f;f=e;e=(d+t1)|0;d=cc;cc=bb;bb=a;a=(t1+t2)|0;
+      }
+      H[0]=(H[0]+a)|0;H[1]=(H[1]+bb)|0;H[2]=(H[2]+cc)|0;H[3]=(H[3]+d)|0;
+      H[4]=(H[4]+e)|0;H[5]=(H[5]+f)|0;H[6]=(H[6]+g)|0;H[7]=(H[7]+h)|0;
+    }
+    var out='';
+    for (i=0;i<8;i++) out += ('00000000'+((H[i]>>>0).toString(16))).slice(-8);
+    return out;
+  }
+  function norm(s){
+    return String(s==null?'':s).normalize('NFD').replace(/[̀-ͯ]/g,'')
+      .toLowerCase().replace(/[^a-z0-9]/g,'');
+  }
+  function obleaKey(s){ return String(s==null?'':s).replace(/[^0-9]/g,''); }
+  // Se prueba lo que escribió entero, su primera palabra y su última: así
+  // entra tanto con el apellido solo como con el nombre completo, y tanto
+  // si en la ficha quedó "Caballero, Cesar" como "Cesar Caballero".
+  function cands(s){
+    s = String(s||'').trim();
+    var w = s.split(/\s+/).filter(function(x){ return x; });
+    var out = [];
+    var agregar = function(v){
+      var n = norm(v);
+      if (n && n.length >= 2 && out.indexOf(n) < 0) out.push(n);
+    };
+    agregar(s);
+    if (w.length){ agregar(w[0]); agregar(w[w.length-1]); }
+    return out;
+  }
+  function claves(oblea, ape){
+    var ok = obleaKey(oblea);
+    if (!ok) return [];
+    return cands(ape).map(function(a){ return sha256(SAL+'|'+ok+'|'+a).slice(0,40); });
+  }
+
+  var PASOS = [
+    'Solicitud recibida',
+    'Ingresada en el Registro de la Propiedad',
+    'Informe emitido por el Registro',
+    'Informe disponible'
+  ];
+  var PILL = {
+    recibido:  ['espera','Recibida'],
+    proceso:   ['espera','En proceso'],
+    demora:    ['demora','Demorada'],
+    salida:    ['espera','Casi listo'],
+    observado: ['obs','Necesita una corrección'],
+    listo:     ['listo','Listo']
+  };
+
+  var $ = function(id){ return document.getElementById(id); };
+  var elErr = $('err'), elRes = $('res'), elBtn = $('btn');
+
+  function error(txt){
+    elRes.className = '';
+    elErr.innerHTML = txt;
+    elErr.className = 'msg err show';
+  }
+  function limpiar(){ elErr.className = 'msg err'; elRes.className = ''; }
+
+  function fechaLinda(iso){
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(String(iso||''))) return '';
+    var p = iso.split('-');
+    return p[2] + '/' + p[1] + '/' + p[0];
+  }
+
+  function pintar(d){
+    $('rOb').textContent = 'Oblea N° ' + (d.oblea || '');
+    $('rTipo').textContent = d.tipo || 'Trámite registral';
+    var pl = PILL[d.estado] || PILL.proceso;
+    var pill = $('rPill');
+    pill.className = 'pill ' + pl[0];
+    pill.textContent = pl[1];
+
+    var paso = Number(d.paso) || 1;
+    var alerta = (d.estado === 'observado' || d.estado === 'demora');
+    var ol = $('rPasos');
+    ol.innerHTML = '';
+    for (var i = 0; i < PASOS.length; i++){
+      var n = i + 1;
+      var li = document.createElement('li');
+      var clase = (n < paso) ? 'ok' : (n === paso ? 'now' : '');
+      if (n === paso && alerta) clase += ' alerta';
+      // El último paso se marca cumplido solo cuando el informe está de verdad
+      if (n === paso && paso === PASOS.length && d.estado === 'listo') clase = 'ok';
+      li.className = clase;
+      var mk = document.createElement('div');
+      mk.className = 'mark';
+      mk.textContent = (clase.indexOf('ok') === 0) ? '✓' : (n === paso ? '•' : n);
+      var tx = document.createElement('div');
+      tx.className = 'ptxt';
+      tx.textContent = PASOS[i];
+      if (n === paso && d.texto && d.texto !== PASOS[i]){
+        var nt = document.createElement('div');
+        nt.className = 'nota';
+        nt.textContent = d.texto;
+        tx.appendChild(nt);
+      }
+      if (i === 0 && d.fecha){
+        var nt2 = document.createElement('div');
+        nt2.className = 'nota';
+        nt2.textContent = fechaLinda(d.fecha);
+        tx.appendChild(nt2);
+      }
+      li.appendChild(mk); li.appendChild(tx);
+      ol.appendChild(li);
+    }
+
+    var cl = $('rLink');
+    cl.innerHTML = '';
+    if (d.estado === 'listo' && d.link){
+      var a = document.createElement('a');
+      a.className = 'dl';
+      a.href = d.link;
+      a.target = '_blank';
+      a.rel = 'noopener';
+      a.textContent = 'Ver / descargar el informe';
+      cl.appendChild(a);
+    } else if (d.estado === 'listo'){
+      var w = document.createElement('a');
+      w.className = 'wa'; w.href = WA; w.target = '_blank'; w.rel = 'noopener';
+      w.textContent = 'Tu informe está listo — escribinos para que te lo pasemos';
+      cl.appendChild(w);
+    } else if (d.estado === 'observado'){
+      var w2 = document.createElement('a');
+      w2.className = 'wa'; w2.href = WA; w2.target = '_blank'; w2.rel = 'noopener';
+      w2.textContent = 'Consultar por WhatsApp';
+      cl.appendChild(w2);
+    }
+
+    $('rAct').textContent = d.act ? ('Última actualización: ' + fechaLinda(d.act)) : '';
+    elRes.className = 'show';
+  }
+
+  function buscarClave(k){
+    return fetch(CARPETA + k + '.json', { cache: 'no-store' }).then(function(r){
+      if (!r.ok) return null;
+      return r.json().catch(function(){ return null; });
+    }).catch(function(){ return null; });
+  }
+
+  $('f').addEventListener('submit', function(ev){
+    ev.preventDefault();
+    limpiar();
+    var ob = $('oblea').value, ap = $('ape').value;
+    if (!obleaKey(ob)){ error('Revisá el número de oblea: tiene que tener números, por ejemplo <b>1912347/7</b>.'); return; }
+    if (!norm(ap)){ error('Escribí el apellido del titular de la solicitud.'); return; }
+    var ks = claves(ob, ap);
+    elBtn.disabled = true; elBtn.textContent = 'Buscando…';
+
+    (function siguiente(i){
+      if (i >= ks.length){
+        elBtn.disabled = false; elBtn.textContent = 'Consultar';
+        error('No encontramos un trámite con esos datos.<br><br>Verificá que el <b>número de oblea</b> esté completo (incluido el número después de la barra) y que el <b>nombre</b> sea el del titular de la solicitud. Probá también con el nombre y el apellido completos. Si sigue sin aparecer, <a href="' + WA + '" target="_blank" rel="noopener">escribinos por WhatsApp</a> y lo vemos.');
+        return;
+      }
+      buscarClave(ks[i]).then(function(d){
+        if (d && typeof d === 'object'){
+          elBtn.disabled = false; elBtn.textContent = 'Consultar';
+          pintar(d);
+          elRes.scrollIntoView({ behavior:'smooth', block:'nearest' });
+        } else {
+          siguiente(i + 1);
+        }
+      });
+    })(0);
+  });
+
+  var wf = $('waFoot'); if (wf) wf.href = WA;
+
+  // El link que le mandamos por WhatsApp ya trae los dos datos puestos:
+  // /seguimiento?o=1912347/7&a=Stella. Si vienen los dos, se consulta solo
+  // y el cliente no tipea nada; si viene uno, se completa y queda esperando.
+  var qs = new URLSearchParams(location.search);
+  var qo = qs.get('o'), qa = qs.get('a');
+  if (qo) $('oblea').value = qo;
+  if (qa) $('ape').value = qa;
+  if (qo && qa){
+    if (typeof $('f').requestSubmit === 'function') $('f').requestSubmit();
+    else $('f').dispatchEvent(new Event('submit', { cancelable:true }));
+  }
+})();
+</script>
+</body>
+</html>

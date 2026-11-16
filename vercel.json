@@ -185,11 +185,16 @@
       "source": "/permisos-y-publicidad",
       "destination": "https://habilitacioneslaplata.com/publicidad-propaganda-la-plata",
       "permanent": true
+    },
+    {
+      "source": "/seguimiento",
+      "destination": "/seguimiento.html",
+      "permanent": false
     }
   ],
   "rewrites": [
     {
-      "source": "/((?!assets|favicon|android-chrome|apple-touch|sitemap|robots).*)",
+      "source": "/((?!assets|favicon|android-chrome|apple-touch|sitemap|robots|seguimiento).*)",
       "destination": "/index.html"
     }
   ]
