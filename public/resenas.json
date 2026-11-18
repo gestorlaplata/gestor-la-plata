@@ -2,23 +2,55 @@
   "meta": {
     "negocio": "Gestor La Plata",
     "matricula": "10001 PBA",
-    "total": 478,
+    "total": 482,
     "promedio": 4.98,
     "distribucion": {
-      "5": 475,
-      "4": 1,
-      "3": 0,
+      "1": 2,
       "2": 0,
-      "1": 2
+      "3": 0,
+      "4": 1,
+      "5": 479
     },
-    "conTexto": 433,
-    "respondidas": 473,
+    "conTexto": 437,
+    "respondidas": 477,
     "desde": "2022-02-02",
-    "hasta": "2026-11-12",
+    "hasta": "2026-11-18",
     "fuente": "Google Business Profile vía Google Takeout",
-    "exportado": "2026-11-13"
+    "exportado": "2026-11-18"
   },
   "resenas": [
+    {
+      "fecha": "2026-11-18",
+      "cliente": "Sabrina Basualdo",
+      "estrellas": 5,
+      "texto": "Excelente predisposición para asesorar, muy claro en las explicaciones y sin demoras. Recomendable al 100%",
+      "respuesta": "Muchas gracias Sabrina por tus comentarios y estrellas! Estamos a disposición para lo que necesites. Saludos!",
+      "fechaRespuesta": "2026-11-18"
+    },
+    {
+      "fecha": "2026-11-17",
+      "cliente": "M.",
+      "estrellas": 5,
+      "texto": "Excelente gestor. Realmente confiable. Encargué trámite en el archivo judicial de La Plata",
+      "respuesta": "Muchas gracias por tus comentarios y punteaje! Estamos a disposición para lo que necesites. Saludos!",
+      "fechaRespuesta": "2026-11-18"
+    },
+    {
+      "fecha": "2026-11-17",
+      "cliente": "Cesar Caballero",
+      "estrellas": 5,
+      "texto": "Muy buen trabajo, muy rápido",
+      "respuesta": "Muchas gracias, Cesar! Estamos en contacto. Saludos!",
+      "fechaRespuesta": "2026-11-18"
+    },
+    {
+      "fecha": "2026-11-13",
+      "cliente": "Roberto Zaidenberg",
+      "estrellas": 5,
+      "texto": "Muy claro en las explicaciones y un servicio excelente, además de la rapidez.",
+      "respuesta": "Roberto, muchas gracias por tus comentarios y puntaje. Estamos en contacto. Saludos!",
+      "fechaRespuesta": "2026-11-18"
+    },
     {
       "fecha": "2026-11-12",
       "cliente": "Jax X29",
