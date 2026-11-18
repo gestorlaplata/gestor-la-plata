@@ -195,9 +195,19 @@ async function consultar(url) {
     const entrada = sacar(filas, 'Número de Entrada');
     const fecha = sacar(filas, 'Fecha');
     const tipoActo = sacar(filas, 'Tipo de Acto');
+    // El Registro sí distingue cómo salió, y lo escribe en el mismo campo:
+    //   "CON SALIDA: 18/11/2026"      -> salió el informe
+    //   "CON DEVOLUCION: 18/11/2026"  -> lo devolvieron
+    // Los que se retiran en papel (comunicado, suspensión de plano) lo dicen
+    // con esas mismas palabras, así que no hace falta tratarlos distinto.
+    const texto = String(oficial || '').toUpperCase();
+    const devuelto = /DEVOLUCI|DEVUELT/.test(texto);
+    const salida = devuelto || /CON\s*SALIDA|FINALIZAD/.test(texto);
     return {
       ...r,
-      estado: 'proceso',
+      estado: salida ? 'salida' : 'proceso',
+      comoSalio: salida ? (devuelto ? 'DEVUELTO' : 'FINALIZADO') : '',
+      salidaFecha: salida ? ((/(\d{2}\/\d{2}\/\d{4})/.exec(oficial) || [])[1] || '') : '',
       oficial,                               // lo que dice el Registro, tal cual
       entrada,                               // el número de entrada: sirve para verificar
       fecha,
