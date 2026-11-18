@@ -1,5 +1,5 @@
 SEGUIMIENTO PUBLICO - Gestor La Plata
-Generado: 2026-11-17
+Generado: 2026-11-18
 
 COMO SE SUBE (GitHub)
 1. En tu repositorio, borra la carpeta "seguimiento" que haya.
@@ -9,5 +9,5 @@ COMO SE SUBE (GitHub)
 La pagina seguimiento.html va una sola vez en la raiz: no hace falta
 volver a subirla en cada publicacion.
 
-Archivos de tramites en este ZIP: 972
+Archivos de tramites en este ZIP: 984
 Links de informe incluidos: SI (solo en los finalizados)
