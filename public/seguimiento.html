@@ -87,6 +87,23 @@
   .ot a.mini{display:inline-block; margin-top:9px; font-size:13px; font-weight:600;
     color:var(--navy); text-decoration:none; border-bottom:1.5px solid var(--orange); padding-bottom:1px}
   .ot a.mini:hover{color:var(--green); border-color:var(--green)}
+  .exp{margin-top:18px; border:1px solid var(--line); border-radius:12px; overflow:hidden}
+  .exp h2{font-size:14px; margin:0; padding:13px 15px; background:var(--navy-50); border-bottom:1px solid var(--line)}
+  .exp .cuerpo{padding:15px}
+  .exp .nro{font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:13.5px;
+    background:var(--navy-50); border-radius:8px; padding:10px 12px; word-break:break-all; margin-bottom:14px}
+  .exp p.intro{font-size:13.5px; color:var(--slate); margin:0 0 12px}
+  .exp ol{margin:0 0 14px; padding-left:20px; font-size:13.5px}
+  .exp ol li{margin-bottom:9px}
+  .exp .campo{display:flex; align-items:center; gap:8px; margin-top:5px}
+  .exp .campo code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:13px;
+    background:#fff; border:1px solid var(--line); border-radius:6px; padding:4px 9px}
+  .exp button.cp{border:1px solid var(--line); background:#fff; border-radius:6px; padding:4px 9px;
+    font-family:inherit; font-size:12px; color:var(--slate); cursor:pointer}
+  .exp button.cp:hover{border-color:var(--navy); color:var(--navy)}
+  .exp a.ir{display:block; text-align:center; padding:12px; border-radius:10px; background:var(--navy);
+    color:#fff; text-decoration:none; font-family:'Poppins',sans-serif; font-weight:600; font-size:14.5px}
+  .exp a.ir:hover{background:var(--navy-700)}
   .act{margin-top:18px; padding-top:14px; border-top:1px solid var(--line); font-size:12px; color:var(--slate)}
   .wa{display:block; text-align:center; margin-top:10px; padding:11px; border-radius:10px;
     background:var(--mint); color:var(--green); text-decoration:none; font-size:14px; font-weight:600;
@@ -100,7 +117,7 @@
 
   <div class="brand">
     <div class="dot">GLP</div>
-    <div><b>Gestor La Plata</b><span>Trámites registrales</span></div>
+    <div><b>Gestor La Plata</b><span id="rubro">Trámites registrales</span></div>
   </div>
 
   <div class="card">
@@ -129,6 +146,7 @@
       </div>
       <ol class="pasos" id="rPasos"></ol>
       <div id="rLink"></div>
+      <div class="exp" id="rExp" style="display:none"></div>
       <div class="hist" id="rHist"></div>
       <div class="act" id="rAct"></div>
     </div>
@@ -228,12 +246,16 @@
     return cands(ape).map(function(a){ return sha256(SAL+'|'+ok+'|'+a).slice(0,40); });
   }
 
-  var PASOS = [
+  // Los pasos por defecto son los de RPBA. Cada archivo puede traer los
+  // suyos (una inscripción de divorcio recorre otro camino), y entonces
+  // mandan esos: la página no necesita saber qué categorías existen.
+  var PASOS_DEF = [
     'Solicitud recibida',
     'Ingresada en el Registro de la Propiedad',
     'Informe emitido por el Registro',
     'Informe disponible'
   ];
+  var PASOS = PASOS_DEF;
   var PILL = {
     recibido:  ['espera','Recibida'],
     proceso:   ['espera','En proceso'],
@@ -267,6 +289,11 @@
     pill.className = 'pill ' + pl[0];
     pill.textContent = pl[1];
 
+    PASOS = (d.pasos && d.pasos.length) ? d.pasos : PASOS_DEF;
+    // Bajo la marca va el rubro del trámite que se está consultando: una
+    // inscripción de divorcio no es un trámite registral.
+    var rb = $('rubro');
+    if (rb && d.rubro) rb.textContent = d.rubro;
     var paso = Number(d.paso) || 1;
     var alerta = (d.estado === 'observado' || d.estado === 'demora');
     var ol = $('rPasos');
@@ -301,9 +328,14 @@
       // la fecha estimada que sale de él.
       if (n === PASOS.length && d.estado !== 'listo'){
         if (d.plazo && d.plazo.max){
-          nota(d.plazo.mod + ' · ' + (d.plazo.min === d.plazo.max
+          var pz = d.plazo.mod + ' · ' + (d.plazo.min === d.plazo.max
             ? (d.plazo.max + ' día' + (d.plazo.max === 1 ? '' : 's') + ' hábil' + (d.plazo.max === 1 ? '' : 'es'))
-            : (d.plazo.min + ' a ' + d.plazo.max + ' días hábiles')));
+            : (d.plazo.min + ' a ' + d.plazo.max + ' días hábiles'));
+          // Algunos plazos no se cuentan desde que el cliente lo pide sino
+          // desde que el trámite entra al organismo: hay que aclararlo o la
+          // cuenta no le va a cerrar.
+          if (d.plazo.nota) pz += ' ' + d.plazo.nota;
+          nota(pz);
         }
         if (d.est && d.est.min){
           nota(d.est.min === d.est.max
@@ -342,6 +374,7 @@
       cl.appendChild(w2);
     }
 
+    pintarExpediente(d.exp);
     pintarHistorial(d.otros);
 
     $('rAct').textContent = d.act ? ('Última actualización: ' + fechaLinda(d.act)) : '';
@@ -352,6 +385,91 @@
   // Los otros tramites del mismo cliente. Vienen dentro del archivo del
   // tramite consultado: con una sola oblea ve todo lo suyo, sin tener que
   // buscar de a uno ni escribirnos para preguntar.
+
+  // El expediente de la Provincia. El sistema oficial no pide el número
+  // entero: pide el año, el número y la repartición en tres campos. Si le
+  // damos el número completo, el cliente lo pega donde no va y le dice que
+  // no existe. Así que se lo damos partido, con un botón para copiar cada
+  // pedazo y el paso a paso del formulario.
+  function copiar(txt, boton){
+    var listo = function(){
+      var antes = boton.textContent;
+      boton.textContent = 'Copiado';
+      setTimeout(function(){ boton.textContent = antes; }, 1400);
+    };
+    if (navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(txt).then(listo, function(){});
+      return;
+    }
+    var ta = document.createElement('textarea');
+    ta.value = txt; document.body.appendChild(ta); ta.select();
+    try { document.execCommand('copy'); listo(); } catch(e){}
+    document.body.removeChild(ta);
+  }
+  function campo(label, valor){
+    var d = document.createElement('div');
+    d.className = 'campo';
+    var c = document.createElement('code');
+    c.textContent = valor;
+    var b = document.createElement('button');
+    b.className = 'cp'; b.type = 'button'; b.textContent = 'Copiar';
+    b.onclick = function(){ copiar(valor, b); };
+    d.appendChild(c); d.appendChild(b);
+    var li = document.createElement('li');
+    li.appendChild(document.createTextNode(label));
+    li.appendChild(d);
+    return li;
+  }
+  function pintarExpediente(ex){
+    var cont = $('rExp');
+    cont.innerHTML = '';
+    if (!ex || !(ex.num || ex.full)){ cont.style.display = 'none'; return; }
+    cont.style.display = '';
+
+    var h2 = document.createElement('h2');
+    h2.textContent = 'Seguilo también en el sistema de la Provincia';
+    cont.appendChild(h2);
+
+    var cuerpo = document.createElement('div');
+    cuerpo.className = 'cuerpo';
+
+    var nro = document.createElement('div');
+    nro.className = 'nro';
+    nro.textContent = ex.full;
+    cuerpo.appendChild(nro);
+
+    var intro = document.createElement('p');
+    intro.className = 'intro';
+    intro.textContent = 'Tu trámite ya está ingresado y tiene número de expediente. Podés consultarlo vos mismo en el sistema oficial, completando estos datos:';
+    cuerpo.appendChild(intro);
+
+    if (ex.num){
+      var ol = document.createElement('ol');
+      var li1 = document.createElement('li');
+      li1.innerHTML = 'Tildá la opción <b>«Mi número de expediente empieza con EX»</b>.';
+      ol.appendChild(li1);
+      ol.appendChild(campo('Año de caratulación:', ex.anio));
+      ol.appendChild(campo('Número de expediente:', ex.num));
+      ol.appendChild(campo('Repartición:', ex.rep));
+      cuerpo.appendChild(ol);
+    } else {
+      // Sin los campos partidos, al menos el número entero y el camino.
+      var p2 = document.createElement('p');
+      p2.className = 'intro';
+      p2.textContent = 'Completá el formulario con los datos de tu expediente. Tildá la opción «Mi número de expediente empieza con EX».';
+      cuerpo.appendChild(p2);
+    }
+
+    var a = document.createElement('a');
+    a.className = 'ir';
+    a.href = ex.url || 'https://sistemas.gba.gov.ar/consulta/expedientes/busqueda1.php';
+    a.target = '_blank'; a.rel = 'noopener';
+    a.textContent = 'Ir a la consulta de expedientes';
+    cuerpo.appendChild(a);
+
+    cont.appendChild(cuerpo);
+  }
+
   function pintarHistorial(otros){
     var cont = $('rHist');
     cont.innerHTML = '';
