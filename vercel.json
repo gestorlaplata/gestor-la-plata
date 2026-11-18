@@ -207,7 +207,7 @@
   ],
   "rewrites": [
     {
-      "source": "/((?!assets|favicon|android-chrome|apple-touch|sitemap|robots|seguimiento).*)",
+      "source": "/((?!api|assets|favicon|android-chrome|apple-touch|sitemap|robots|seguimiento).*)",
       "destination": "/index.html"
     }
   ]
