@@ -113,6 +113,57 @@ function sacar(filas, etiqueta) {
   return porColumna(filas, etiqueta);
 }
 
+// El Registro entrega una cookie de sesión en el primer salto y espera
+// recibirla de vuelta en el siguiente. Si no la recibe, manda a su control
+// de acceso (josso_security_check) y no se ve nada. El seguidor automático
+// de redirecciones no guarda cookies, así que los saltos se hacen a mano.
+const UA =
+  'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 ' +
+  '(KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36';
+
+function sumarCookies(frasco, res) {
+  let crudas = [];
+  try {
+    crudas = typeof res.headers.getSetCookie === 'function' ? res.headers.getSetCookie() : [];
+  } catch { /* runtime sin soporte */ }
+  if (!crudas.length) {
+    const una = res.headers.get('set-cookie');
+    if (una) crudas = [una];
+  }
+  for (const c of crudas) {
+    const par = String(c).split(';')[0];
+    const i = par.indexOf('=');
+    if (i > 0) frasco.set(par.slice(0, i).trim(), par.slice(i + 1).trim());
+  }
+}
+
+async function seguir(url, signal) {
+  const frasco = new Map();
+  let actual = url;
+  for (let salto = 0; salto < 10; salto++) {
+    const cookies = [...frasco].map(([k, v]) => k + '=' + v).join('; ');
+    const res = await fetch(actual, {
+      redirect: 'manual',
+      signal,
+      headers: {
+        'User-Agent': UA,
+        Accept: 'text/html,application/xhtml+xml,*/*;q=0.8',
+        'Accept-Language': 'es-AR,es;q=0.9',
+        ...(cookies ? { Cookie: cookies } : {}),
+      },
+    });
+    sumarCookies(frasco, res);
+    const destino = res.headers.get('location');
+    if (res.status >= 300 && res.status < 400 && destino) {
+      actual = new URL(destino, actual).toString();
+      if (!hostPermitido(actual)) return { final: actual, cuerpo: '', fuera: true };
+      continue;
+    }
+    return { final: actual, cuerpo: await res.text(), fuera: false };
+  }
+  return { final: actual, cuerpo: '', fuera: false };
+}
+
 async function consultar(url) {
   const base = { url, estado: 'error', detalle: '', final: '' };
   if (!hostPermitido(url)) {
@@ -121,13 +172,13 @@ async function consultar(url) {
   const ac = new AbortController();
   const reloj = setTimeout(() => ac.abort(), TIMEOUT_MS);
   try {
-    const res = await fetch(url, {
-      redirect: 'follow',
-      signal: ac.signal,
-      headers: { 'User-Agent': 'GestorLaPlata/1.0 (consulta de estado de tramites propios)' },
-    });
-    const final = res.url || url;
+    const salto = await seguir(url, ac.signal);
+    const final = salto.final || url;
     const r = { ...base, final };
+    if (salto.fuera) return { ...r, detalle: 'El Registro redirigió fuera de su sitio.' };
+    if (/josso|security_check/i.test(final)) {
+      return { ...r, detalle: 'El Registro pidió iniciar sesión para ver este trámite.' };
+    }
 
     if (/\/backups\//i.test(final)) {
       return { ...r, estado: 'mantenimiento', detalle: 'El Registro está en mantenimiento.' };
@@ -139,7 +190,7 @@ async function consultar(url) {
       return { ...r, detalle: 'El Registro devolvió una pantalla que no reconozco.' };
     }
 
-    const filas = aFilas(await res.text());
+    const filas = aFilas(salto.cuerpo);
     const oficial = sacar(filas, 'Estado');
     const entrada = sacar(filas, 'Número de Entrada');
     const fecha = sacar(filas, 'Fecha');
