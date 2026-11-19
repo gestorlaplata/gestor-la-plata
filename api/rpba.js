@@ -19,7 +19,12 @@
 
 // Sólo se consulta al Registro. Sin esta lista, cualquiera podría usar la
 // función para pedir páginas a cualquier sitio desde tu dominio.
-const HOSTS = ['servicios.rpba.gob.ar', 'servicios.rpba.gov.ar'];
+const HOSTS = [
+  'servicios.rpba.gob.ar',   // Registro de la Propiedad
+  'servicios.rpba.gov.ar',
+  'www16.arba.gov.ar',       // ARBA / Catastro
+  'www.arba.gov.ar',
+];
 const MAX_LINKS = 80;      // tope por pedido
 const DE_A = 4;            // de a cuántos se consulta en paralelo
 const TIMEOUT_MS = 15000;
@@ -186,15 +191,18 @@ async function consultar(url) {
     if (/\/signature\/consulta/i.test(final)) {
       return { ...r, estado: 'salida', detalle: 'El documento ya está disponible.' };
     }
-    if (!/\/estadoTramite\//i.test(final)) {
+    const esArba = /arba\.gov\.ar/i.test(final);
+    if (!esArba && !/\/estadoTramite\//i.test(final)) {
       return { ...r, detalle: 'El Registro devolvió una pantalla que no reconozco.' };
     }
 
     const filas = aFilas(salto.cuerpo);
-    const oficial = sacar(filas, 'Estado');
-    const entrada = sacar(filas, 'Número de Entrada');
-    const fecha = sacar(filas, 'Fecha');
-    const tipoActo = sacar(filas, 'Tipo de Acto');
+    // Cada organismo rotula la misma cosa distinto: el Registro pone
+    // "Estado" y ARBA "Estado Trámite". Se prueban los dos.
+    const oficial = sacar(filas, 'Estado') || sacar(filas, 'Estado Trámite');
+    const entrada = sacar(filas, 'Número de Entrada') || sacar(filas, 'Oblea');
+    const fecha = sacar(filas, 'Fecha') || sacar(filas, 'Fecha Alta');
+    const tipoActo = sacar(filas, 'Tipo de Acto') || sacar(filas, 'Tipo Trámite');
     // El Registro sí distingue cómo salió, y lo escribe en el mismo campo:
     //   "CON SALIDA: 18/11/2026"      -> salió el informe
     //   "CON DEVOLUCION: 18/11/2026"  -> lo devolvieron
@@ -208,11 +216,14 @@ async function consultar(url) {
       estado: salida ? 'salida' : 'proceso',
       comoSalio: salida ? (devuelto ? 'DEVUELTO' : 'FINALIZADO') : '',
       salidaFecha: salida ? ((/(\d{2}\/\d{2}\/\d{4})/.exec(oficial) || [])[1] || '') : '',
+      organismo: esArba ? 'arba' : 'rpba',
       oficial,                               // lo que dice el Registro, tal cual
       entrada,                               // el número de entrada: sirve para verificar
       fecha,
       tipoActo,
-      detalle: oficial ? ('El Registro dice: ' + oficial) : 'Sigue en el Registro.',
+      detalle: oficial
+        ? ((esArba ? 'ARBA dice: ' : 'El Registro dice: ') + oficial)
+        : (esArba ? 'ARBA contestó pero no encontré el estado.' : 'Sigue en el Registro.'),
     };
   } catch (e) {
     const corte = e && e.name === 'AbortError';
