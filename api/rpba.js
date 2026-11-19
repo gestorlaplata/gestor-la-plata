@@ -245,6 +245,19 @@ async function consultar(url) {
       return { ...r, detalle: 'El Registro devolvió una pantalla que no reconozco.' };
     }
 
+    // El Registro contesta con pantalla propia cuando la oblea no existe
+    // para ese código de entrada. Sin esto se confunde con "sigue en
+    // proceso", que es lo contrario de lo que pasa: no hay nada que mirar.
+    if (/NO\s+EXISTEN\s+DOCUMENTOS/i.test(salto.cuerpo || '')) {
+      return {
+        ...r,
+        estado: 'vacio',
+        organismo: esArba ? 'arba' : 'rpba',
+        oficial: '',
+        detalle: 'No hay ningún documento con esos datos.',
+      };
+    }
+
     const filas = aFilas(salto.cuerpo);
     // Cada organismo rotula la misma cosa distinto: el Registro pone
     // "Estado" y ARBA "Estado Trámite". Se prueban los dos.
