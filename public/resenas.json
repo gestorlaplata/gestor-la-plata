@@ -2,23 +2,31 @@
   "meta": {
     "negocio": "Gestor La Plata",
     "matricula": "10001 PBA",
-    "total": 482,
+    "total": 483,
     "promedio": 4.98,
     "distribucion": {
       "1": 2,
       "2": 0,
       "3": 0,
       "4": 1,
-      "5": 479
+      "5": 480
     },
-    "conTexto": 437,
-    "respondidas": 477,
+    "conTexto": 438,
+    "respondidas": 478,
     "desde": "2022-02-02",
     "hasta": "2026-11-18",
     "fuente": "Google Business Profile vía Google Takeout",
     "exportado": "2026-11-18"
   },
   "resenas": [
+    {
+      "fecha": "2026-11-18",
+      "cliente": "Sabrinabea Melo",
+      "estrellas": 5,
+      "texto": "Muy buena su atención muy amable",
+      "respuesta": "Muchas gracias Sabrina por tu comentario y estrellas! Saludos!!",
+      "fechaRespuesta": "2026-11-18"
+    },
     {
       "fecha": "2026-11-18",
       "cliente": "Sabrina Basualdo",
