@@ -162,6 +162,35 @@ function sumarCookies(frasco, res) {
   }
 }
 
+// ARBA sirve sus páginas en windows-1252, una codificación vieja donde la
+// "á" es un solo byte. Si se la lee como UTF-8 —que es lo que hace res.text()
+// por defecto— ese byte no significa nada y la tilde se convierte en un
+// carácter roto: "Estado Trámite" queda ilegible y la etiqueta no se
+// encuentra nunca. Por eso hay que leer los bytes y decodificarlos con la
+// codificación que la propia página declara.
+async function leerCuerpo(res) {
+  const buf = Buffer.from(await res.arrayBuffer());
+  let cs = '';
+  const ct = res.headers.get('content-type') || '';
+  const mCt = /charset=["']?([\w-]+)/i.exec(ct);
+  if (mCt) cs = mCt[1];
+  if (!cs) {
+    // Si la cabecera no lo dice, lo dice el <meta> de las primeras líneas.
+    const asomo = buf.subarray(0, 4096).toString('latin1');
+    const mMeta = /charset=["']?([\w-]+)/i.exec(asomo);
+    if (mMeta) cs = mMeta[1];
+  }
+  cs = String(cs || 'utf-8').toLowerCase();
+  if (cs === 'utf-8' || cs === 'utf8') return buf.toString('utf8');
+  try {
+    return new TextDecoder(cs).decode(buf);
+  } catch {
+    // windows-1252 e ISO-8859-1 comparten las letras acentuadas, así que
+    // esto alcanza para el castellano aunque el runtime no conozca el nombre.
+    return buf.toString('latin1');
+  }
+}
+
 async function seguir(url, signal) {
   const frasco = new Map();
   let actual = url;
@@ -184,7 +213,7 @@ async function seguir(url, signal) {
       if (!hostPermitido(actual)) return { final: actual, cuerpo: '', fuera: true };
       continue;
     }
-    return { final: actual, cuerpo: await res.text(), fuera: false };
+    return { final: actual, cuerpo: await leerCuerpo(res), fuera: false };
   }
   return { final: actual, cuerpo: '', fuera: false };
 }
