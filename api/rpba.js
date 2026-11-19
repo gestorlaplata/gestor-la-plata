@@ -45,15 +45,29 @@ function hostPermitido(u) {
 //
 // Por eso no alcanza con una expresión regular sobre el texto plano: se
 // reconstruyen las filas y las celdas, y después se busca de las dos formas.
+// El servidor recibe el HTML crudo, y ahí las tildes vienen codificadas:
+// "Estado Tr&aacute;mite". En el navegador uno ve el texto ya decodificado y
+// no se da cuenta. Si no se decodifican, las etiquetas con tilde —que en
+// ARBA son justo las que importan— no se encuentran nunca.
+const ENTIDADES = {
+  nbsp: ' ', amp: '&', lt: '<', gt: '>', quot: '"', apos: "'",
+  aacute: '\u00e1', eacute: '\u00e9', iacute: '\u00ed', oacute: '\u00f3', uacute: '\u00fa',
+  Aacute: '\u00c1', Eacute: '\u00c9', Iacute: '\u00cd', Oacute: '\u00d3', Uacute: '\u00da',
+  ntilde: '\u00f1', Ntilde: '\u00d1', uuml: '\u00fc', Uuml: '\u00dc',
+  ordf: '\u00aa', ordm: '\u00ba', deg: '\u00b0', middot: '\u00b7',
+  ndash: '\u2013', mdash: '\u2014',
+};
 function entidades(s) {
   return String(s)
-    .replace(/&nbsp;/gi, ' ')
-    .replace(/&amp;/gi, '&')
-    .replace(/&lt;/gi, '<')
-    .replace(/&gt;/gi, '>')
-    .replace(/&quot;/gi, '"')
-    .replace(/&#(\d+);/g, (_, n) => String.fromCharCode(Number(n)));
+    .replace(/&([a-zA-Z]+);/g, (todo, nombre) => {
+      if (Object.prototype.hasOwnProperty.call(ENTIDADES, nombre)) return ENTIDADES[nombre];
+      const bajo = nombre.toLowerCase();
+      return Object.prototype.hasOwnProperty.call(ENTIDADES, bajo) ? ENTIDADES[bajo] : todo;
+    })
+    .replace(/&#(\d+);/g, (_, n) => String.fromCharCode(Number(n)))
+    .replace(/&#x([0-9a-f]+);/gi, (_, n) => String.fromCharCode(parseInt(n, 16)));
 }
+
 
 // Devuelve [[celda, celda, ...], ...] — una entrada por fila de tabla.
 function aFilas(html) {
@@ -72,8 +86,14 @@ function aFilas(html) {
     .filter((f) => f.some((c) => c));
 }
 
+// Al comparar etiquetas se ignoran tildes, mayúsculas, puntuación y los
+// espacios de más. Así "Estado Trámite", "ESTADO TRAMITE" y "Estado  Tramite"
+// son la misma etiqueta, y una entidad que se haya escapado no rompe nada.
 const pelar = (s) =>
-  String(s || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().trim();
+  String(s || '')
+    .replace(/&[a-zA-Z]+;/g, ' ')
+    .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
 
 // Forma 1: la etiqueta y el valor están en la misma fila, separados por una
 // celda con dos puntos. Ese ":" es lo que distingue una fila de dato de una
