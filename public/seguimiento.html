@@ -328,9 +328,9 @@
       // la fecha estimada que sale de él.
       if (n === PASOS.length && d.estado !== 'listo'){
         if (d.plazo && d.plazo.max){
-          var pz = d.plazo.mod + ' · ' + (d.plazo.min === d.plazo.max
+          var pz = d.plazo.txt || (d.plazo.mod + ' · ' + (d.plazo.min === d.plazo.max
             ? (d.plazo.max + ' día' + (d.plazo.max === 1 ? '' : 's') + ' hábil' + (d.plazo.max === 1 ? '' : 'es'))
-            : (d.plazo.min + ' a ' + d.plazo.max + ' días hábiles'));
+            : (d.plazo.min + ' a ' + d.plazo.max + ' días hábiles')));
           // Algunos plazos no se cuentan desde que el cliente lo pide sino
           // desde que el trámite entra al organismo: hay que aclararlo o la
           // cuenta no le va a cerrar.
