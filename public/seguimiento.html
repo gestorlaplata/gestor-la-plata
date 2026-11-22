@@ -79,6 +79,14 @@
   .hist{margin-top:24px; padding-top:18px; border-top:1px solid var(--line)}
   .hist h2{font-size:14px; letter-spacing:-.01em; margin-bottom:3px}
   .hist .cap{font-size:13px; color:var(--slate); margin:0 0 14px}
+  .arch h2{font-family:'Poppins',sans-serif; font-size:19px; margin:26px 0 3px}
+  .arch .cap{font-size:13px; color:var(--slate); margin:0 0 14px}
+  .arch .fil{display:flex; align-items:center; gap:12px; justify-content:space-between; border:1px solid var(--line); border-radius:11px; padding:11px 14px; margin-bottom:8px}
+  .arch .fnom{font-weight:600; font-size:14px; word-break:break-word}
+  .arch .fmet{font-size:12px; color:var(--slate); margin-top:2px}
+  .arch .fbaj{flex:none; background:var(--green); color:#fff; text-decoration:none; border-radius:9px; padding:9px 16px; font-size:13px; font-weight:600; font-family:'Poppins',sans-serif; white-space:nowrap}
+  .arch .fnue{display:inline-block; margin-left:8px; padding:2px 8px; border-radius:999px; font-size:11px; font-weight:700; background:#DCFCE7; color:#166534; vertical-align:middle}
+  @media(max-width:520px){.arch .fil{flex-direction:column; align-items:stretch} .arch .fbaj{text-align:center}}
   .ot{border:1px solid var(--line); border-radius:11px; padding:13px 15px; margin-bottom:9px}
   .ot .l1{display:flex; justify-content:space-between; align-items:baseline; gap:10px; flex-wrap:wrap}
   .ot .t{font-family:'Poppins',sans-serif; font-weight:600; font-size:14.5px}
@@ -146,6 +154,7 @@
       </div>
       <ol class="pasos" id="rPasos"></ol>
       <div id="rLink"></div>
+      <div class="arch" id="rArch"></div>
       <div class="exp" id="rExp" style="display:none"></div>
       <div class="hist" id="rHist"></div>
       <div class="act" id="rAct"></div>
@@ -388,6 +397,7 @@
       cl.appendChild(cp);
     }
 
+    pintarArchivos(d.carpeta);
     pintarExpediente(d.exp);
     pintarHistorial(d.otros);
 
@@ -482,6 +492,102 @@
     cuerpo.appendChild(a);
 
     cont.appendChild(cuerpo);
+  }
+
+  // La direccion del script de Drive. Se escribe al publicar, desde la app.
+  // Si Drive no esta conectado queda vacia y este bloque no hace nada.
+  var DRV_API = 'https://script.google.com/macros/s/AKfycbzD64B-CKZnwv6A6nimmo09eZ3j70WBmHAE1Y60AeUcvp58Av6ilhJefBr_GlZ45puBCg/exec';
+  var _archPedido = 0;
+
+  // Los archivos del cliente, leidos de su carpeta de Drive en el momento.
+  // No se publican en ningun archivo: la pagina los pide cuando hace falta.
+  // Por eso aparece lo que subas a mano, no solo lo que archiva la app.
+  //
+  // Va por JSONP y no por fetch porque Apps Script no manda las cabeceras
+  // que el navegador exige para leer una respuesta de otro dominio.
+  function pintarArchivos(urlCarpeta){
+    var cont = $('rArch');
+    cont.innerHTML = '';
+    if (!DRV_API || !urlCarpeta) return;
+    var m = String(urlCarpeta).match(/folders\/([A-Za-z0-9_-]+)/);
+    if (!m) return;
+
+    var mio = ++_archPedido;   // si consulta otro tramite, descartar el viejo
+    var cb = 'glpArch' + mio + '_' + Date.now();
+    var tag = document.createElement('script');
+    var listo = false;
+    var limpiar = function(){
+      try { delete window[cb]; } catch(e){ window[cb] = undefined; }
+      if (tag.parentNode) tag.parentNode.removeChild(tag);
+    };
+    window[cb] = function(r){
+      listo = true; limpiar();
+      if (mio !== _archPedido) return;
+      if (!r || !r.ok || !r.archivos || !r.archivos.length) return;
+      dibujarArchivos(cont, r.archivos);
+    };
+    // Si el script no contesta, no pasa nada: el resto de la pagina ya
+    // esta a la vista y el cliente igual tiene el boton de la carpeta.
+    tag.onerror = limpiar;
+    setTimeout(function(){ if (!listo) limpiar(); }, 20000);
+    tag.src = DRV_API + (DRV_API.indexOf('?') >= 0 ? '&' : '?')
+      + 'accion=listar&carpeta=' + encodeURIComponent(m[1])
+      + '&callback=' + cb;
+    document.head.appendChild(tag);
+  }
+
+  function pesoLindo(b){
+    b = Number(b) || 0;
+    if (b < 1024) return b + ' B';
+    if (b < 1048576) return Math.round(b / 1024) + ' KB';
+    return (b / 1048576).toFixed(1).replace('.', ',') + ' MB';
+  }
+
+  function dibujarArchivos(cont, lista){
+    var h2 = document.createElement('h2');
+    h2.textContent = 'Tus archivos';
+    var cap = document.createElement('p');
+    cap.className = 'cap';
+    cap.textContent = 'Todo lo de tus tr\u00e1mites, en un solo lugar. '
+      + 'Los guardamos ac\u00e1 para que no tengas que buscarlos en el chat.';
+    cont.appendChild(h2); cont.appendChild(cap);
+
+    // Lo mas nuevo se marca, pero solo si de verdad es de los ultimos dias:
+    // decirle «Nuevo» a un archivo de hace ocho meses es mentirle.
+    var hoy = new Date();
+    for (var i = 0; i < lista.length; i++){
+      var a = lista[i];
+      var fil = document.createElement('div');
+      fil.className = 'fil';
+
+      var izq = document.createElement('div');
+      var nom = document.createElement('div');
+      nom.className = 'fnom';
+      nom.textContent = a.nombre || 'Archivo';
+      if (i === 0 && a.fecha){
+        var dias = (hoy - new Date(a.fecha + 'T00:00:00')) / 86400000;
+        if (dias >= 0 && dias <= 14){
+          var nue = document.createElement('span');
+          nue.className = 'fnue';
+          nue.textContent = 'Nuevo';
+          nom.appendChild(nue);
+        }
+      }
+      var met = document.createElement('div');
+      met.className = 'fmet';
+      met.textContent = (a.fecha ? fechaLinda(a.fecha) : '')
+        + (a.bytes ? ((a.fecha ? ' \u00b7 ' : '') + pesoLindo(a.bytes)) : '');
+      izq.appendChild(nom); izq.appendChild(met);
+
+      var baj = document.createElement('a');
+      baj.className = 'fbaj';
+      baj.href = a.url;
+      baj.rel = 'noopener';
+      baj.textContent = 'Descargar';
+
+      fil.appendChild(izq); fil.appendChild(baj);
+      cont.appendChild(fil);
+    }
   }
 
   function pintarHistorial(otros){
