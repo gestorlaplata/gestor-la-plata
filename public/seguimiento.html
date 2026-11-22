@@ -79,12 +79,27 @@
   .hist{margin-top:24px; padding-top:18px; border-top:1px solid var(--line)}
   .hist h2{font-size:14px; letter-spacing:-.01em; margin-bottom:3px}
   .hist .cap{font-size:13px; color:var(--slate); margin:0 0 14px}
+  .deuda{border:1px solid #FDE68A; background:#FFFBEB; border-radius:12px; padding:15px 17px; margin-top:6px}
+  .deuda .dtit{font-family:'Poppins',sans-serif; font-weight:700; font-size:16px; color:#92400E; margin-bottom:4px}
+  .deuda .dtxt{font-size:13.5px; color:#92400E; line-height:1.5}
   .arch h2{font-family:'Poppins',sans-serif; font-size:19px; margin:26px 0 3px}
   .arch .cap{font-size:13px; color:var(--slate); margin:0 0 14px}
   .arch .fil{display:flex; align-items:center; gap:12px; justify-content:space-between; border:1px solid var(--line); border-radius:11px; padding:11px 14px; margin-bottom:8px}
   .arch .fnom{font-weight:600; font-size:14px; word-break:break-word}
   .arch .fmet{font-size:12px; color:var(--slate); margin-top:2px}
   .arch .fbaj{flex:none; background:var(--green); color:#fff; text-decoration:none; border-radius:9px; padding:9px 16px; font-size:13px; font-weight:600; font-family:'Poppins',sans-serif; white-space:nowrap}
+  .arch .fchk{flex:none; width:18px; height:18px; accent-color:var(--green); cursor:pointer}
+  .envio{border:1px solid var(--line); border-radius:12px; padding:15px 17px; margin-top:14px; background:#F8FAFC}
+  .envio .etit{font-family:'Poppins',sans-serif; font-weight:600; font-size:15px; margin-bottom:2px}
+  .envio .esub{font-size:12.5px; color:var(--slate); margin-bottom:11px}
+  .envio .efila{display:flex; gap:9px}
+  .envio .email{flex:1; min-width:0; border:1px solid var(--line); border-radius:9px; padding:11px 13px; font-size:14px; font-family:inherit}
+  .envio .ebtn{flex:none; background:var(--green); color:#fff; border:0; border-radius:9px; padding:11px 18px; font-size:14px; font-weight:600; font-family:'Poppins',sans-serif; cursor:pointer}
+  .envio .ebtn:disabled{opacity:.55; cursor:default}
+  .envio .eres{font-size:13px; margin-top:9px; line-height:1.5}
+  .envio .eres.bien{color:#166534}
+  .envio .eres.mal{color:#9F1239}
+  @media(max-width:520px){.envio .efila{flex-direction:column}}
   .arch .fnue{display:inline-block; margin-left:8px; padding:2px 8px; border-radius:999px; font-size:11px; font-weight:700; background:#DCFCE7; color:#166534; vertical-align:middle}
   @media(max-width:520px){.arch .fil{flex-direction:column; align-items:stretch} .arch .fbaj{text-align:center}}
   .ot{border:1px solid var(--line); border-radius:11px; padding:13px 15px; margin-bottom:9px}
@@ -358,6 +373,31 @@
 
     var cl = $('rLink');
     cl.innerHTML = '';
+    // Si quedó saldo, no hay informe ni carpeta que mostrar: no vienen
+    // en el archivo. Lo único que se muestra es que falta abonarlo y el
+    // botón de WhatsApp.
+    if (d.debe){
+      var av = document.createElement('div');
+      av.className = 'deuda';
+      var t1 = document.createElement('div');
+      t1.className = 'dtit';
+      t1.textContent = 'Tu trámite está listo';
+      var t2 = document.createElement('div');
+      t2.className = 'dtxt';
+      t2.textContent = 'Queda un saldo pendiente de $ ' + miles(d.debe)
+        + '. Apenas lo abonás te habilitamos la descarga acá mismo.';
+      av.appendChild(t1); av.appendChild(t2);
+      cl.appendChild(av);
+      var wd = document.createElement('a');
+      wd.className = 'wa'; wd.href = WA; wd.target = '_blank'; wd.rel = 'noopener';
+      wd.textContent = 'Escribinos para abonarlo';
+      cl.appendChild(wd);
+      pintarExpediente(d.exp);
+      pintarHistorial(d.otros);
+      $('rAct').textContent = d.act ? ('\u00daltima actualización: ' + fechaLinda(d.act)) : '';
+      elRes.className = 'show';
+      return;
+    }
     if (d.link){
       // Es el mismo link del Registro todo el tiempo: mientras el tramite
       // corre muestra el estado oficial, y cuando sale, el informe firmado.
@@ -512,6 +552,7 @@
     var m = String(urlCarpeta).match(/folders\/([A-Za-z0-9_-]+)/);
     if (!m) return;
 
+    _carpetaActual = m[1];
     var mio = ++_archPedido;   // si consulta otro tramite, descartar el viejo
     var cb = 'glpArch' + mio + '_' + Date.now();
     var tag = document.createElement('script');
@@ -534,6 +575,10 @@
       + 'accion=listar&carpeta=' + encodeURIComponent(m[1])
       + '&callback=' + cb;
     document.head.appendChild(tag);
+  }
+
+  function miles(n){
+    return String(Math.round(Number(n)||0)).replace(/\B(?=(\d{3})+(?!\d))/g, '.');
   }
 
   function pesoLindo(b){
@@ -560,7 +605,15 @@
       var fil = document.createElement('div');
       fil.className = 'fil';
 
+      var chk = document.createElement('input');
+      chk.type = 'checkbox';
+      chk.className = 'fchk';
+      chk.value = a.id || '';
+      chk.checked = true;
+      if (!a.id) chk.style.display = 'none';
+
       var izq = document.createElement('div');
+      izq.style.flex = '1';
       var nom = document.createElement('div');
       nom.className = 'fnom';
       nom.textContent = a.nombre || 'Archivo';
@@ -585,9 +638,108 @@
       baj.rel = 'noopener';
       baj.textContent = 'Descargar';
 
-      fil.appendChild(izq); fil.appendChild(baj);
+      fil.appendChild(chk); fil.appendChild(izq); fil.appendChild(baj);
       cont.appendChild(fil);
     }
+    dibujarEnvioMail(cont);
+  }
+
+  // El cliente marca lo que quiere y pone su mail: le llega todo adjunto,
+  // mandado desde la casilla de Gestor La Plata. Si contesta, contesta al
+  // mail de verdad.
+  var _carpetaActual = '';
+
+  function dibujarEnvioMail(cont){
+    if (!DRV_API || !_carpetaActual) return;
+    var caja = document.createElement('div');
+    caja.className = 'envio';
+
+    var tit = document.createElement('div');
+    tit.className = 'etit';
+    tit.textContent = '\u00bfPrefer\u00eds que te los mandemos por mail?';
+    caja.appendChild(tit);
+
+    var sub = document.createElement('div');
+    sub.className = 'esub';
+    sub.textContent = 'Te llegan los que dejaste marcados arriba.';
+    caja.appendChild(sub);
+
+    var fila = document.createElement('div');
+    fila.className = 'efila';
+    var inp = document.createElement('input');
+    inp.type = 'email';
+    inp.className = 'email';
+    inp.placeholder = 'tunombre@mail.com';
+    inp.autocomplete = 'email';
+    var bot = document.createElement('button');
+    bot.type = 'button';
+    bot.className = 'ebtn';
+    bot.textContent = 'Envi\u00e1rmelos';
+    fila.appendChild(inp); fila.appendChild(bot);
+    caja.appendChild(fila);
+
+    var res = document.createElement('div');
+    res.className = 'eres';
+    caja.appendChild(res);
+    cont.appendChild(caja);
+
+    bot.onclick = function(){
+      var mail = String(inp.value || '').trim();
+      if (!/^[^@\s]+@[^@\s.]+\.[^@\s]{2,}$/.test(mail)){
+        res.className = 'eres mal';
+        res.textContent = 'Revis\u00e1 el mail, parece que falta algo.';
+        inp.focus();
+        return;
+      }
+      var ids = [];
+      var cks = cont.querySelectorAll('.fchk');
+      for (var i = 0; i < cks.length; i++) if (cks[i].checked && cks[i].value) ids.push(cks[i].value);
+      if (!ids.length){
+        res.className = 'eres mal';
+        res.textContent = 'Marc\u00e1 al menos un archivo.';
+        return;
+      }
+
+      bot.disabled = true;
+      var antes = bot.textContent;
+      bot.textContent = 'Enviando\u2026';
+      res.className = 'eres';
+      res.textContent = '';
+
+      var cb = 'glpMail' + Date.now();
+      var tag = document.createElement('script');
+      var listo = false;
+      var limpiar = function(){
+        try { delete window[cb]; } catch(e){ window[cb] = undefined; }
+        if (tag.parentNode) tag.parentNode.removeChild(tag);
+        bot.disabled = false; bot.textContent = antes;
+      };
+      window[cb] = function(r){
+        listo = true; limpiar();
+        if (r && r.ok){
+          res.className = 'eres bien';
+          res.textContent = r.adjuntos
+            ? ('\u2713 Listo, te lo mandamos a ' + mail + '. Si no lo ves, mir\u00e1 en spam.')
+            : ('\u2713 Listo, te lo mandamos a ' + mail + '. Como pesaban bastante, el mail lleva los enlaces de descarga.');
+          bot.disabled = true;
+        } else {
+          res.className = 'eres mal';
+          res.textContent = (r && r.error) ? r.error : 'No se pudo enviar. Escribinos por WhatsApp.';
+        }
+      };
+      tag.onerror = function(){
+        limpiar();
+        res.className = 'eres mal';
+        res.textContent = 'No se pudo enviar. Escribinos por WhatsApp.';
+      };
+      setTimeout(function(){ if (!listo){ tag.onerror(); } }, 60000);
+      tag.src = DRV_API + (DRV_API.indexOf('?') >= 0 ? '&' : '?')
+        + 'accion=enviar&carpeta=' + encodeURIComponent(_carpetaActual)
+        + '&mail=' + encodeURIComponent(mail)
+        + '&ids=' + encodeURIComponent(ids.join(','))
+        + '&callback=' + cb;
+      document.head.appendChild(tag);
+    };
   }
 
   function pintarHistorial(otros){
