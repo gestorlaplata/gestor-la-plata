@@ -374,6 +374,20 @@
       cl.appendChild(w2);
     }
 
+    // La carpeta del cliente en Drive. Es el lugar donde le quedan los
+    // archivos de este tramite cuando el chat de WhatsApp se llena y no
+    // los encuentra mas. Va debajo del informe, no arriba: lo primero que
+    // el cliente quiere es su informe.
+    if (d.carpeta){
+      var cp = document.createElement('a');
+      cp.className = 'dl encurso';
+      cp.href = d.carpeta;
+      cp.target = '_blank';
+      cp.rel = 'noopener';
+      cp.textContent = 'Abrir tu carpeta con los archivos';
+      cl.appendChild(cp);
+    }
+
     pintarExpediente(d.exp);
     pintarHistorial(d.otros);
 
