@@ -1,5 +1,5 @@
 SEGUIMIENTO PUBLICO - Gestor La Plata
-Generado: 2026-11-22
+Generado: 2026-11-23
 
 COMO SE SUBE (GitHub)
 1. En tu repositorio, borra la carpeta "seguimiento" que haya.
