@@ -6,6 +6,16 @@
 <title>Seguí tu trámite · Gestor La Plata</title>
 <meta name="description" content="Consultá el estado de tu trámite en el Registro de la Propiedad con tu número de oblea y tu apellido.">
 <meta name="robots" content="noindex">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Gestor La Plata">
+<meta property="og:title" content="Seguí tu trámite">
+<meta property="og:description" content="Mirá en qué paso está y descargate tus documentos. Con tu número de seguimiento y tu apellido.">
+<meta property="og:url" content="https://gestorlaplata.com/seguimiento">
+<meta property="og:image" content="https://gestorlaplata.com/og-seguimiento.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="es_AR">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
@@ -87,6 +97,8 @@
   .arch .fil{display:flex; align-items:center; gap:12px; justify-content:space-between; border:1px solid var(--line); border-radius:11px; padding:11px 14px; margin-bottom:8px}
   .arch .fnom{font-weight:600; font-size:14px; word-break:break-word}
   .arch .fmet{font-size:12px; color:var(--slate); margin-top:2px}
+  .arch .facc{flex:none; display:flex; gap:7px; align-items:center}
+  .arch .fver{flex:none; border:1px solid var(--line); color:var(--navy); text-decoration:none; border-radius:9px; padding:8px 14px; font-size:13px; font-weight:600; font-family:'Poppins',sans-serif; white-space:nowrap}
   .arch .fbaj{flex:none; background:var(--green); color:#fff; text-decoration:none; border-radius:9px; padding:9px 16px; font-size:13px; font-weight:600; font-family:'Poppins',sans-serif; white-space:nowrap}
   .arch .fchk{flex:none; width:18px; height:18px; accent-color:var(--green); cursor:pointer}
   .envio{border:1px solid var(--line); border-radius:12px; padding:15px 17px; margin-top:14px; background:#F8FAFC}
@@ -101,7 +113,7 @@
   .envio .eres.mal{color:#9F1239}
   @media(max-width:520px){.envio .efila{flex-direction:column}}
   .arch .fnue{display:inline-block; margin-left:8px; padding:2px 8px; border-radius:999px; font-size:11px; font-weight:700; background:#DCFCE7; color:#166534; vertical-align:middle}
-  @media(max-width:520px){.arch .fil{flex-direction:column; align-items:stretch} .arch .fbaj{text-align:center}}
+  @media(max-width:520px){.arch .fil{flex-direction:column; align-items:stretch} .arch .facc{width:100%} .arch .fver,.arch .fbaj{flex:1; text-align:center} .arch .fbaj{text-align:center}}
   .ot{border:1px solid var(--line); border-radius:11px; padding:13px 15px; margin-bottom:9px}
   .ot .l1{display:flex; justify-content:space-between; align-items:baseline; gap:10px; flex-wrap:wrap}
   .ot .t{font-family:'Poppins',sans-serif; font-weight:600; font-size:14.5px}
@@ -632,13 +644,28 @@
         + (a.bytes ? ((a.fecha ? ' \u00b7 ' : '') + pesoLindo(a.bytes)) : '');
       izq.appendChild(nom); izq.appendChild(met);
 
+      // Dos botones: ver y bajar. Mucha gente quiere mirarlo antes de
+      // llenarse la carpeta de Descargas, y en el celular abrir el PDF
+      // bajado es más trabajo que mirarlo en el momento.
+      var acc = document.createElement('div');
+      acc.className = 'facc';
+      if (a.id){
+        var ver = document.createElement('a');
+        ver.className = 'fver';
+        ver.href = 'https://drive.google.com/file/d/' + a.id + '/view';
+        ver.target = '_blank';
+        ver.rel = 'noopener';
+        ver.textContent = 'Ver';
+        acc.appendChild(ver);
+      }
       var baj = document.createElement('a');
       baj.className = 'fbaj';
       baj.href = a.url;
       baj.rel = 'noopener';
       baj.textContent = 'Descargar';
+      acc.appendChild(baj);
 
-      fil.appendChild(chk); fil.appendChild(izq); fil.appendChild(baj);
+      fil.appendChild(chk); fil.appendChild(izq); fil.appendChild(acc);
       cont.appendChild(fil);
     }
     dibujarEnvioMail(cont);
