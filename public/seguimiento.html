@@ -423,7 +423,11 @@
         ? 'Ver / descargar el informe'
         : 'Ver estado en el Registro';
       cl.appendChild(a);
-    } else if (d.estado === 'listo'){
+    } else if (d.estado === 'listo' && !d.carpeta){
+      // Sin link del Registro y sin carpeta no hay de dónde bajarlo:
+      // ahí sí corresponde que escriba. Si tiene carpeta, más abajo están
+      // los archivos con su botón de descarga, y este cartel se
+      // contradecía con lo que el cliente veía tres centímetros más abajo.
       var w = document.createElement('a');
       w.className = 'wa'; w.href = WA; w.target = '_blank'; w.rel = 'noopener';
       w.textContent = 'Tu informe está listo — escribinos para que te lo pasemos';
