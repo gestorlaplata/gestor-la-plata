@@ -89,6 +89,10 @@
   .hist{margin-top:24px; padding-top:18px; border-top:1px solid var(--line)}
   .hist h2{font-size:14px; letter-spacing:-.01em; margin-bottom:3px}
   .hist .cap{font-size:13px; color:var(--slate); margin:0 0 14px}
+  .resena{border:1px solid var(--mint-200); background:var(--mint); border-radius:12px; padding:16px 18px; margin-top:16px; text-align:center}
+  .resena .rtit{font-family:'Poppins',sans-serif; font-weight:700; font-size:16px; color:var(--navy); margin-bottom:4px}
+  .resena .rtxt{font-size:13.5px; color:var(--slate); margin-bottom:12px; line-height:1.5}
+  .resena .rbtn{display:inline-block; background:var(--navy); color:#fff; text-decoration:none; border-radius:10px; padding:11px 20px; font-size:14px; font-weight:600; font-family:'Poppins',sans-serif}
   .deuda{border:1px solid #FDE68A; background:#FFFBEB; border-radius:12px; padding:15px 17px; margin-top:6px}
   .deuda .dtit{font-family:'Poppins',sans-serif; font-weight:700; font-size:16px; color:#92400E; margin-bottom:4px}
   .deuda .dtxt{font-size:13.5px; color:#92400E; line-height:1.5}
@@ -182,6 +186,7 @@
       <ol class="pasos" id="rPasos"></ol>
       <div id="rLink"></div>
       <div class="arch" id="rArch"></div>
+      <div id="rResena"></div>
       <div class="exp" id="rExp" style="display:none"></div>
       <div class="hist" id="rHist"></div>
       <div class="act" id="rAct"></div>
@@ -454,6 +459,7 @@
     }
 
     pintarArchivos(d.carpeta);
+    pintarResena(d);
     pintarExpediente(d.exp);
     pintarHistorial(d.otros);
 
@@ -771,6 +777,36 @@
         + '&callback=' + cb;
       document.head.appendChild(tag);
     };
+  }
+
+  // El único momento en que el cliente está contento y mirando la
+  // marca es éste: acaba de bajar lo que pagó. Pedirle la reseña por
+  // WhatsApp tres días después es pedirla cuando ya se olvidó.
+  //
+  // Sale sólo cuando el trámite está listo. A alguien que todavía
+  // está esperando no se le pide que opine.
+  var REVIEW_URL = 'gestorlaplata.com/review';
+  function pintarResena(d){
+    var cont = $('rResena');
+    if (!cont) return;
+    cont.innerHTML = '';
+    if (!REVIEW_URL || !d || d.estado !== 'listo' || d.debe) return;
+    var caja = document.createElement('div');
+    caja.className = 'resena';
+    var t = document.createElement('div');
+    t.className = 'rtit';
+    t.textContent = '¿Cómo te fue con nosotros?';
+    var p = document.createElement('div');
+    p.className = 'rtxt';
+    p.textContent = 'Si te sirvió, contáselo a alguien más. Nos ayuda mucho y te lleva un minuto.';
+    var a = document.createElement('a');
+    a.className = 'rbtn';
+    a.href = REVIEW_URL;
+    a.target = '_blank';
+    a.rel = 'noopener';
+    a.textContent = '⭐ Dejar mi opinión en Google';
+    caja.appendChild(t); caja.appendChild(p); caja.appendChild(a);
+    cont.appendChild(caja);
   }
 
   function pintarHistorial(otros){
