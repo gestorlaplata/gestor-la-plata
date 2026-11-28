@@ -5,24 +5,120 @@
 export const META_RESENAS = {
   "negocio": "Gestor La Plata",
   "matricula": "10001 PBA",
-  "total": 478,
+  "total": 492,
   "promedio": 4.98,
   "distribucion": {
     "1": 2,
     "2": 0,
     "3": 0,
     "4": 1,
-    "5": 475
+    "5": 489
   },
-  "conTexto": 433,
-  "respondidas": 473,
+  "conTexto": 445,
+  "respondidas": 487,
   "desde": "2022-02-02",
-  "hasta": "2026-11-12",
+  "hasta": "2026-11-27",
   "fuente": "Google Business Profile vía Google Takeout",
-  "exportado": "2026-11-13"
+  "exportado": "2026-11-27"
 };
 
 export const RESENAS_SEED = [
+  {
+    "fecha": "2026-11-27",
+    "cliente": "Ricardo Murillo",
+    "estrellas": 5,
+    "texto": "Solicitamos un certificado de nacimiento acaecido hace más de 100 años desde España. Aunque nos separaban 10.000 Kms de distancia, la comunicación fue super fluida y la gestión de Santiago fue excelente. Repetiríamos sin duda.",
+    "respuesta": "Ricardo, muchas gracias por tus comentarios y puntaje. Ha sido un gusto ayudarte. Estamos en contacto para lo que necesites. Saludos!!",
+    "fechaRespuesta": "2026-11-27"
+  },
+  {
+    "fecha": "2026-11-27",
+    "cliente": "lautaro diaz",
+    "estrellas": 5,
+    "texto": "Excelente",
+    "respuesta": "Muchas gracias Lautaro! Estamos en contacto. Saludos!",
+    "fechaRespuesta": "2026-11-27"
+  },
+  {
+    "fecha": "2026-11-26",
+    "cliente": "Alfredo Ihasz - SE Y MAT",
+    "estrellas": 5,
+    "texto": "Excelente atención. Contesta hasta en los feriados. En mi caso , consiguió un certificado del año 1964 que ningún ente oficial lo puso encontrar. Recomendable 100 x 100 Servicios El servicio no está en la lista",
+    "respuesta": "Alfredo, muchas gracias por tus comentarios y estrellas. Un gusto haberte ayudado! Estamos en contacto!",
+    "fechaRespuesta": "2026-11-27"
+  },
+  {
+    "fecha": "2026-11-25",
+    "cliente": "alejandro gonsales",
+    "estrellas": 5,
+    "texto": "La verdad es q me cumplió con todo lo pedido y una exelente atención, muy recomendable.",
+    "respuesta": "Gracias Alejandro! Ha sido un placer ayudarte. Estamos a disposición para lo que necesites! Saludos!",
+    "fechaRespuesta": "2026-11-27"
+  },
+  {
+    "fecha": "2026-11-24",
+    "cliente": "Pablo Martin",
+    "estrellas": 5,
+    "texto": "Impecable 100% recomendable el servicio!",
+    "respuesta": "Muchas gracias por tu comentario y estrellas!! Estamos en contacto para lo que necesites. Saludos!!",
+    "fechaRespuesta": "2026-11-27"
+  },
+  {
+    "fecha": "2026-11-24",
+    "cliente": "Mia Irmici",
+    "estrellas": 5,
+    "texto": "Excelente atención,muy buen trato. Muchas gracias!!",
+    "respuesta": "Muchas gracias! Un placer haber tratado con vos. Estamos en contacto! Saludos!",
+    "fechaRespuesta": "2026-11-27"
+  },
+  {
+    "fecha": "2026-11-19",
+    "cliente": "Ruben Ruben",
+    "estrellas": 5,
+    "texto": "Atención de primera, rápido y muy amables, para recomendar",
+    "respuesta": "Muchas gracias, Rubén! Un placer haberte ayudado con la gestión! Estamos en contacto!",
+    "fechaRespuesta": "2026-11-19"
+  },
+  {
+    "fecha": "2026-11-18",
+    "cliente": "Sabrinabea Melo",
+    "estrellas": 5,
+    "texto": "Muy buena su atención muy amable",
+    "respuesta": "Muchas gracias Sabrina por tu comentario y estrellas! Saludos!!",
+    "fechaRespuesta": "2026-11-18"
+  },
+  {
+    "fecha": "2026-11-18",
+    "cliente": "Sabrina Basualdo",
+    "estrellas": 5,
+    "texto": "Excelente predisposición para asesorar, muy claro en las explicaciones y sin demoras. Recomendable al 100%",
+    "respuesta": "Muchas gracias Sabrina por tus comentarios y estrellas! Estamos a disposición para lo que necesites. Saludos!",
+    "fechaRespuesta": "2026-11-18"
+  },
+  {
+    "fecha": "2026-11-17",
+    "cliente": "M.",
+    "estrellas": 5,
+    "texto": "Excelente gestor. Realmente confiable. Encargué trámite en el archivo judicial de La Plata",
+    "respuesta": "Muchas gracias por tus comentarios y punteaje! Estamos a disposición para lo que necesites. Saludos!",
+    "fechaRespuesta": "2026-11-18"
+  },
+  {
+    "fecha": "2026-11-17",
+    "cliente": "Cesar Caballero",
+    "estrellas": 5,
+    "texto": "Muy buen trabajo, muy rápido",
+    "respuesta": "Muchas gracias, Cesar! Estamos en contacto. Saludos!",
+    "fechaRespuesta": "2026-11-18"
+  },
+  {
+    "fecha": "2026-11-13",
+    "cliente": "Roberto Zaidenberg",
+    "estrellas": 5,
+    "texto": "Muy claro en las explicaciones y un servicio excelente, además de la rapidez.",
+    "respuesta": "Roberto, muchas gracias por tus comentarios y puntaje. Estamos en contacto. Saludos!",
+    "fechaRespuesta": "2026-11-18"
+  },
   {
     "fecha": "2026-11-12",
     "cliente": "Jax X29",
@@ -70,101 +166,5 @@ export const RESENAS_SEED = [
     "texto": "Todo muy ágil, seguro",
     "respuesta": "Muchas gracias Diego por confiar. Un placer haberte ayudado. Estamos a disposición para lo que necesites. Saludos!",
     "fechaRespuesta": "2026-11-04"
-  },
-  {
-    "fecha": "2026-11-04",
-    "cliente": "Jorge Martinez",
-    "estrellas": 5,
-    "texto": "Muy buena",
-    "respuesta": "Muchas gracias Jorge! Estamos en contacto. Saludos!",
-    "fechaRespuesta": "2026-11-04"
-  },
-  {
-    "fecha": "2026-11-03",
-    "cliente": "andrea mollo",
-    "estrellas": 5,
-    "texto": "Conforme con el tiempo en que obtuve mi informe. Muy buena atención. Recomiendo",
-    "respuesta": "Muchas gracias Andrea! Un placer haberte ayudado con el informe de dominio. Saludos!",
-    "fechaRespuesta": "2026-11-04"
-  },
-  {
-    "fecha": "2026-11-03",
-    "cliente": "Santiago Nonino",
-    "estrellas": 5,
-    "texto": "Gestor La Plata!!! 100% recomendable, Santi y Julieta resuelven todo!!!",
-    "respuesta": "Muchas gracias Santi por tus comentarios y calificación! Siempre es un placer tratar con gente como vos. Saludos!!",
-    "fechaRespuesta": "2026-11-04"
-  },
-  {
-    "fecha": "2026-11-03",
-    "cliente": "SANDRA.K. LOPEZ",
-    "estrellas": 5,
-    "texto": "Excelente profesional comprometido con su trabajo",
-    "respuesta": "Muchas gracias!! Estamos en contacto para lo que necesites!",
-    "fechaRespuesta": "2026-11-03"
-  },
-  {
-    "fecha": "2026-11-03",
-    "cliente": "Federico Cubela",
-    "estrellas": 5,
-    "texto": "Excelente servicio, en menos de una semana tuve el informe solicitado. Recomiendo el servicio!",
-    "respuesta": "Muchas gracias Fede por tus comentarios y puntaje! Estamos en contacto!",
-    "fechaRespuesta": "2026-11-03"
-  },
-  {
-    "fecha": "2026-11-03",
-    "cliente": "Karina Montaña",
-    "estrellas": 5,
-    "texto": "El gestor Santiago Ippolito fue muy profesional y dispuesto a la resolución de mi solicitud; responde preguntas y trabaja de manera ágil.\nRecomiendo!",
-    "respuesta": "Muchas gracias por tomarte el tiempo de dejar una reseña y comentarios. Estamos a disposición para lo que necesites, Karina!",
-    "fechaRespuesta": "2026-11-03"
-  },
-  {
-    "fecha": "2026-11-03",
-    "cliente": "Antonella Martinz",
-    "estrellas": 5,
-    "texto": "El gestor de inmuebles Santiago fue claro, tanto en la búsqueda de info como en la conversación. Nos llevó meses pero sacamos dudas de todo. Muchas gracias por el tiempo y la dedicación a tu trabajo.",
-    "respuesta": "Anto! Muchas gracias por tomarte el tiempo de dejarnos tus comentarios. Sí, fue un estudio de título complicado pero logramos hacernos con el informe de dominio! Un éxito!",
-    "fechaRespuesta": "2026-11-03"
-  },
-  {
-    "fecha": "2026-10-28",
-    "cliente": "karina alejandra uller",
-    "estrellas": 5,
-    "texto": "Recomiendo muchísimo los servicios. Me asesoraron y recibí inmediatamente la información requerida sobre una propiedad familiar. Destaco la amabilidad y celeridad!",
-    "respuesta": "Gracias Karina por tu reseña y puntaje! Un placer haberte ayudado. Estamos en contacto. Saludos!!",
-    "fechaRespuesta": "2026-10-28"
-  },
-  {
-    "fecha": "2026-10-28",
-    "cliente": "Marina Berardi",
-    "estrellas": 5,
-    "texto": "Excelente servicio, muy profesional",
-    "respuesta": "Muchas gracias Marina por tu comentario y calificación! Saludos!!",
-    "fechaRespuesta": "2026-10-28"
-  },
-  {
-    "fecha": "2026-10-28",
-    "cliente": "Guillermo Gomez",
-    "estrellas": 5,
-    "texto": "Respuesta en 24 hs!!! Genial",
-    "respuesta": "Muchas gracias Guillermo!",
-    "fechaRespuesta": "2026-11-03"
-  },
-  {
-    "fecha": "2026-10-27",
-    "cliente": "Marisa Perez",
-    "estrellas": 5,
-    "texto": "Solicité informe de titularidad. Eficiente, a tiempo y con total corrección. Recomendable",
-    "respuesta": "Muchas gracias Marisa por tus comentarios y puntaje! Estamos a disposición para lo que necesites. Saludos!",
-    "fechaRespuesta": "2026-10-28"
-  },
-  {
-    "fecha": "2026-10-26",
-    "cliente": "Fanny Gonzalez",
-    "estrellas": 5,
-    "texto": "Excelente servicio y asesoramiento",
-    "respuesta": "Muchas gracias Fanny!! Estamos a disposición para lo que necesites!",
-    "fechaRespuesta": "2026-10-27"
   }
 ];
